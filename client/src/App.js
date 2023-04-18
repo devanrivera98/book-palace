@@ -1,31 +1,39 @@
-import { useEffect, useState } from 'react';
-import logo from './logo.svg';
+// import { useEffect, useState } from 'react';
 import './App.css';
+import Header from './Header';
+
 
 function App() {
-  const [serverData, setServerData] = useState("");
+  // const [serverData, setServerData] = useState("");
 
-  useEffect(() => {
-    async function getServerData() {
-      const resp = await fetch('/api/hello');
-      const data = await resp.json();
+  // useEffect(() => {
+  //   async function getServerData() {
+  //     const resp = await fetch('/api/hello');
+  //     const data = await resp.json();
 
-      console.log('Data from server:', data);
+  //     console.log('Data from server:', data);
 
-      setServerData(data.message);
-    }
+  //     // setServerData(data.message);
+  //   }
 
-    getServerData();
-  }, []);
+  //   getServerData();
+  // }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h1>{serverData}</h1>
-      </header>
-    </div>
+    <>
+      <Header></Header>
+    </>
   );
 }
 
 export default App;
+
+// return (
+//   <div className="App">
+//     <header className="App-header">
+//       <img src={logo} className="App-logo" alt="logo" />
+//       <h1>{serverData}</h1>
+//     </header>
+//   </div>
+// );
+// }
