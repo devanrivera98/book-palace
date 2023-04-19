@@ -13,12 +13,12 @@ export default function Header() {
         <a href="this will be the cart" className="nav-link cart-icon"><BsFillCartFill/></a>
       </div>
       <div className="container-fluid justify-content-center">
-        <div style={{ backgroundColor: '#EDE9D5'}}>
-          <form className="d-flex">
-            <input className="search-bar justify-content-center" placeholder="Search by Title" />
+        <div className='justify-content-center col-10' style={{ backgroundColor: '#EDE9D5'}}>
+          <form className="d-flex justify-content-center">
+            <input className="search-bar col-10" placeholder="Search by Title" />
             <button className="btn btn-outline-dark"><ImSearch/></button>
           </form>
-      </div>
+        </div>
       </div>
     </nav>
   )
