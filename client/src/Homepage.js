@@ -16,7 +16,7 @@ function HomepageImage() {
   return (
     <div className='image-holder d-flex justify-content-center'>
      <div>
-        <img className='img library img-fluid justify-content-center' alt='library' src='https://img.freepik.com/free-vector/literature-book-club-twitch-banner-template_23-2149730151.jpg'></img>
+        <img className='img-fluid justify-content-center' alt='library' src='https://img.freepik.com/free-vector/literature-book-club-twitch-banner-template_23-2149730151.jpg'/>
      </div>
     </div>
 
@@ -50,7 +50,7 @@ function RecommendationModernClassics() {
 
   return (
     <div className='pt-5 px-3'>
-      <div className='our-recommendations'>
+      <div>
         <h3>Modern Classics</h3>
       </div>
       <div style={{ backgroundColor: '#D9D9D9'}}>
@@ -81,17 +81,16 @@ function RecommendationThisMonth() {
     }
   }
 
-  // schema might need to change price from text to decimal
   const recommendationClassics = [{ title: 'Fences', isbn: '9780593087589', image: 'http://books.google.com/books/content?id=HE-iDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'The Great Gatsby', isbn: '9780143136125', image: 'http://books.google.com/books/content?id=Al4NEAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'The Outsider', isbn: '9781501180989', image: 'http://books.google.com/books/content?id=yK_iyQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api' }, { title: 'Invisible Man', isbn: '9780307743992', image: 'http://books.google.com/books/content?id=iSrI-BQqFf0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, {
     title: 'Beloved', isbn: '9781400033416', image: 'http://books.google.com/books/content?id=bm-KDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}, { title: 'Little Women', isbn: '9780140390698', image: 'http://books.google.com/books/content?id=MO3SEL6qIsgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'On the Road: the Original Scroll', isbn: '9780143105466', image: 'http://books.google.com/books/content?id=DaKMEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api' }, { title: 'The Awakening', isbn: '9780553213300', image: 'http://books.google.com/books/content?id=dfdvDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}]
 
   const mapClassics = recommendationClassics.map(recommendationClassics =>
-    <img className='p-2 img-fluid recommended-books' onClick={() => handleImageClick(recommendationClassics.title, recommendationClassics.isbn)} key={recommendationClassics.isbn} alt={recommendationClassics.title} src={recommendationClassics.image} />
+    <img className='p-2 img-fluid recommended-books' onClick={() => handleImageClick(recommendationClassics.title, recommendationClassics.isbn)} key={recommendationClassics.isbn} alt={recommendationClassics.title} src={recommendationClassics.image}/>
   )
 
   return (
     <div className='pt-5 px-3'>
-      <div className='our-recommendations'>
+      <div>
         <h3>Top Books This Month</h3>
       </div>
       <div style={{ backgroundColor: '#D9D9D9' }}>
@@ -109,7 +108,7 @@ function AboutUs() {
   return (
     <div className='pt-5 pb-3 px-5 about-us d-flex'>
       <div className='justify-content-center text-center' style={{ backgroundColor: '#F6F1E9' }}>
-        <h3 className='text-align-center'>Our Promise</h3>
+        <h3>Our Promise</h3>
         <p>We will have all your favorite books. No matter what you’re a fan of, from Mystery to Romance, Adventure, History, Anime, and more. Discover books including classics like Brave New World to modern favorites like Gone Girl.</p>
       </div>
     </div>
