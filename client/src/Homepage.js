@@ -1,25 +1,6 @@
 import './App.css';
-import {useState, useEffect} from 'react'
 
 export default function Homepage() {
-
-  // useEffect(() => {
-  //   async function fetchBook() {
-  //     try {
-  //       const response = await fetch(`http https://www.googleapis.com/books/v1/volumes?q=${recommendationClassics.title}+isbn:${recommendationClassics.isbn}key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`);
-  //       const jsonData = await response.json();
-  //       if (response.ok) {
-  //         return console.log('My book requests', jsonData)
-  //         // do not do anything but console log until more info page is created
-  //       }
-  //       throw new Error('An error occurred')
-  //     }
-  //     catch (err) {
-
-  //     }
-  //   }
-  //   fetchBook();
-  // }, [])
 
   return (
     <>
@@ -48,10 +29,11 @@ function RecommendationModernClassics() {
 
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`)
-      console.log(response)
+      console.log('This is the Modern books response', response)
       const jsonData = await response.json();
       if (response.ok) {
         return console.log('My book requests', jsonData);
+        //placeholder until I have a more info page to render this information on a new page
       }
     }
     catch (error) {
@@ -91,6 +73,7 @@ function RecommendationThisMonth() {
       const jsonData = await response.json();
       if (response.ok) {
         return console.log('My book requests', jsonData);
+          //placeholder until I have a more info page to render this information on a new page
       }
     }
     catch (error) {
