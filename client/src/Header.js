@@ -1,4 +1,3 @@
-import './App.css';
 import {useState} from 'react'
 import {BsFillCartFill} from 'react-icons/bs'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
@@ -15,12 +14,13 @@ export default function Header() {
     event.preventDefault();
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`)
-      const jsonData= await response.json();
-      if (response.ok) {
-        console.log(response)
-        return console.log('My book requests', jsonData);
-        //placeholder until results page
+      if (!response.ok) {
+        throw new Error(`Response error: ${response.status}`)
       }
+      const jsonData = await response.json();
+      console.log(response)
+      return console.log('GET: My book requests', jsonData);
+      //placeholder until results page
     }
     catch (error) {
       console.error('Error fetching image data', error)
