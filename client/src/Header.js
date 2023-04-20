@@ -2,7 +2,7 @@ import {useState} from 'react'
 import {BsFillCartFill} from 'react-icons/bs'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
- 
+
 export default function Header() {
   const [search, setSearch] = useState('')
 
