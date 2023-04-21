@@ -14,7 +14,7 @@ export default function Header() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`)
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}`)
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }

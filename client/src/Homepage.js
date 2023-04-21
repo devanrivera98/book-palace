@@ -24,7 +24,7 @@ function HomepageImage() {
 const handleImageClick = async (title, isbn) => {
 
   try {
-    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`)
+    const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=${process.env.REACT_APP_API_KEY}`)
     console.log('This is the books response', response)
     if (!response.ok) {
       throw new Error(`Response error: ${response.status}`)
