@@ -1,18 +1,21 @@
-// import { useEffect, useState } from 'react';
-import './App.css';
 import Header from './Header';
 import Homepage from './Homepage';
-
+import ResultsPage from './ResultsPage';
+import './App.css';
+import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
-
   return (
-    <>
-      <Header/>
-      <Homepage/>
-    </>
-  );
-}
+    <div>
+      <Routes>
+        <Route path='/' element={<Header />}>
+          <Route index element={<Homepage />}/>
+          <Route path='results' element={<ResultsPage/>}/>
+        </Route>
+      </Routes>
+    </div>
+  )
+};
 
 export default App;

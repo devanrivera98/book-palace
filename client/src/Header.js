@@ -2,10 +2,11 @@ import {useState} from 'react'
 import {BsFillCartFill} from 'react-icons/bs'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
+import {Link, Outlet, useNavigate} from 'react-router-dom'
 
 export default function Header() {
-  const [search, setSearch] = useState('')
-
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setSearch(event.target.value);
   }
@@ -13,12 +14,14 @@ export default function Header() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=AIzaSyCQ7EBy8yMIYuOdh350WfDgEwWKGJSWAh4`)
+      const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}`)
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
       console.log(response)
+      console.log(jsonData)
+      navigate("/results", {state: jsonData})
       return console.log('GET: My book requests', jsonData);
       //placeholder until results page
     }
@@ -28,10 +31,11 @@ export default function Header() {
   }
 
   return (
+    <>
     <nav className="navbar" style={{ backgroundColor: '#617143'}}>
       <div className="container-fluid">
         <a href="this will be the wishlist" className="nav-link heart-icon"><BsFillSuitHeartFill/></a>
-        <a href="will be the homepage" className="navbar-brand" style={{fontSize: '30px', color: 'white'}}>Book Palace</a>
+          <Link to="/" className="navbar-brand" style={{ fontSize: '30px', color: 'white' }}>Book Palace</Link>
         <a href="this will be the cart" className="nav-link cart-icon"><BsFillCartFill/></a>
       </div>
       <div className="container-fluid justify-content-center">
@@ -43,5 +47,7 @@ export default function Header() {
         </div>
       </div>
     </nav>
+    <Outlet />
+    </>
   )
 }
