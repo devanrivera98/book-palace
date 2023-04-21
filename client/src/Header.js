@@ -20,7 +20,8 @@ export default function Header() {
       }
       const jsonData = await response.json();
       console.log(response)
-      navigate("/results")
+      console.log(jsonData)
+      navigate("/results", {state: jsonData})
       return console.log('GET: My book requests', jsonData);
       //placeholder until results page
     }
