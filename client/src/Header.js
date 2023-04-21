@@ -2,11 +2,11 @@ import {useState} from 'react'
 import {BsFillCartFill} from 'react-icons/bs'
 import { BsFillSuitHeartFill } from 'react-icons/bs'
 import { ImSearch } from 'react-icons/im'
-import {Link, Outlet} from 'react-router-dom'
+import {Link, Outlet, useNavigate} from 'react-router-dom'
 
 export default function Header() {
-  const [search, setSearch] = useState('')
-
+  const [search, setSearch] = useState('');
+  const navigate = useNavigate();
   const handleChange = (event) => {
     setSearch(event.target.value);
   }
@@ -20,6 +20,7 @@ export default function Header() {
       }
       const jsonData = await response.json();
       console.log(response)
+      navigate("/results")
       return console.log('GET: My book requests', jsonData);
       //placeholder until results page
     }
