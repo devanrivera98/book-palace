@@ -6,14 +6,32 @@
   font-size: 30px !important;
 }
 .image-holder {
-      padding-top: 1.5rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      max-width: 900px;
-      margin: auto;
+  padding-top: 1.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
-    .recommended-books {
+.recommended-books {
   width: 90px !important;
   cursor: pointer;
 }
+
+
+.results-books {
+  width: 150px !important;
+  height: 220px !important;
+}
+
+.results-container {
+
+}
+
+.results-container > .results-books {
+
+}
+
+/* p {
+  margin-bottom: 0 !important;
+} */

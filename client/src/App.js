@@ -1,5 +1,6 @@
 import Header from './Header';
-import Homepage from './Homepage';
+// import Homepage from './Homepage';
+import ResultsPage from './ResultsPage';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 
@@ -9,7 +10,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Header />}>
-          <Route index element={<Homepage />}/>
+          <Route index element={<ResultsPage />}/>
         </Route>
       </Routes>
     </div>
