@@ -16,7 +16,6 @@ function ResultsTable() {
 
   const handleClick = (resultsArray) => {
     navigate("/info", {state: resultsArray})
-    // console.log(resultsArray)
   }
 
   const resultsMap =  resultsArray.map((resultsArray, index) =>

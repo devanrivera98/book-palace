@@ -34,9 +34,9 @@ function RecommendationModernClassics() {
       }
       const jsonData = await response.json();
       console.log(response)
-      navigate("/info", { state: jsonData.items[0] })
-      return console.log('GET: My book requests', jsonData.items);
-      //placeholder until I have a more info page to render this information on a new page
+      console.log('GET: My book requests', jsonData.items);
+      return navigate("/info", { state: jsonData.items[0] })
+
     }
     catch (error) {
       console.error('Error fetching image data', error)
@@ -76,9 +76,8 @@ function RecommendationThisMonth() {
       }
       const jsonData = await response.json();
       console.log(response)
-      navigate("/info", { state: jsonData.items[0] })
-      return console.log('GET: My book requests', jsonData.items);
-      //placeholder until I have a more info page to render this information on a new page
+      console.log('GET: My book requests', jsonData.items);
+      return navigate("/info", { state: jsonData.items[0] })
     }
     catch (error) {
       console.error('Error fetching image data', error)

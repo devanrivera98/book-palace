@@ -24,7 +24,6 @@ export default function Header() {
       navigate("/results", {state: jsonData})
       setSearch('')
       return console.log('GET: My book requests', jsonData);
-      //placeholder until results page
     }
     catch (error) {
       console.error('Error fetching image data', error)
