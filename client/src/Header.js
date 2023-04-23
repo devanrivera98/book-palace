@@ -22,6 +22,7 @@ export default function Header() {
       console.log(response)
       console.log(jsonData)
       navigate("/results", {state: jsonData})
+      setSearch('')
       return console.log('GET: My book requests', jsonData);
       //placeholder until results page
     }
