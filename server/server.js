@@ -42,16 +42,17 @@ app.post('/api/cart', async (req, res) => {
     // change the schema to include quantity as an option for cart so that you can post more than once
     // condition a check to see if the item is already in cart and if it is update the quantity
     // get this done once you can actually add an item and remove from the cart
-    const { title, author, isbn, rating, image, price } = req.body;
-    if (!title || !author || !isbn || !rating || !image || !price) {
+    // might need to check here if isbn are comparable than add to quantity
+    const { title, author, isbn, rating, image, price, quantity } = req.body;
+    if (!title || !author || !isbn || !rating || !image || !price || !quantity) {
       res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
     }
     const sql = `
-    insert into "cart" ("title", "author", "isbn", "rating", "image", "price")
-      values ($1, $2, $3, $4, $5, $6)
+    insert into "cart" ("title", "author", "isbn", "rating", "image", "price", "quantity")
+      values ($1, $2, $3, $4, $5, $6, $7)
       returning *
     `;
-    const params = [title, author, isbn, rating, image, price];
+    const params = [title, author, isbn, rating, image, price, quantity];
     const results = await db.query(sql, params);
     const [item] = results.rows;
     res.status(201).json(item);

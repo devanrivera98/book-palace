@@ -15,7 +15,7 @@ function MoreInfo() {
   const url = (path) => `${path}`
 
   async  function addBook() {
-    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: "0", image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: "19.99" }
+    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: "19.99", quantity: 1 }
     if (readBookObject.volumeInfo.title) {
       book.title = readBookObject.volumeInfo.title;
     }
@@ -35,6 +35,7 @@ function MoreInfo() {
       book.price = readBookObject.saleInfo.retailPrice.amount;
     }
     try {
+      console.log(book)
     const response = await fetch(url(`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
     if (!response.ok) {
       throw new Error(`Response error: ${response.status}`)
