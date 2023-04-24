@@ -27,3 +27,26 @@
 .more-info-image {
   width: 200px;
 }
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  position: relative;
+}
+.price {
+  /* padding-top: 7.7rem; */
+  position: absolute;
+  bottom: 0;
+}
+
+.quantity {
+  position: absolute;
+  bottom: 0;
+  right: 1.5rem;
+}
+
+.cartList {
+  margin: 0 auto;
+}

@@ -40,6 +40,9 @@ app.get('/api/cart', async (req, res) => {
 app.post('/api/cart', async (req, res) => {
   try {
     // schema might need to change to allow rating and price to numbers or both decimals
+    // change the schema to include quantity as an option for cart so that you can post more than once
+    // condition a check to see if the item is already in cart and if it is update the quantity
+    // get this done once you can actually add an item and remove from the cart
     const { title, author, isbn, rating, image, price } = req.body;
     if (!title || !author || !isbn || !rating || !image || !price) {
       res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
