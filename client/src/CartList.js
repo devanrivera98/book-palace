@@ -1,4 +1,5 @@
 export default function CartList({books}) {
+  console.log(books)
   return (
     <ul className="list-group">
       {

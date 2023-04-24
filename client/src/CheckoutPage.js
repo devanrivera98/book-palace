@@ -6,7 +6,6 @@ const url = (path) => `${path}`
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
-  const [error, setError] = useState();
 
   useEffect(() => {
     async function getRequest() {
@@ -20,7 +19,7 @@ export default function CheckoutCart() {
         console.log('GET Success', jsonData)
       }
       catch (err) {
-        setError(err)
+        console.log(err)
       }
     }
     getRequest();

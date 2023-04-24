@@ -1,5 +1,6 @@
 import { BsFillHeartFill } from 'react-icons/bs'
 import { useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
 export default function  MoreInfoPage() {
   return (
@@ -9,9 +10,47 @@ export default function  MoreInfoPage() {
 
 function MoreInfo() {
   const location = useLocation();
+  const navigate = useNavigate();
   const readBookObject = location.state
   console.log(location.state)
+  const url = (path) => `${path}`
 
+  async  function addBook() {
+    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: "0", image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: "19.99" }
+    if (readBookObject.volumeInfo.title) {
+      book.title = readBookObject.volumeInfo.title;
+    }
+    if (readBookObject.volumeInfo.authors) {
+      book.author = readBookObject.volumeInfo.authors[0];
+    }
+    if (readBookObject.volumeInfo.industryIdentifiers[0]) {
+      book.isbn = readBookObject.volumeInfo.industryIdentifiers[0].identifier
+    }
+    if (readBookObject.volumeInfo.averageRating) {
+      book.rating = readBookObject.volumeInfo.averageRating;
+    }
+    if (readBookObject.volumeInfo.imageLinks) {
+      book.image = readBookObject.volumeInfo.imageLinks.thumbnail;
+    }
+    if (readBookObject.saleInfo.retailPrice) {
+      book.price = readBookObject.saleInfo.retailPrice.amount;
+    }
+    console.log(book);
+    try {
+    const response = await fetch(url(`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
+    if (!response.ok) {
+      throw new Error(`Response error: ${response.status}`)
+    }
+    const jsonData = await response.json()
+    console.log(jsonData)
+    navigate('/checkout')
+
+    }
+    catch (err) {
+      console.log(err)
+    }
+
+  }
   return (
     <div className="container pt-4 text-center">
       <div>
@@ -25,7 +64,7 @@ function MoreInfo() {
       </div>
       <div className='row justify-content-center'>
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount :  '19.99'}</h4>
-        <button className='col-6 btn btn-block btn-primary'>ADD TO CART</button>
+        <button onClick={addBook} className='col-6 btn btn-block btn-primary'>ADD TO CART</button>
       </div>
       <div className='pt-3 row justify-content-center'>
         <h1>Overview</h1>
