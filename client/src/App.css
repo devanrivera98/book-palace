@@ -30,13 +30,14 @@
 
 ul {
   list-style-type: none;
+  padding-left: .6rem !important;
 }
 
 li {
   position: relative;
 }
 .price {
-  /* padding-top: 7.7rem; */
+
   position: absolute;
   bottom: 0;
 }
@@ -45,8 +46,4 @@ li {
   position: absolute;
   bottom: 0;
   right: 1.5rem;
-}
-
-.cartList {
-  margin: 0 auto;
 }

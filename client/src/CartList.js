@@ -1,7 +1,6 @@
-// import {AiFillCloseSquare} from 'react-icons/ai'
 
 export default function CartList({books}) {
-  // console.log(books)
+
   return (
     <ul className="list-group">
       {
@@ -17,7 +16,7 @@ export default function CartList({books}) {
 function EachBook({ book}) {
   const { cartId, title, author, image, price } = book;
   const bookId = `book-id-${cartId}`;
-  // console.log(bookId)
+
   return (
     <li key={bookId} id={bookId} className="my-3" style={{ backgroundColor: '#D9D9D9'}}>
       <div className="d-flex">

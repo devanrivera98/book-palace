@@ -34,7 +34,6 @@ app.get('/api/cart', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
-  // res.json({ message: 'Hello World!' });
 });
 
 app.post('/api/cart', async (req, res) => {

@@ -11,7 +11,7 @@ export default function ResultsPage() {
 function ResultsTable() {
   const location = useLocation();
   const resultsArray = location.state.items
-  console.log('This is resultsArray', resultsArray)
+  // console.log('This is resultsArray', resultsArray)
   const navigate = useNavigate()
 
   const handleClick = (resultsArray) => {

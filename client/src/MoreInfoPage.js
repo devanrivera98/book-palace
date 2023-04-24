@@ -12,7 +12,6 @@ function MoreInfo() {
   const location = useLocation();
   const navigate = useNavigate();
   const readBookObject = location.state
-  console.log(location.state)
   const url = (path) => `${path}`
 
   async  function addBook() {
@@ -35,7 +34,6 @@ function MoreInfo() {
     if (readBookObject.saleInfo.retailPrice) {
       book.price = readBookObject.saleInfo.retailPrice.amount;
     }
-    console.log(book);
     try {
     const response = await fetch(url(`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
     if (!response.ok) {

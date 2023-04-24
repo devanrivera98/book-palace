@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import CartList from './CartList'
 
 const url = (path) => `${path}`
-//why can I not put my env REACT_APP^
+
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
@@ -16,7 +16,7 @@ export default function CheckoutCart() {
         }
         const jsonData = await response.json()
         setCart(jsonData)
-        // console.log('GET Success', jsonData)
+
       }
       catch (err) {
         console.log(err)
@@ -38,7 +38,7 @@ console.log(cart)
         <div className="pt-2 text-center">
           <h4>Items in your bag are not reserved - check out now to make them yours</h4>
         </div>
-        <div className="d-flex col-12 justify-content-center cartList">
+        <div className="d-flex row justify-content-center cartList">
           <CartList books={cart} />
         </div>
         <div>
