@@ -36,7 +36,7 @@ export default function Header() {
       <div className="container-fluid">
         <a href="this will be the wishlist" className="nav-link heart-icon"><BsFillSuitHeartFill/></a>
           <Link to="/" className="navbar-brand" style={{ fontSize: '30px', color: 'white' }}>Book Palace</Link>
-        <a href="this will be the cart" className="nav-link cart-icon"><BsFillCartFill/></a>
+          <Link to="/checkout" className="nav-link cart-icon"><BsFillCartFill/></Link>
       </div>
       <div className="container-fluid justify-content-center">
         <div className='justify-content-center col-10' style={{ backgroundColor: '#EDE9D5'}}>

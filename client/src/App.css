@@ -27,3 +27,23 @@
 .more-info-image {
   width: 200px;
 }
+
+ul {
+  list-style-type: none;
+  padding-left: .6rem !important;
+}
+
+li {
+  position: relative;
+}
+.price {
+
+  position: absolute;
+  bottom: 0;
+}
+
+.quantity {
+  position: absolute;
+  bottom: 0;
+  right: 1.5rem;
+}
