@@ -15,7 +15,7 @@ CREATE TABLE "public"."wishlist" (
 	"rating" DECIMAL NOT NULL,
 	"image" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
-	"price" TEXT NOT NULL,
+	"price" DECIMAL NOT NULL,
 	CONSTRAINT "wishlist_pk" PRIMARY KEY ("wishlist_id")
 ) WITH (
   OIDS=FALSE
