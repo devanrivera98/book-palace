@@ -21,7 +21,7 @@ function EachBook({ book, deleteBook}) {
     <li key={bookId} id={bookId} className="my-3" style={{ backgroundColor: '#D9D9D9'}}>
       <div className="d-flex">
         <div className="p-3 col-md-3 col-4">
-          <img src={image} alt={title}/>
+          <img className='checkoutImage' src={image} alt={title}/>
         </div>
         <div className="p-3 col-lg-9 col-md-9 col-8">
           <div className=' d-flex justify-content-end'>

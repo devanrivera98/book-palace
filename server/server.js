@@ -30,7 +30,7 @@ app.get('/api/cart', async (req, res) => {
     `;
     const results = await db.query(sql);
     res.json(results.rows);
-    console.log(results.rows);
+    // console.log(results.rows);
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
@@ -38,13 +38,7 @@ app.get('/api/cart', async (req, res) => {
 
 app.post('/api/cart', async (req, res) => {
   try {
-    // condition a check to see if the item is already in cart and if it is update the quantity
-    // get this done once you can actually add an item and remove from the cart
-    // might need to check here if isbn are comparable than add to quantity
     const { title, author, isbn, rating, image, price, quantity } = req.body;
-    if (res.headersSent === true) {
-      console.log('Hello World!');
-    }
     if (!title || !author || !isbn || !image || !price || !quantity) {
       return res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
     }
@@ -57,7 +51,7 @@ app.post('/api/cart', async (req, res) => {
     const results = await db.query(sql, params);
     const [item] = results.rows;
     res.status(201).json(item);
-    console.log('This is the response added', item);
+    // console.log('This is the response added', item);
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
@@ -78,7 +72,7 @@ app.delete('/api/cart/:cartId', async (req, res) => {
     const params = [cartId];
     const result = await db.query(sql, params);
     const [book] = result.rows;
-    console.log('This is the book being deleted', book);
+    // console.log('This is the book being deleted', book);
     if (book) {
       res.status(204).json(book);
     } else {

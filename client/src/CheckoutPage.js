@@ -44,7 +44,6 @@ export default function CheckoutCart() {
     removeRequest()
   }
 
-console.log(cart)
   return (
     <>
       <div className="container">

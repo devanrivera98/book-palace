@@ -51,3 +51,7 @@ li {
 .cartList {
   margin: 0 auto !important;
 }
+
+.checkoutImage {
+  width: 128px;
+}

@@ -35,7 +35,6 @@ function MoreInfo() {
       book.price = readBookObject.saleInfo.retailPrice.amount;
     }
     try {
-      console.log(book)
     const response = await fetch(url(`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
     if (!response.ok) {
       throw new Error(`Response error: ${response.status}`)
