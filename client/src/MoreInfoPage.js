@@ -15,7 +15,7 @@ function MoreInfo() {
   const url = (path) => `${path}`
 
   async  function addBook() {
-    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: "0", image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: "19.99" }
+    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
     if (readBookObject.volumeInfo.title) {
       book.title = readBookObject.volumeInfo.title;
     }
@@ -44,8 +44,8 @@ function MoreInfo() {
     navigate('/checkout')
 
     }
-    catch (err) {
-      console.log(err)
+    catch (error) {
+      console.log(`There was a post error: ${error.message} `)
     }
 
   }

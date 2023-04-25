@@ -9,13 +9,13 @@ create schema "public";
 
 CREATE TABLE "public"."wishlist" (
 	"wishlist_id" serial NOT NULL,
-	"title" TEXT NOT NULL UNIQUE,
+	"title" TEXT NOT NULL,
 	"author" TEXT NOT NULL,
-	"isbn" TEXT NOT NULL UNIQUE,
+	"isbn" TEXT NOT NULL,
 	"rating" DECIMAL NOT NULL,
-	"image" TEXT NOT NULL UNIQUE,
+	"image" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
-	"price" DECIMAL NOT NULL UNIQUE,
+	"price" TEXT NOT NULL,
 	CONSTRAINT "wishlist_pk" PRIMARY KEY ("wishlist_id")
 ) WITH (
   OIDS=FALSE
@@ -27,10 +27,11 @@ CREATE TABLE "public"."cart" (
 	"cartId" serial NOT NULL,
 	"title" TEXT NOT NULL,
 	"author" TEXT NOT NULL,
-	"isbn" TEXT NOT NULL UNIQUE,
+	"isbn" TEXT NOT NULL,
 	"rating" DECIMAL NOT NULL,
 	"image" TEXT NOT NULL,
-	"price" TEXT NOT NULL,
+	"price" DECIMAL NOT NULL,
+  "quantity" DECIMAL NOT NULL,
 	CONSTRAINT "cart_pk" PRIMARY KEY ("cartId")
 ) WITH (
   OIDS=FALSE

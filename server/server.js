@@ -30,7 +30,7 @@ app.get('/api/cart', async (req, res) => {
     `;
     const results = await db.query(sql);
     res.json(results.rows);
-    console.log(results.rows);
+    // console.log(results.rows);
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
@@ -38,26 +38,50 @@ app.get('/api/cart', async (req, res) => {
 
 app.post('/api/cart', async (req, res) => {
   try {
-    // schema might need to change to allow rating and price to numbers or both decimals
-    // change the schema to include quantity as an option for cart so that you can post more than once
-    // condition a check to see if the item is already in cart and if it is update the quantity
-    // get this done once you can actually add an item and remove from the cart
-    const { title, author, isbn, rating, image, price } = req.body;
-    if (!title || !author || !isbn || !rating || !image || !price) {
-      res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
+    const { title, author, isbn, rating, image, price, quantity } = req.body;
+    if (!title || !author || !isbn || !image || !price || !quantity) {
+      return res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
     }
     const sql = `
-    insert into "cart" ("title", "author", "isbn", "rating", "image", "price")
-      values ($1, $2, $3, $4, $5, $6)
+    insert into "cart" ("title", "author", "isbn", "rating", "image", "price", "quantity")
+      values ($1, $2, $3, $4, $5, $6, $7)
       returning *
     `;
-    const params = [title, author, isbn, rating, image, price];
+    const params = [title, author, isbn, rating, image, price, quantity];
     const results = await db.query(sql, params);
     const [item] = results.rows;
     res.status(201).json(item);
+    // console.log('This is the response added', item);
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
+});
+
+app.delete('/api/cart/:cartId', async (req, res) => {
+  try {
+    const cartId = Number(req.params.cartId);
+    if (Number.isNaN(cartId)) {
+      return res.status(400).json({ error: `${cartId} was not a number` });
+    }
+    const sql = `
+  Delete
+    from "cart"
+    where "cartId" = $1
+    Returning *
+  `;
+    const params = [cartId];
+    const result = await db.query(sql, params);
+    const [book] = result.rows;
+    // console.log('This is the book being deleted', book);
+    if (book) {
+      res.status(204).json(book);
+    } else {
+      res.status(404).json({ error: `Cannot find cart with "cartId"${cartId}` });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'An unexpected error occurred' });
+  }
+
 });
 
 app.use(errorMiddleware);
