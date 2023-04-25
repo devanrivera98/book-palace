@@ -37,13 +37,17 @@ li {
   position: relative;
 }
 .price {
-
   position: absolute;
   bottom: 0;
+  left: 10rem;
 }
 
 .quantity {
   position: absolute;
   bottom: 0;
-  right: 1.5rem;
+  right: 1rem;
+}
+
+.cartList {
+  margin: 0 auto !important;
 }

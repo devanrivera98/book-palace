@@ -38,8 +38,6 @@ app.get('/api/cart', async (req, res) => {
 
 app.post('/api/cart', async (req, res) => {
   try {
-    // schema might need to change to allow rating and price to numbers or both decimals
-    // change the schema to include quantity as an option for cart so that you can post more than once
     // condition a check to see if the item is already in cart and if it is update the quantity
     // get this done once you can actually add an item and remove from the cart
     // might need to check here if isbn are comparable than add to quantity
@@ -59,6 +57,33 @@ app.post('/api/cart', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
+});
+
+app.delete('/api/cart/:cartId', async (req, res) => {
+  try {
+    const cartId = Number(req.params.cartId);
+    if (Number.isNaN(cartId)) {
+      return res.status(400).json({ error: `${cartId} was not a number` });
+    }
+    const sql = `
+  Delete
+    from "cart"
+    where "cartId" = $1
+    Returning *
+  `;
+    const params = [cartId];
+    const result = await db.query(sql, params);
+    const [book] = result.rows;
+    console.log('This is the book being deleted', book);
+    if (book) {
+      res.status(204).json(book);
+    } else {
+      res.status(404).json({ error: `Cannot find cart with "cartId"${cartId}` });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'An unexpected error occurred' });
+  }
+
 });
 
 app.use(errorMiddleware);
