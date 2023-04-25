@@ -30,7 +30,7 @@ CREATE TABLE "public"."cart" (
 	"isbn" TEXT NOT NULL,
 	"rating" DECIMAL NOT NULL,
 	"image" TEXT NOT NULL,
-	"price" TEXT NOT NULL,
+	"price" DECIMAL NOT NULL,
   "quantity" DECIMAL NOT NULL,
 	CONSTRAINT "cart_pk" PRIMARY KEY ("cartId")
 ) WITH (

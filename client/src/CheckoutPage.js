@@ -22,8 +22,8 @@ export default function CheckoutCart() {
       setCart(jsonData)
 
     }
-    catch (err) {
-      console.log(err)
+    catch (error) {
+      console.log(`There was a get error: ${error.message} `)
     }
   }
 

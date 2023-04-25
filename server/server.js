@@ -42,8 +42,11 @@ app.post('/api/cart', async (req, res) => {
     // get this done once you can actually add an item and remove from the cart
     // might need to check here if isbn are comparable than add to quantity
     const { title, author, isbn, rating, image, price, quantity } = req.body;
-    if (!title || !author || !isbn || !rating || !image || !price || !quantity) {
-      res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
+    if (res.headersSent === true) {
+      console.log('Hello World!');
+    }
+    if (!title || !author || !isbn || !image || !price || !quantity) {
+      return res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
     }
     const sql = `
     insert into "cart" ("title", "author", "isbn", "rating", "image", "price", "quantity")
@@ -54,6 +57,7 @@ app.post('/api/cart', async (req, res) => {
     const results = await db.query(sql, params);
     const [item] = results.rows;
     res.status(201).json(item);
+    console.log('This is the response added', item);
   } catch (err) {
     res.status(500).json({ error: 'an unexpected error occurred' });
   }
