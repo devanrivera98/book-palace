@@ -8,15 +8,15 @@ create schema "public";
 
 
 CREATE TABLE "public"."wishlist" (
-	"wishlist_id" serial NOT NULL,
+	"wishlistId" serial NOT NULL,
 	"title" TEXT NOT NULL,
 	"author" TEXT NOT NULL,
 	"isbn" TEXT NOT NULL,
 	"rating" DECIMAL NOT NULL,
 	"image" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
-	"price" TEXT NOT NULL,
-	CONSTRAINT "wishlist_pk" PRIMARY KEY ("wishlist_id")
+	"price" DECIMAL NOT NULL,
+	CONSTRAINT "wishlist_pk" PRIMARY KEY ("wishlistId")
 ) WITH (
   OIDS=FALSE
 );

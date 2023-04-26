@@ -3,6 +3,7 @@ import Homepage from './Homepage';
 import ResultsPage from './ResultsPage';
 import MoreInfoPage from './MoreInfoPage';
 import CheckoutCart from './CheckoutPage';
+import WishlistPage from './WishListPage';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 
@@ -16,6 +17,7 @@ function App() {
           <Route path='results' element={<ResultsPage/>}/>
           <Route path='info' element={<MoreInfoPage/>}/>
           <Route path='checkout' element={<CheckoutCart/>}/>
+          <Route path='wishlist' element={<WishlistPage/>}/>
         </Route>
       </Routes>
     </div>

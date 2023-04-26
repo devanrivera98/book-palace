@@ -36,6 +36,40 @@ app.get('/api/cart', async (req, res) => {
   }
 });
 
+app.get('/api/wishlist', async (req, res) => {
+  try {
+    const sql = `
+    select *
+      from "wishlist"
+    `;
+    const results = await db.query(sql);
+    res.json(results.rows);
+  } catch (error) {
+    res.status(500).json({ error: 'an unexpected error occurred' });
+  }
+});
+
+app.post('/api/wishlist', async (req, res) => {
+  try {
+    // might have issues with description
+    const { title, author, isbn, rating, image, description, price } = req.body;
+    if (!title || !author || !isbn || !image || !description || !price) {
+      return res.status(400).json({ error: 'title, author, isbn, description, image, and price are required' });
+    }
+    const sql = `
+    insert into "wishlist" ("title", "author", "isbn", "rating", "image", "description", "price")
+      values ($1, $2, $3, $4, $5, $6, $7)
+      returning *
+    `;
+    const params = [title, author, isbn, rating, image, description, price];
+    const results = await db.query(sql, params);
+    const [item] = results.rows;
+    res.status(201).json(item);
+  } catch (err) {
+    res.status(500).json({ error: 'an unexpected error occurred' });
+  }
+});
+
 app.post('/api/cart', async (req, res) => {
   try {
     const { title, author, isbn, rating, image, price, quantity } = req.body;
@@ -82,6 +116,31 @@ app.delete('/api/cart/:cartId', async (req, res) => {
     res.status(500).json({ error: 'An unexpected error occurred' });
   }
 
+});
+
+app.delete('/api/wishlist/:wishlistId', async (req, res) => {
+  try {
+    const wishlistId = Number(req.params.wishlistId);
+    if (Number.isNaN(wishlistId)) {
+      return res.status(400).json({ error: `${wishlistId} was not a number` });
+    }
+    const sql = `
+  Delete
+    from "wishlist"
+    where "wishlistId" = $1
+    Returning *
+    `;
+    const params = [wishlistId];
+    const result = await db.query(sql, params);
+    const [book] = result.rows;
+    if (book) {
+      res.status(204).json(book);
+    } else {
+      res.status(404).json({ error: `Cannot find wishlist item with "wishlistId"${wishlistId}` });
+    }
+  } catch {
+    res.status(500).json({ error: 'An unexpected error occurred' });
+  }
 });
 
 app.use(errorMiddleware);
