@@ -34,7 +34,7 @@ export default function Header() {
     <>
     <nav className="navbar" style={{ backgroundColor: '#617143'}}>
       <div className="container-fluid">
-        <a href="this will be the wishlist" className="nav-link heart-icon"><BsFillSuitHeartFill/></a>
+        <Link to="/wishlist" className="nav-link heart-icon"><BsFillSuitHeartFill/></Link>
           <Link to="/" className="navbar-brand" style={{ fontSize: '30px', color: 'white' }}>Book Palace</Link>
           <Link to="/checkout" className="nav-link cart-icon"><BsFillCartFill/></Link>
       </div>
