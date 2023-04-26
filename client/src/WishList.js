@@ -1,5 +1,6 @@
 import { RxCross1 } from "react-icons/rx";
 import {RiStarSFill} from 'react-icons/ri'
+import { useNavigate } from "react-router-dom";
 
 export default function Wishlist({books, deleteBook, addBook}) {
   console.log(books)
@@ -17,6 +18,7 @@ export default function Wishlist({books, deleteBook, addBook}) {
 function WishlistBook({book, deleteBook, addBook }) {
   const {wishlistId, title, author, image, price, rating, isbn} = book;
   const bookId = `book-id-${wishlistId}`;
+  const navigate = useNavigate();
 
   async function addToCart() {
     let moveBook = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
@@ -46,11 +48,18 @@ function WishlistBook({book, deleteBook, addBook }) {
       }
       const jsonData = await response.json();
       console.log(jsonData);
+      navigate('/checkout');
     }
     catch (error) {
       console.log(`There was an issue moving item from wishlist to cart: ${error.message}`)
     }
   }
+  //for next feature
+  // async function deleteItem(wishlistId) {
+  //   try {
+
+  //   }
+  // }
 
   const stars = [];
     for (let i = 0; i < rating; i++) {
@@ -87,9 +96,3 @@ function WishlistBook({book, deleteBook, addBook }) {
     </li>
   )
 }
-
-        // <RxCross1 onClick={() => deleteBook(wishlistId)} />
-        // <h4>{author}</h4>
-        // <h4>{rating}</h4>
-        // <h4>{price}</h4>
-        // <button onClick={() => addBook(wishlistId)}></button>

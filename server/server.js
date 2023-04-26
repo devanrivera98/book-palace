@@ -118,6 +118,31 @@ app.delete('/api/cart/:cartId', async (req, res) => {
 
 });
 
+app.delete('/api/wishlist/:wishlistId', async (req, res) => {
+  try {
+    const wishlistId = Number(req.params.wishlistId);
+    if (Number.isNaN(wishlistId)) {
+      return res.status(400).json({ error: `${wishlistId} was not a number` });
+    }
+    const sql = `
+  Delete
+    from "wishlist"
+    where "wishlistId" = $1
+    Returning *
+    `;
+    const params = [wishlistId];
+    const result = await db.query(sql, params);
+    const [book] = result.rows;
+    if (book) {
+      res.status(204).json(book);
+    } else {
+      res.status(404).json({ error: `Cannot find wishlist item with "wishlistId"${wishlistId}` });
+    }
+  } catch {
+    res.status(500).json({ error: 'An unexpected error occurred' });
+  }
+});
+
 app.use(errorMiddleware);
 
 app.listen(process.env.PORT, () => {
