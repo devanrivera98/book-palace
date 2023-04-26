@@ -54,12 +54,19 @@ function WishlistBook({book, deleteBook, addBook }) {
       console.log(`There was an issue moving item from wishlist to cart: ${error.message}`)
     }
   }
-  //for next feature
-  // async function deleteItem(wishlistId) {
-  //   try {
-
-  //   }
-  // }
+  //for next feature FINISH
+  async function deleteItem(wishlistId) {
+    try {
+      const response = await fetch((`/api/wishlist/${book.wishlistId}`), {method: 'DELETE'})
+      if (!response.ok) {
+        throw new Error(`Reponse error: ${response.status}`)
+      }
+      console.log(wishlistId)
+    }
+    catch (error) {
+      console.log(`There was a delete error: ${error.message} `)
+    }
+  }
 
   const stars = [];
     for (let i = 0; i < rating; i++) {
@@ -77,7 +84,7 @@ function WishlistBook({book, deleteBook, addBook }) {
                 <h4>{title}</h4>
               </div>
               <div className="col-3 d-flex justify-content-end align-items-center">
-                <RxCross1 />
+                <RxCross1 onClick={deleteItem} />
               </div>
             </div>
             <div>
