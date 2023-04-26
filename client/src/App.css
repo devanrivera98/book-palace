@@ -28,14 +28,19 @@
   width: 200px;
 }
 
-ul {
+.cart-ul {
   list-style-type: none;
   padding-left: .6rem !important;
+}
+
+ul {
+  list-style-type: none;
 }
 
 li {
   position: relative;
 }
+
 .price {
   position: absolute;
   bottom: 0;
@@ -54,4 +59,22 @@ li {
 
 .checkoutImage {
   width: 128px;
+  height: 194px !important;
 }
+
+.bannerImg {
+  max-height: 250px !important;
+}
+
+.wishlist-text {
+  padding-top: 4rem;
+}
+
+.stars {
+  padding-left: 0;
+}
+
+.wishlist-price {
+  padding-top: 4rem;
+}
+

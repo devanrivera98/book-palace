@@ -24,7 +24,14 @@ export default function ViewWishlist() {
   }
 
   return (
-    <Wishlist books={view} />
+    <div className="container my-4">
+      <div className="row d-flex justify-content-center text-center">
+       <h1>WISHLIST</h1>
+      </div>
+      <div>
+        <Wishlist books={view} />
+      </div>
+    </div>
   )
 
 

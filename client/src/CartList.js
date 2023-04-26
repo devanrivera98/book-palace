@@ -2,7 +2,7 @@ import { RxCross1 } from 'react-icons/rx'
 export default function CartList({books, deleteBook}) {
 
   return (
-    <ul className="list-group">
+    <ul className="list-group cart-ul">
       {
         books.map((book) =>
         <EachBook key={book.cartId} book={book} deleteBook={deleteBook} />
@@ -18,7 +18,7 @@ function EachBook({ book, deleteBook}) {
   const bookId = `book-id-${cartId}`;
 
   return (
-    <li key={bookId} id={bookId} className="my-3" style={{ backgroundColor: '#D9D9D9'}}>
+    <li key={bookId} id={bookId} className="my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="d-flex">
         <div className="p-3 col-md-3 col-4">
           <img className='checkoutImage' src={image} alt={title}/>

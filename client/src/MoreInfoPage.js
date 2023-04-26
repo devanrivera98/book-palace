@@ -39,7 +39,7 @@ function MoreInfo() {
     if (!response.ok) {
       throw new Error(`Response error: ${response.status}`)
     }
-    const jsonData = await response.json()
+    const jsonData = await response.json();
     console.log(jsonData)
     navigate('/checkout')
 
