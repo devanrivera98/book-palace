@@ -78,3 +78,6 @@ li {
   padding-top: 4rem;
 }
 
+.wishlist {
+  max-width: 1000px !important;
+}

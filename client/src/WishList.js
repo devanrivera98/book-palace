@@ -68,15 +68,15 @@ function WishlistBook({book, deleteBook, addBook }) {
   return (
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
-          <div className="col-lg-3 col-md-3 col-3 d-flex">
+          <div className="col-lg-2 col-md-3 col-3 d-flex">
             <img className="checkoutImage img-fluid" alt={title} src={image}></img>
           </div>
-          <div className="col-lg-9 col-md-9 col-9 pt-2">
+          <div className="col-lg-10 col-md-9 col-9 pt-2">
             <div className="row">
             <div className="col-9">
                 <h4>{title}</h4>
               </div>
-              <div className="col-3 d-flex justify-content-center align-items-center">
+              <div className="col-3 d-flex justify-content-end align-items-center">
                 <RxCross1 />
               </div>
             </div>
