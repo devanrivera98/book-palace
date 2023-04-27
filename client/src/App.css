@@ -85,3 +85,11 @@ li {
 .seal {
   max-width: 300px !important;
 }
+
+.hover-button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none !important;
+}
