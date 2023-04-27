@@ -4,7 +4,6 @@ import Wishlist from "./WishList";
 export default function ViewWishlist() {
   const [view, setView] = useState([]);
 
-
   useEffect(() => {
     requestWishlist();
   }, [])
@@ -33,7 +32,5 @@ export default function ViewWishlist() {
       </div>
     </div>
   )
-
-
 
 }

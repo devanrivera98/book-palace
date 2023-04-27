@@ -19,8 +19,6 @@ export default function Header() {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
-      console.log(response)
-      console.log(jsonData)
       navigate("/results", {state: jsonData})
       setSearch('')
       return console.log('GET: My book requests', jsonData);
@@ -32,7 +30,20 @@ export default function Header() {
 
   return (
     <>
-    <nav className="navbar" style={{ backgroundColor: '#617143'}}>
+      <nav className="navbar justify-content-between d-lg-flex d-none py-3" style={{ backgroundColor: '#617143' }}>
+        <div>
+          <Link to="/" className="px-3 text-decoration-none navbar-brand text-white" style={{fontSize: '30px'}}>Book Palace</Link>
+          <Link to="/wishlist" className='pr-3 text-white' style={{fontSize: '20px'}}>Wishlist</Link>
+          <Link to="/checkout" className='px-3 text-white' style={{ fontSize: '20px' }}>Cart</Link>
+        </div>
+        <div>
+          <form onSubmit={handleSubmit} className="form-inline d-flex px-2 py-2">
+            <input className="form-control mr-sm-2 mx-2" onChange={handleChange} value={search} type="search" placeholder="Search" aria-label="Search"/>
+            <button className="btn btn-light btn-outline-dark my-2 mx-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    <nav className="navbar d-md-block d-lg-none" style={{ backgroundColor: '#617143'}}>
       <div className="container-fluid">
         <Link to="/wishlist" className="nav-link heart-icon"><BsFillSuitHeartFill/></Link>
           <Link to="/" className="navbar-brand" style={{ fontSize: '30px', color: 'white' }}>Book Palace</Link>

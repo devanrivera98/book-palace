@@ -1,4 +1,4 @@
-import { RxCross1 } from 'react-icons/rx'
+import { RxCross1 } from 'react-icons/rx';
 export default function CartList({books, deleteBook}) {
 
   return (
@@ -25,7 +25,7 @@ function EachBook({ book, deleteBook}) {
         </div>
         <div className="p-3 col-lg-9 col-md-9 col-8">
           <div className=' d-flex justify-content-end'>
-            <RxCross1 onClick={() => deleteBook(cartId)} style={{fontSize: '22px'}}/>
+            <RxCross1 className='hover-button' onClick={() => deleteBook(cartId)} style={{fontSize: '22px'}}/>
           </div>
           <div className='col-12'>
             <h3 className="text-center">{title}</h3>

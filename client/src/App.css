@@ -81,3 +81,15 @@ li {
 .wishlist {
   max-width: 1000px !important;
 }
+
+.seal {
+  max-width: 300px !important;
+}
+
+.hover-button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none !important;
+}
