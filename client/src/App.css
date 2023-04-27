@@ -81,3 +81,7 @@ li {
 .wishlist {
   max-width: 1000px !important;
 }
+
+.seal {
+  max-width: 300px !important;
+}
