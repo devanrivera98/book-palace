@@ -62,11 +62,12 @@ export default function CheckoutCart() {
           <h3>Total Items: [{cart.length}]</h3>
         </div>
         <div className="pt-2 text-center">
-          <h4>Items in your bag are not reserved - check out now to make them yours</h4>
+          {cart.length === 0 ? <h4>Make sure to add to your cart if you are ready to checkout</h4> : <></>}
         </div>
         <div className="d-flex row justify-content-center cartList col-lg-10">
           <CartList books={cart} deleteBook={deleteBook} />
         </div>
+        {cart.length === 0 ? <></> :
         <div className="cartList col-lg-10">
           <h3 className="pt-3 text-center">Order Summary</h3>
           <div className="py-2 d-flex justify-content-between">
@@ -83,10 +84,13 @@ export default function CheckoutCart() {
             <h4>${total}</h4>
           </div>
         </div>
+        }
       </div>
-      <div className="d-flex justify-content-center py-4 cartList col-lg-10">
-        <button className='col-10 btn btn-block btn-primary'>CHECKOUT</button>
-      </div>
+      {cart.length === 0 ? <></> :
+        <div className="d-flex justify-content-center py-4 cartList col-lg-10">
+          <button className='col-10 btn btn-block btn-primary'>CHECKOUT</button>
+        </div>
+      }
     </>
   )
 }
