@@ -8,6 +8,7 @@ const url = (path) => `${path}`
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
+  const [total, setTotal] = useState(0);
   useEffect(() => {
     getRequest();
   }, [])
@@ -25,6 +26,8 @@ export default function CheckoutCart() {
         newTotal += Number(jsonData[i].price);
       }
       setSubtotal(newTotal.toFixed(2));
+      let grandTotal = 4.99 + newTotal;
+      setTotal(grandTotal.toFixed(2));
     }
     catch (error) {
       console.log(`There was a get error: ${error.message} `)
@@ -73,6 +76,11 @@ export default function CheckoutCart() {
           <div className="py-2 d-flex justify-content-between">
             <h3>Delivery</h3>
             <h4>$4.99</h4>
+          </div>
+          <hr/>
+          <div className="py-2 d-flex justify-content-between">
+            <h3>Total</h3>
+            <h4>${total}</h4>
           </div>
         </div>
       </div>
