@@ -1,27 +1,24 @@
 import { useState, useEffect } from "react";
-import CartList from './CartList'
-
-
-const url = (path) => `${path}`
-
+import CartList from './CartList';
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
+
   useEffect(() => {
     getRequest();
   }, [])
 
   async function getRequest() {
     try {
-      const response = await fetch(url(`/api/cart`))
+      const response = await fetch((`/api/cart`));
       if (!response.ok) {
-        throw new Error(`Response error: ${response.status}`)
+        throw new Error(`Response error: ${response.status}`);
       }
       const jsonData = await response.json()
-      setCart(jsonData)
-      let newTotal = 0
+      setCart(jsonData);
+      let newTotal = 0;
       for (let i = 0; i < jsonData.length; i++) {
         newTotal += Number(jsonData[i].price);
       }
@@ -30,25 +27,24 @@ export default function CheckoutCart() {
       setTotal(grandTotal.toFixed(2));
     }
     catch (error) {
-      console.log(`There was a get error: ${error.message} `)
+      console.log(`There was a get error: ${error.message} `);
     }
   }
 
   function deleteBook(cartId) {
     async function removeRequest() {
       try {
-        console.log(cartId)
-        const response = await fetch(url(`/api/cart/${cartId}`), {method: 'DELETE'})
+        const response = await fetch((`/api/cart/${cartId}`), {method: 'DELETE'});
         if (!response.ok) {
-          throw new Error(`Response error: ${response.status}`)
+          throw new Error(`Response error: ${response.status}`);
         }
-        getRequest()
+        getRequest();
       }
       catch (error) {
-        console.log(`There was a delete error: ${error.message}`)
+        console.log(`There was a delete error: ${error.message}`);
       }
     }
-    removeRequest()
+    removeRequest();
   }
 
   return (
@@ -71,7 +67,7 @@ export default function CheckoutCart() {
         <div className="cartList col-lg-10">
           <h3 className="pt-3 text-center">Order Summary</h3>
           <div className="py-2 d-flex justify-content-between">
-            <h3> Subtotal</h3>
+            <h3>Subtotal</h3>
             <h4>${subtotal}</h4>
           </div>
           <div className="py-2 d-flex justify-content-between">

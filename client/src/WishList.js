@@ -3,7 +3,7 @@ import {RiStarSFill} from 'react-icons/ri'
 import { useNavigate } from "react-router-dom";
 
 export default function Wishlist({books, deleteBook, addBook}) {
-  console.log(books)
+
   return (
     <ul className="list-group">
       {
@@ -29,7 +29,7 @@ function WishlistBook({book, deleteBook, addBook }) {
       moveBook.author = author;
     }
     if (isbn) {
-      moveBook.isbn = isbn
+      moveBook.isbn = isbn;
     }
     if (rating) {
       moveBook.rating = rating;
@@ -40,16 +40,15 @@ function WishlistBook({book, deleteBook, addBook }) {
     if (price) {
       moveBook.price = price;
     }
-    console.log(moveBook)
+
     try {
-      const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(moveBook)})
+      const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(moveBook)});
       if (!response.ok) {
-        throw new Error(`Response error: ${response.status}`)
+        throw new Error(`Response error: ${response.status}`);
       }
-      const jsonData = await response.json();
-      console.log(jsonData);
+
       navigate('/checkout');
-      const remove = await fetch((`/api/wishlist/${book.wishlistId}`), { method: 'DELETE' })
+      const remove = await fetch((`/api/wishlist/${book.wishlistId}`), { method: 'DELETE' });
       if (!remove.ok) {
         throw new Error(`Reponse error: ${response.status}`)
       }
@@ -63,12 +62,12 @@ function WishlistBook({book, deleteBook, addBook }) {
     try {
       const response = await fetch((`/api/wishlist/${book.wishlistId}`), {method: 'DELETE'})
       if (!response.ok) {
-        throw new Error(`Reponse error: ${response.status}`)
+        throw new Error(`Reponse error: ${response.status}`);
       }
       window.location.reload();
     }
     catch (error) {
-      console.log(`There was a delete error: ${error.message} `)
+      console.log(`There was a delete error: ${error.message} `);
     }
   }
 

@@ -19,8 +19,6 @@ export default function Header() {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
-      console.log(response)
-      console.log(jsonData)
       navigate("/results", {state: jsonData})
       setSearch('')
       return console.log('GET: My book requests', jsonData);

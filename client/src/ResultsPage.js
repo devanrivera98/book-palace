@@ -11,11 +11,10 @@ export default function ResultsPage() {
 function ResultsTable() {
   const location = useLocation();
   const resultsArray = location.state.items;
-  console.log('This is resultsArray', resultsArray);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleClick = (resultsArray) => {
-    navigate("/info", {state: resultsArray})
+    navigate("/info", {state: resultsArray});
   }
 
   let resultsMap = null;
@@ -25,7 +24,7 @@ function ResultsTable() {
       <img className='pb-2 results-books hover-button' onClick={() => handleClick(resultsArray)} src={resultsArray.volumeInfo.imageLinks ? resultsArray.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} alt={resultsArray.volumeInfo.title} />
       <h6>{resultsArray.volumeInfo.title ? resultsArray.volumeInfo.title : 'Title Unknown'}</h6>
       <p>By: {resultsArray.volumeInfo.authors ? resultsArray.volumeInfo.authors : 'Author Unknown'}</p>
-      <p>Price <b>{resultsArray.saleInfo.retailPrice ? resultsArray.saleInfo.retailPrice.amount : `${19.99}`}</b></p>
+      <p>Price <b>${resultsArray.saleInfo.retailPrice ? resultsArray.saleInfo.retailPrice.amount.toFixed(2) : `${19.99}`}</b></p>
     </div>
     );
   }

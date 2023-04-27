@@ -1,4 +1,4 @@
-import { RxCross1 } from 'react-icons/rx'
+import { RxCross1 } from 'react-icons/rx';
 export default function CartList({books, deleteBook}) {
 
   return (

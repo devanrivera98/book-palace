@@ -28,13 +28,10 @@ function RecommendationModernClassics() {
   const handleImageClick = async (title, isbn) => {
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=${process.env.REACT_APP_API_KEY}`)
-      console.log('This is the books response', response)
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
-      console.log(response)
-      console.log('GET: My book requests', jsonData.items);
       return navigate("/info", { state: jsonData.items[0] })
 
     }
@@ -70,13 +67,10 @@ function RecommendationThisMonth() {
   const handleImageClick = async (title, isbn) => {
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=${process.env.REACT_APP_API_KEY}`)
-      console.log('This is the books response', response)
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
-      console.log(response)
-      console.log('GET: My book requests', jsonData.items);
       return navigate("/info", { state: jsonData.items[0] })
     }
     catch (error) {
