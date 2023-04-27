@@ -12,7 +12,6 @@ function MoreInfo() {
   const location = useLocation();
   const navigate = useNavigate();
   const readBookObject = location.state
-  const url = (path) => `${path}`
 
     async function addBook() {
     let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
@@ -32,10 +31,10 @@ function MoreInfo() {
       book.image = readBookObject.volumeInfo.imageLinks.thumbnail;
     }
     if (readBookObject.saleInfo.retailPrice) {
-      book.price = readBookObject.saleInfo.retailPrice.amount;
+      book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
     }
     try {
-    const response = await fetch(url(`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
+    const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
     if (!response.ok) {
       throw new Error(`Response error: ${response.status}`)
     }
@@ -68,11 +67,11 @@ function MoreInfo() {
       book.image = readBookObject.volumeInfo.imageLinks.thumbnail;
     }
     if (readBookObject.saleInfo.retailPrice) {
-      book.price = readBookObject.saleInfo.retailPrice.amount;
+      book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
     }
     console.log(book)
     try {
-      const response = await fetch(url(`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) })
+      const response = await fetch((`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) })
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }
@@ -98,7 +97,7 @@ function MoreInfo() {
         <button onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
       </div>
       <div className='row justify-content-center'>
-        <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount :  '19.99'}</h4>
+        <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
         <button onClick={addBook} className='col-6 btn btn-block btn-primary'>ADD TO CART</button>
       </div>
       <div className='pt-3 row justify-content-center'>

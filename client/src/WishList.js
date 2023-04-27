@@ -20,7 +20,7 @@ function WishlistBook({book, deleteBook, addBook }) {
   const bookId = `book-id-${wishlistId}`;
   const navigate = useNavigate();
 
-  async function addToCart() {
+  async function addToCart(wishlist) {
     let moveBook = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
     if (title) {
       moveBook.title = title;
@@ -49,19 +49,23 @@ function WishlistBook({book, deleteBook, addBook }) {
       const jsonData = await response.json();
       console.log(jsonData);
       navigate('/checkout');
+      const remove = await fetch((`/api/wishlist/${book.wishlistId}`), { method: 'DELETE' })
+      if (!remove.ok) {
+        throw new Error(`Reponse error: ${response.status}`)
+      }
     }
     catch (error) {
       console.log(`There was an issue moving item from wishlist to cart: ${error.message}`)
     }
   }
-  //for next feature FINISH
+
   async function deleteItem(wishlistId) {
     try {
       const response = await fetch((`/api/wishlist/${book.wishlistId}`), {method: 'DELETE'})
       if (!response.ok) {
         throw new Error(`Reponse error: ${response.status}`)
       }
-      console.log(wishlistId)
+      window.location.reload();
     }
     catch (error) {
       console.log(`There was a delete error: ${error.message} `)
