@@ -41,25 +41,13 @@ li {
   position: relative;
 }
 
-.price {
-  position: absolute;
-  bottom: 0;
-  left: 10rem;
-}
-
-.quantity {
-  position: absolute;
-  bottom: 0;
-  right: 1rem;
-}
-
 .cartList {
   margin: 0 auto !important;
 }
 
 .checkoutImage {
-  width: 128px;
-  height: 194px !important;
+  width: 120px;
+  height: 190px !important;
 }
 
 .bannerImg {
@@ -73,10 +61,6 @@ li {
 .stars {
   padding-left: 0;
 }
-
-/* .wishlist-price {
-  padding-top: 4rem;
-} */
 
 .wishlist {
   max-width: 1000px !important;
