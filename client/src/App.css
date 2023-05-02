@@ -74,12 +74,17 @@ li {
   padding-left: 0;
 }
 
-.wishlist-price {
+/* .wishlist-price {
   padding-top: 4rem;
-}
+} */
 
 .wishlist {
   max-width: 1000px !important;
+}
+
+.wishlist-image {
+  width: 128px;
+  height: 180px !important;
 }
 
 .seal {
@@ -92,4 +97,8 @@ li {
 
 a {
   text-decoration: none !important;
+}
+
+.chart-author {
+  font-size: 18px;
 }
