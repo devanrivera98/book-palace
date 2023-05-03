@@ -5,7 +5,7 @@
 .cart-icon {
   font-size: 30px !important;
 }
-.image-holder {
+.banner-holder {
   padding-top: 1.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -14,7 +14,7 @@
 }
 
 .recommended-books {
-  width: 90px !important;
+  width: 85px !important;
   cursor: pointer;
 }
 
@@ -41,25 +41,13 @@ li {
   position: relative;
 }
 
-.price {
-  position: absolute;
-  bottom: 0;
-  left: 10rem;
-}
-
-.quantity {
-  position: absolute;
-  bottom: 0;
-  right: 1rem;
-}
-
 .cartList {
   margin: 0 auto !important;
 }
 
 .checkoutImage {
-  width: 128px;
-  height: 194px !important;
+  width: 120px;
+  height: 190px !important;
 }
 
 .bannerImg {
@@ -74,12 +62,13 @@ li {
   padding-left: 0;
 }
 
-.wishlist-price {
-  padding-top: 4rem;
-}
-
 .wishlist {
   max-width: 1000px !important;
+}
+
+.wishlist-image {
+  width: 128px;
+  height: 180px !important;
 }
 
 .seal {
@@ -92,4 +81,8 @@ li {
 
 a {
   text-decoration: none !important;
+}
+
+.chart-author {
+  font-size: 18px;
 }

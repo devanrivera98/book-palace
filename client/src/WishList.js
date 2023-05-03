@@ -1,5 +1,5 @@
 import { RxCross1 } from "react-icons/rx";
-import {RiStarSFill} from 'react-icons/ri'
+import {RiStarSFill} from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
 
 export default function Wishlist({books, deleteBook, addBook}) {
@@ -72,32 +72,40 @@ function WishlistBook({book, deleteBook, addBook }) {
   }
 
   const stars = [];
+  if (0 === Number(rating)) {
+    stars.push(<div className="list-inline-item" key="not found" >Not Found</div>)
+  } else {
     for (let i = 0; i < rating; i++) {
       stars.push(<RiStarSFill key={i} />)
     }
+  }
   return (
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
-          <div className="col-lg-2 col-md-3 col-3 d-flex">
-            <img className="checkoutImage img-fluid" alt={title} src={image}></img>
+          <div className="col-lg-2 col-md-3 col-3 d-flex ">
+             <img className="wishlist-image Image img-fluid " alt={title} src={image}/>
           </div>
-          <div className="col-lg-10 col-md-9 col-9 pt-1">
+        <div className="col-lg-10 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
+          <div>
+            <div className="d-flex justify-content-end align-items-center">
+              <RxCross1 className="hover-button" onClick={deleteItem} />
+            </div>
             <div className="row">
-            <div className="col-9">
-                <h4>{title}</h4>
-              </div>
-              <div className="col-3 d-flex justify-content-end align-items-center">
-                <RxCross1 className="hover-button" onClick={deleteItem} />
+              <div className="col-12">
+                <h5>{title}</h5>
               </div>
             </div>
             <div>
               <h6>By: {author}</h6>
-              <ul className="stars">Rating: {stars}</ul>
-              <div className="d-flex justify-content-end">
-                <h4 className="wishlist-price"> Price: ${price}</h4>
-              </div>
+              <ul className="stars list-inline">Rating: {stars}</ul>
             </div>
           </div>
+          <div className="d-flex justify-content-end align-items-end">
+            <div>
+              <h4 className="wishlist-price">Price: ${price}</h4>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="row mx-1 pt-2">
         <button type="button" className="btn btn-primary btn-lg btn-block" onClick={addToCart}>ADD TO CART</button>
@@ -106,3 +114,26 @@ function WishlistBook({book, deleteBook, addBook }) {
     </li>
   )
 }
+
+// <div className="row px-2">
+//   <div className="col-lg-2 col-md-3 col-3 d-flex">
+//     <img className="checkoutImage img-fluid" alt={title} src={image}></img>
+//   </div>
+//   <div className="col-lg-10 col-md-9 col-9 pt-1">
+//     <div className="row">
+//       <div className="col-9">
+//         <h4>{title}</h4>
+//       </div>
+//       <div className="col-3 d-flex justify-content-end align-items-center">
+//         <RxCross1 className="hover-button" onClick={deleteItem} />
+//       </div>
+//     </div>
+//     <div>
+//       <h6>By: {author}</h6>
+//       <ul className="stars">Rating: {stars}</ul>
+//       <div className="d-flex justify-content-end">
+//         <h4 className="wishlist-price"> Price: ${price}</h4>
+//       </div>
+//     </div>
+//   </div>
+// </div>
