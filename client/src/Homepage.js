@@ -14,7 +14,7 @@ export default function Homepage() {
 
 function HomepageImage() {
   return (
-    <div className='image-holder d-flex justify-content-center'>
+    <div className='banner-holder d-flex justify-content-center'>
      <div>
         <img className='img-fluid justify-content-center' alt='library' src='https://img.freepik.com/free-vector/literature-book-club-twitch-banner-template_23-2149730151.jpg'/>
      </div>
@@ -45,7 +45,9 @@ function RecommendationModernClassics() {
     title: 'The+Goldfinch', isbn: '9780316248679', image: 'http://books.google.com/books/content?id=dvuK7isszLIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}, { title: 'Piranesi', isbn: '9781635575644', image: 'http://books.google.com/books/content?id=FCTYDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Fun+Home', isbn: '9780618871711', image: 'http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Pachinko+(National+Book+Award+Finalist)', isbn: '9781455563913', image: 'http://books.google.com/books/content?id=cxteDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }]
 
   const mapModern = recommendationModern.map(recommendationModern =>
-    <img className='p-2 img-fluid recommended-books' onClick={() => handleImageClick(recommendationModern.title, recommendationModern.isbn)} key={recommendationModern.isbn} alt={recommendationModern.title} src={recommendationModern.image} />
+    <div className='col-lg-1 col-md-3 col-sm-3 col-3 d-flex justify-content-center' key={recommendationModern.isbn}>
+    <img className='p-2 recommended-books' onClick={() => handleImageClick(recommendationModern.title, recommendationModern.isbn)} key={recommendationModern.isbn} alt={recommendationModern.title} src={recommendationModern.image} />
+    </div>
   )
 
   return (
@@ -53,13 +55,13 @@ function RecommendationModernClassics() {
       <div>
         <h3>Modern Classics</h3>
       </div>
-      <div style={{ backgroundColor: '#D9D9D9'}}>
-        <div className='px-3 row justify-content-between'>
-          {mapModern}
-        </div>
+      <div style={{ backgroundColor: '#EDE4E0'}}>
+      <div className='row justify-content-around'>
+        {mapModern}
       </div>
     </div>
-  )
+  </div>
+);
 }
 
 function RecommendationThisMonth() {
@@ -83,7 +85,9 @@ function RecommendationThisMonth() {
     title: 'Beloved', isbn: '9781400033416', image: 'http://books.google.com/books/content?id=bm-KDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}, { title: 'Little Women', isbn: '9780140390698', image: 'http://books.google.com/books/content?id=MO3SEL6qIsgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'On the Road: the Original Scroll', isbn: '9780143105466', image: 'http://books.google.com/books/content?id=DaKMEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api' }, { title: 'The Awakening', isbn: '9780553213300', image: 'http://books.google.com/books/content?id=dfdvDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}]
 
   const mapClassics = recommendationClassics.map(recommendationClassics =>
-    <img className='p-2 img-fluid recommended-books' onClick={() => handleImageClick(recommendationClassics.title, recommendationClassics.isbn)} key={recommendationClassics.isbn} alt={recommendationClassics.title} src={recommendationClassics.image}/>
+    <div className='col-lg-1 col-md-3 col-sm-3 col-3 d-flex justify-content-center' key={recommendationClassics.isbn} >
+    <img className='p-2 recommended-books' onClick={() => handleImageClick(recommendationClassics.title, recommendationClassics.isbn)} key={recommendationClassics.isbn} alt={recommendationClassics.title} src={recommendationClassics.image}/>
+    </div>
   )
 
   return (
@@ -91,8 +95,8 @@ function RecommendationThisMonth() {
       <div>
         <h3>Top Books This Month</h3>
       </div>
-      <div style={{ backgroundColor: '#D9D9D9' }}>
-        <div className='px-3 row justify-content-between'>
+      <div style={{ backgroundColor: '#EDE4E0' }}>
+        <div className='row justify-content-around'>
           {mapClassics}
         </div>
       </div>

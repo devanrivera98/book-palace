@@ -5,7 +5,7 @@
 .cart-icon {
   font-size: 30px !important;
 }
-.image-holder {
+.banner-holder {
   padding-top: 1.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -14,7 +14,7 @@
 }
 
 .recommended-books {
-  width: 90px !important;
+  width: 85px !important;
   cursor: pointer;
 }
 

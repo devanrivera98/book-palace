@@ -1,6 +1,5 @@
 import { RxCross1 } from "react-icons/rx";
 import {RiStarSFill} from 'react-icons/ri';
-import { RiStarLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
 export default function Wishlist({books, deleteBook, addBook}) {
