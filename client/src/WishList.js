@@ -114,26 +114,3 @@ function WishlistBook({book, deleteBook, addBook }) {
     </li>
   )
 }
-
-// <div className="row px-2">
-//   <div className="col-lg-2 col-md-3 col-3 d-flex">
-//     <img className="checkoutImage img-fluid" alt={title} src={image}></img>
-//   </div>
-//   <div className="col-lg-10 col-md-9 col-9 pt-1">
-//     <div className="row">
-//       <div className="col-9">
-//         <h4>{title}</h4>
-//       </div>
-//       <div className="col-3 d-flex justify-content-end align-items-center">
-//         <RxCross1 className="hover-button" onClick={deleteItem} />
-//       </div>
-//     </div>
-//     <div>
-//       <h6>By: {author}</h6>
-//       <ul className="stars">Rating: {stars}</ul>
-//       <div className="d-flex justify-content-end">
-//         <h4 className="wishlist-price"> Price: ${price}</h4>
-//       </div>
-//     </div>
-//   </div>
-// </div>
