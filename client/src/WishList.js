@@ -2,7 +2,7 @@ import { RxCross1 } from "react-icons/rx";
 import {RiStarSFill} from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
 
-export default function Wishlist({books, deleteBook, addBook}) {
+export default function Wishlist({books}) {
 
   return (
     <ul className="list-group">
@@ -15,7 +15,7 @@ export default function Wishlist({books, deleteBook, addBook}) {
   )
 }
 
-function WishlistBook({book, deleteBook, addBook }) {
+function WishlistBook({book}) {
   const {wishlistId, title, author, image, price, rating, isbn} = book;
   const bookId = `book-id-${wishlistId}`;
   const navigate = useNavigate();

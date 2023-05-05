@@ -30,15 +30,15 @@ export default function Header() {
 
   return (
     <>
-      <nav className="navbar justify-content-between d-lg-flex d-none py-3" style={{ backgroundColor: '#617143' }}>
+      <nav className="navbar justify-content-between d-lg-flex d-none" style={{ backgroundColor: '#617143' }}>
         <div>
           <Link to="/" className="px-3 text-decoration-none navbar-brand text-white" style={{fontSize: '30px'}}>Book Palace</Link>
           <Link to="/wishlist" className='pr-3 text-white' style={{fontSize: '20px'}}>Wishlist</Link>
           <Link to="/checkout" className='px-3 text-white' style={{ fontSize: '20px' }}>Cart</Link>
         </div>
         <div>
-          <form onSubmit={handleSubmit} className="form-inline d-flex px-2 py-2">
-            <input className="form-control mr-sm-2 mx-2" onChange={handleChange} value={search} type="search" placeholder="Search" aria-label="Search"/>
+          <form onSubmit={handleSubmit} className="d-flex px-2 py-2">
+            <input className="form-control mx-2" onChange={handleChange} value={search} type="search" placeholder="Search" aria-label="Search"/>
             <button className="btn btn-light btn-outline-dark my-2 mx-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
@@ -52,7 +52,7 @@ export default function Header() {
       <div className="container-fluid justify-content-center">
         <div className='justify-content-center col-10' style={{ backgroundColor: '#EDE9D5'}}>
           <form onSubmit={handleSubmit} className="d-flex justify-content-center">
-            <input className="search-bar col-10" placeholder="Search by Title" onChange={handleChange} value={search} />
+            <input className="col-10" placeholder="Search by Title" onChange={handleChange} value={search} />
             <button className="btn btn-outline-dark"><ImSearch/></button>
           </form>
         </div>
