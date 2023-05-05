@@ -41,17 +41,13 @@ li {
   position: relative;
 }
 
-.cartList {
+.cart-list {
   margin: 0 auto !important;
 }
 
-.checkoutImage {
-  width: 120px;
+.checkout-image {
+  width: 115px;
   height: 190px !important;
-}
-
-.bannerImg {
-  max-height: 250px !important;
 }
 
 .wishlist-text {
