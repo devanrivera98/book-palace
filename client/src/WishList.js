@@ -83,7 +83,7 @@ function WishlistBook({book}) {
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
           <div className="col-lg-2 col-md-3 col-3 d-flex ">
-             <img className="wishlist-image Image img-fluid " alt={title} src={image}/>
+             <img className="wishlist-image img-fluid " alt={title} src={image}/>
           </div>
         <div className="col-lg-10 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
           <div>
@@ -97,7 +97,7 @@ function WishlistBook({book}) {
             </div>
             <div>
               <h6>By: {author}</h6>
-              <ul className="stars list-inline">Rating: {stars}</ul>
+              <ul className="list-inline">Rating: {stars}</ul>
             </div>
           </div>
           <div className="d-flex justify-content-end align-items-end">
