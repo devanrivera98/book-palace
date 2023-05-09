@@ -73,7 +73,7 @@ function WishlistBook({book}) {
 
   const stars = [];
   if (0 === Number(rating)) {
-    stars.push(<div className="list-inline-item" key="not found" >Not Found</div>)
+    stars.push(<div className="list-inline-item" key="not found">Not Found</div>)
   } else {
     for (let i = 0; i < rating; i++) {
       stars.push(<RiStarSFill key={i} />)
@@ -82,8 +82,8 @@ function WishlistBook({book}) {
   return (
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
-          <div className="col-lg-2 col-md-3 col-3 d-flex ">
-             <img className="wishlist-image img-fluid " alt={title} src={image}/>
+          <div className="col-lg-2 col-md-3 col-3 d-flex">
+             <img className="wishlist-image img-fluid" alt={title} src={image}/>
           </div>
         <div className="col-lg-10 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
           <div>

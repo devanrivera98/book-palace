@@ -30,13 +30,13 @@ export default function Header() {
 
   return (
     <>
-      <nav className="navbar justify-content-between" style={{ backgroundColor: '#617143' }}>
-        <div className='d-md-block d-none'>
+      <nav className="navbar" style={{ backgroundColor: '#617143' }}>
+        <div className="d-md-block d-none">
           <Link to="/" className="px-3 text-decoration-none navbar-brand text-white" style={{ fontSize: '30px' }}>Book Palace</Link>
-          <Link to="/wishlist" className='pr-3 text-white' style={{ fontSize: '20px' }}>Wishlist</Link>
-          <Link to="/checkout" className='px-3 text-white' style={{ fontSize: '20px' }}>Cart</Link>
+          <Link to="/wishlist" className="pr-3 text-white" style={{ fontSize: '20px' }}>Wishlist</Link>
+          <Link to="/checkout" className="px-3 text-white" style={{ fontSize: '20px' }}>Cart</Link>
         </div>
-        <div className='d-md-block d-none'>
+        <div className="d-md-block d-none">
           <form onSubmit={handleSubmit} className="d-flex px-2 py-2">
             <input className="form-control mx-2" onChange={handleChange} value={search} type="search" placeholder="Search" aria-label="Search" />
             <button className="btn btn-light btn-outline-dark my-2 mx-2 my-sm-0" type="submit">Search</button>
@@ -47,7 +47,7 @@ export default function Header() {
           <Link to="/" className="navbar-brand" style={{ fontSize: '30px', color: 'white' }}>Book Palace</Link>
           <Link to="/checkout" className="nav-link cart-icon"><BsFillCartFill /></Link>
           <div className="container-fluid d-flex justify-content-center">
-            <div className=' justify-content-center col-10' style={{ backgroundColor: '#EDE9D5' }}>
+            <div className="col-10" style={{ backgroundColor: '#EDE9D5' }}>
               <form onSubmit={handleSubmit} className="d-flex justify-content-center">
                 <input className="col-10" placeholder="Search by Title" onChange={handleChange} value={search} />
                 <button className="btn btn-outline-dark"><ImSearch /></button>
