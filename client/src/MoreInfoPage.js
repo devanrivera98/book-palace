@@ -86,17 +86,17 @@ function MoreInfo() {
         <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
         <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
       </div>
-      <img className='more-info-image' alt="Fences" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
-      <div className='py-3'>
+      <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
+      <div className="py-3">
         <button onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
       </div>
-      <div className='row justify-content-center'>
+      <div className="row justify-content-center">
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
-        <button onClick={addBook} className='col-6 btn btn-block btn-primary'>ADD TO CART</button>
+        <button onClick={addBook} className="col-6 btn btn-block btn-primary">ADD TO CART</button>
       </div>
-      <div className='pt-3 row justify-content-center'>
+      <div className="pt-3 row justify-content-center">
         <h1>Overview</h1>
-        <p className='col-10 '>{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
+        <p className="col-10">{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
       </div>
     </div>
   )

@@ -12,13 +12,13 @@ export default function ViewWishlist() {
     try {
       const response = await fetch((`/api/wishlist`));
       if (!response.ok) {
-        throw new Error(`Response error: ${response.status}`)
+        throw new Error(`Response error: ${response.status}`);
       }
       const jsonData = await response.json()
-      setView(jsonData)
+      setView(jsonData);
     }
     catch (error) {
-      console.log(`There was a get error: ${error.message} `)
+      console.log(`There was a get error: ${error.message}`);
     }
   }
 
