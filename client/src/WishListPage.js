@@ -3,7 +3,7 @@ import Wishlist from "./WishList";
 
 export default function ViewWishlist() {
   const [view, setView] = useState([]);
-  const [isloading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
 
   useEffect(() => {
@@ -17,16 +17,16 @@ export default function ViewWishlist() {
         setIsLoading(false)
         throw new Error(`Response error: ${response.status}`);
       }
-      const jsonData = await response.json()
+      const jsonData = await response.json();
       setView(jsonData);
-      setIsLoading(false)
+      setIsLoading(false);
     }
     catch (err) {
-      setIsLoading(false)
-      setError(err)
+      setIsLoading(false);
+      setError(err);
     }
   }
-  if (isloading) return (
+  if (isLoading) return (
     <div className="d-flex justify-content-center pt-3">
       <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
