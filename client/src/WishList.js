@@ -21,7 +21,7 @@ function WishlistBook({book}) {
   const navigate = useNavigate();
 
   async function addToCart(wishlist) {
-    let moveBook = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
+    let moveBook = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg", price: 19.99, quantity: 1 }
     if (title) {
       moveBook.title = title;
     }
@@ -82,10 +82,10 @@ function WishlistBook({book}) {
   return (
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
-          <div className="col-lg-2 col-md-3 col-3 d-flex">
-             <img className="wishlist-image img-fluid" alt={title} src={image}/>
-          </div>
-        <div className="col-lg-10 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
+        <div className="col-lg-3 col-md-3 col-3 d-flex justify-content-center" >
+          <img className="wishlist-image img-fluid" alt={title} src={image} style={{ maxHeight: '205px', minHeight: '137px' }} />
+        </div>
+        <div className="col-lg-9 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
           <div>
             <div className="d-flex justify-content-end align-items-center">
               <RxCross1 className="hover-button" onClick={deleteItem} />
@@ -102,7 +102,7 @@ function WishlistBook({book}) {
           </div>
           <div className="d-flex justify-content-end align-items-end">
             <div>
-              <h4 className="wishlist-price">Price: ${price}</h4>
+              <h4>Price: ${price}</h4>
             </div>
           </div>
         </div>
