@@ -28,17 +28,17 @@ function EachBook({ book, deleteBook}) {
             <div className="d-flex justify-content-end pb-1">
               <RxCross1 className="hover-button" onClick={() => deleteBook(cartId)} style={{ fontSize: '20px' }} />
             </div>
-            <div className="col-12">
-              <h5 className="text-center">{title}</h5>
+            <div className="d-flex">
+              <h5 className="">{title}</h5>
             </div>
-            <p className="text-center chart-author">By {author}</p>
+            <p className="chart-author">By {author}</p>
           </div>
           <div className="row mt-auto">
             <div className="col-7 d-flex justify-content-start">
-              <h5 className="pb-1">Price: ${price}</h5>
+              <h5 className="pb-1" style={{fontSize: '19px'}}>Price: ${price}</h5>
             </div>
             <div className="col-4 d-flex justify-content-end">
-              <h5 className="pb-1">Qty: 1</h5>
+              <h5 className="pb-1" style={{ fontSize: '19px' }}>Qty: 1</h5>
             </div>
           </div>
         </div>

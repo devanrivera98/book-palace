@@ -3,6 +3,8 @@ import Wishlist from "./WishList";
 
 export default function ViewWishlist() {
   const [view, setView] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     requestWishlist();
@@ -12,14 +14,30 @@ export default function ViewWishlist() {
     try {
       const response = await fetch((`/api/wishlist`));
       if (!response.ok) {
+        setIsLoading(false)
         throw new Error(`Response error: ${response.status}`);
       }
-      const jsonData = await response.json()
+      const jsonData = await response.json();
       setView(jsonData);
+      setIsLoading(false);
     }
-    catch (error) {
-      console.log(`There was a get error: ${error.message}`);
+    catch (err) {
+      setIsLoading(false);
+      setError(err);
     }
+  }
+  if (isLoading) return (
+    <div className="d-flex justify-content-center pt-3">
+      <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+
+  if (error) {
+    return (
+      <div className="d-flex justify-content-center pt-3" style={{fontSize: '20px'}}>
+        <div>There was an error: {error.message} </div>
+      </div>
+    )
   }
 
   return (

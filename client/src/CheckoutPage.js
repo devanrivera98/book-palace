@@ -5,6 +5,8 @@ export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState();
 
   useEffect(() => {
     getRequest();
@@ -14,6 +16,7 @@ export default function CheckoutCart() {
     try {
       const response = await fetch((`/api/cart`));
       if (!response.ok) {
+        setIsLoading(false);
         throw new Error(`Response error: ${response.status}`);
       }
       const jsonData = await response.json()
@@ -25,9 +28,11 @@ export default function CheckoutCart() {
       setSubtotal(newTotal.toFixed(2));
       let grandTotal = 4.99 + newTotal;
       setTotal(grandTotal.toFixed(2));
+      setIsLoading(false);
     }
     catch (error) {
-      console.log(`There was a get error: ${error.message} `);
+      setIsLoading(false);
+      setError(error);
     }
   }
 
@@ -45,6 +50,20 @@ export default function CheckoutCart() {
       }
     }
     removeRequest();
+  }
+
+  if (isLoading) return (
+    <div className="d-flex justify-content-center pt-3">
+      <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+
+  if (error) {
+    return (
+      <div className="d-flex justify-content-center pt-3" style={{ fontSize: '20px' }}>
+        <div>There was an error: {error.message} </div>
+      </div>
+    )
   }
 
   return (

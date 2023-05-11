@@ -21,7 +21,6 @@ export default function Header() {
       const jsonData = await response.json();
       navigate("/results", {state: jsonData})
       setSearch('')
-      return console.log('GET: My book requests', jsonData);
     }
     catch (error) {
       console.error('Error fetching image data', error)
@@ -32,9 +31,9 @@ export default function Header() {
     <>
       <nav className="navbar" style={{ backgroundColor: '#617143' }}>
         <div className="d-md-block d-none">
-          <Link to="/" className="px-3 text-decoration-none navbar-brand text-white" style={{ fontSize: '30px' }}>Book Palace</Link>
-          <Link to="/wishlist" className="pr-3 text-white" style={{ fontSize: '20px' }}>Wishlist</Link>
-          <Link to="/checkout" className="px-3 text-white" style={{ fontSize: '20px' }}>Cart</Link>
+          <Link to="/" className="px-3 text-decoration-none navbar-brand text-white" style={{ fontSize: '35px' }}>Book Palace</Link>
+          <Link to="/wishlist" className="pr-3 text-white" style={{ fontSize: '25px' }}>Wishlist</Link>
+          <Link to="/checkout" className="px-3 text-white" style={{ fontSize: '25px' }}>Cart</Link>
         </div>
         <div className="d-md-block d-none">
           <form onSubmit={handleSubmit} className="d-flex px-2 py-2">
