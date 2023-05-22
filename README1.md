@@ -53,7 +53,7 @@ Try the application live at [https://book-palace.azurewebsites.net/](https://boo
 
 1. Clone the repository.
 
-    a. git clone https://github.com/devanrivera98/book-full-stack-project
+    a. git clone https://github.com/devanrivera98/book-store.git
 
     b. cd book-full-stack-project
 

@@ -37,7 +37,6 @@ function ResultsTable() {
           {resultsMap ? resultsMap :
             <div className="text-center">
             <h2>Your search term was not found</h2>
-              <img className="seal pt-5" src='https://media.tenor.com/OBbiRLgw-38AAAAd/seal-spinning-around.gif' alt='seal' />
           </div>}
         </div>
       </div>
