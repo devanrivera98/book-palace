@@ -6,16 +6,15 @@ A full stack JavaScript application for avid readers who want to purchase new bo
 
 Being passionate about storytelling and web development, I wanted to build a shopping platform that offers a seamless and convenient shopping experience to customers that are also enthusiastic about storytelling.
 
-## Link to Deployment
+## Live Demo
 
- PUT LINK HERE
-
+Try the application live at [https://book-palace.azurewebsites.net/](https://book-palace.azurewebsites.net/)
 
 ## Technologies Used
 
 - React.js
 - Webpack
-- Boostrap
+- Bootstrap
 - Node.js
 - PostgreSQL
 - HTML5
@@ -34,11 +33,6 @@ Being passionate about storytelling and web development, I wanted to build a sho
 - User can move an item from the wishlist to the cart
 - User can view checkout with the total balance due
 
-
-## Preview
-
-CREATE GIF HERE
-
 ## Stretch Features for the Future
 
 - Create a sign-up and login system so that each user has their own account
@@ -50,7 +44,7 @@ CREATE GIF HERE
 - NPM 8
 - PostgreSQL 11 or higher
 
-### GIF of Feature
+### Preview
 
 ![GIF](md.assets/Kapture%202023-05-11%20at%2017.43.28.gif)
 
@@ -59,7 +53,7 @@ CREATE GIF HERE
 
 1. Clone the repository.
 
-    a. git clone https://github.com/devanrivera98/book-full-stack-project
+    a. git clone https://github.com/devanrivera98/book-store.git
 
     b. cd book-full-stack-project
 
@@ -79,4 +73,4 @@ CREATE GIF HERE
 
 4. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 
-    a. npm start
+    a. npm run dev
