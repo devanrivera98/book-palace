@@ -53,9 +53,9 @@ Try the application live at [https://book-palace.azurewebsites.net/](https://boo
 
 1. Clone the repository.
 
-    a. git clone https://github.com/devanrivera98/book-store.git
+    a. git clone https://github.com/devanrivera98/book-palace.git
 
-    b. cd book-full-stack-project
+    b. cd book-palace
 
 2. Install all dependencies with NPM.
 
