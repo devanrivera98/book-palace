@@ -41,26 +41,6 @@ function MoreInfo() {
 
     async function addBook() {
     const book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
-    // const {volumeInfo} = readBookObject;
-
-    // if (readBookObject.volumeInfo.title) {
-    //   book.title = readBookObject.volumeInfo.title;
-    // }
-    // if (readBookObject.volumeInfo.authors) {
-    //   book.author = readBookObject.volumeInfo.authors[0];
-    // }
-    // if (readBookObject.volumeInfo.industryIdentifiers[0]) {
-    //   book.isbn = readBookObject.volumeInfo.industryIdentifiers[0].identifier
-    // }
-    // if (readBookObject.volumeInfo.averageRating) {
-    //   book.rating = readBookObject.volumeInfo.averageRating;
-    // }
-    // if (readBookObject.volumeInfo.imageLinks) {
-    //   book.image = readBookObject.volumeInfo.imageLinks.thumbnail;
-    // }
-    // if (readBookObject.saleInfo.retailPrice) {
-    //   book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
-    // }
     checkingCoditions(book);
     try {
     const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
@@ -77,24 +57,6 @@ function MoreInfo() {
 
   async function addToWishlist() {
     let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, description: 'There was no description found for this book.'};
-    // if (readBookObject.volumeInfo.title) {
-    //   book.title = readBookObject.volumeInfo.title;
-    // }
-    // if (readBookObject.volumeInfo.authors) {
-    //   book.author = readBookObject.volumeInfo.authors[0];
-    // }
-    // if (readBookObject.volumeInfo.industryIdentifiers[0]) {
-    //   book.isbn = readBookObject.volumeInfo.industryIdentifiers[0].identifier;
-    // }
-    // if (readBookObject.volumeInfo.averageRating) {
-    //   book.rating = readBookObject.volumeInfo.averageRating;
-    // }
-    // if (readBookObject.volumeInfo.imageLinks) {
-    //   book.image = readBookObject.volumeInfo.imageLinks.thumbnail;
-    // }
-    // if (readBookObject.saleInfo.retailPrice) {
-    //   book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
-    // }
     checkingCoditions(book);
     try {
       const response = await fetch((`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) });
