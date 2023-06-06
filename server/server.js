@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import express from 'express';
+import ClientError from './lib/client-error.js';
 import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 
@@ -49,12 +50,12 @@ app.get('/api/wishlist', async (req, res) => {
   }
 });
 
-app.post('/api/wishlist', async (req, res) => {
+app.post('/api/wishlist', async (req, res, next) => {
   try {
     // might have issues with description
     const { title, author, isbn, rating, image, description, price } = req.body;
     if (!title || !author || !isbn || !image || !description || !price) {
-      return res.status(400).json({ error: 'title, author, isbn, description, image, and price are required' });
+      throw new ClientError(400, 'title, author, isbn, description, image, and price are required');
     }
     const sql = `
     insert into "wishlist" ("title", "author", "isbn", "rating", "image", "description", "price")
@@ -66,15 +67,15 @@ app.post('/api/wishlist', async (req, res) => {
     const [item] = results.rows;
     res.status(201).json(item);
   } catch (err) {
-    res.status(500).json({ error: 'an unexpected error occurred' });
+    next(err);
   }
 });
 
-app.post('/api/cart', async (req, res) => {
+app.post('/api/cart', async (req, res, next) => {
   try {
     const { title, author, isbn, rating, image, price, quantity } = req.body;
     if (!title || !author || !isbn || !image || !price || !quantity) {
-      return res.status(400).json({ error: 'title, author, isbn, rating, image, and price are required' });
+      throw new ClientError(400, 'title, author, isbn, rating, image, and price are required');
     }
     const sql = `
     insert into "cart" ("title", "author", "isbn", "rating", "image", "price", "quantity")
@@ -85,17 +86,16 @@ app.post('/api/cart', async (req, res) => {
     const results = await db.query(sql, params);
     const [item] = results.rows;
     res.status(201).json(item);
-    // console.log('This is the response added', item);
   } catch (err) {
-    res.status(500).json({ error: 'an unexpected error occurred' });
+    next(err);
   }
 });
 
-app.delete('/api/cart/:cartId', async (req, res) => {
+app.delete('/api/cart/:cartId', async (req, res, next) => {
   try {
     const cartId = Number(req.params.cartId);
     if (Number.isNaN(cartId)) {
-      return res.status(400).json({ error: `${cartId} was not a number` });
+      throw new ClientError(400, `${cartId} was not a number`);
     }
     const sql = `
   Delete
@@ -106,23 +106,22 @@ app.delete('/api/cart/:cartId', async (req, res) => {
     const params = [cartId];
     const result = await db.query(sql, params);
     const [book] = result.rows;
-    // console.log('This is the book being deleted', book);
     if (book) {
       res.status(204).json(book);
     } else {
-      res.status(404).json({ error: `Cannot find cart with "cartId"${cartId}` });
+      throw ClientError(404, `Cannot find cart with "cartId"${cartId}`);
     }
   } catch (err) {
-    res.status(500).json({ error: 'An unexpected error occurred' });
+    next(err);
   }
 
 });
 
-app.delete('/api/wishlist/:wishlistId', async (req, res) => {
+app.delete('/api/wishlist/:wishlistId', async (req, res, next) => {
   try {
     const wishlistId = Number(req.params.wishlistId);
     if (Number.isNaN(wishlistId)) {
-      return res.status(400).json({ error: `${wishlistId} was not a number` });
+      throw new ClientError(400, `${wishlistId} was not a number`);
     }
     const sql = `
   Delete
@@ -138,8 +137,8 @@ app.delete('/api/wishlist/:wishlistId', async (req, res) => {
     } else {
       res.status(404).json({ error: `Cannot find wishlist item with "wishlistId"${wishlistId}` });
     }
-  } catch {
-    res.status(500).json({ error: 'An unexpected error occurred' });
+  } catch (err) {
+    next(err);
   }
 });
 
@@ -150,37 +149,3 @@ app.use(errorMiddleware);
 app.listen(process.env.PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
-
-// import 'dotenv/config';
-// import express from 'express';
-// import errorMiddleware from './lib/error-middleware.js';
-// import pg from 'pg';
-
-// // eslint-disable-next-line no-unused-vars -- Remove when used
-// const db = new pg.Pool({
-//   connectionString: process.env.DATABASE_URL,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
-// });
-
-// const app = express();
-
-// // Create paths for static directories
-// const reactStaticDir = new URL('../client/build', import.meta.url).pathname;
-// const uploadsStaticDir = new URL('public', import.meta.url).pathname;
-
-// app.use(express.static(reactStaticDir));
-// // Static directory for file uploads server/public/
-// app.use(express.static(uploadsStaticDir));
-// app.use(express.json());
-
-// app.get('/api/hello', (req, res) => {
-//   res.json({ message: 'Hello World!' });
-// });
-
-// app.use(errorMiddleware);
-
-// app.listen(process.env.PORT, () => {
-//   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
-// });
