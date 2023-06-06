@@ -36,20 +36,33 @@ export default function CheckoutCart() {
     }
   }
 
-  function deleteBook(cartId) {
-    async function removeRequest() {
-      try {
-        const response = await fetch((`/api/cart/${cartId}`), {method: 'DELETE'});
-        if (!response.ok) {
-          throw new Error(`Response error: ${response.status}`);
-        }
-        getRequest();
+  // function deleteBook(cartId) {
+  //   async function removeRequest() {
+  //     try {
+  //       const response = await fetch((`/api/cart/${cartId}`), {method: 'DELETE'});
+  //       if (!response.ok) {
+  //         throw new Error(`Response error: ${response.status}`);
+  //       }
+  //       await getRequest();
+  //     }
+  //     catch (error) {
+  //       console.log(`There was a delete error: ${error.message}`);
+  //     }
+  //   }
+  //   removeRequest();
+  // }
+
+  async function deleteBook(cartId) {
+    try {
+      const response = await fetch((`/api/cart/${cartId}`), { method: 'DELETE' });
+      if (!response.ok) {
+        throw new Error(`Response error: ${response.status}`);
       }
-      catch (error) {
-        console.log(`There was a delete error: ${error.message}`);
-      }
+      await getRequest();
     }
-    removeRequest();
+    catch (error) {
+      console.log(`There was a delete error: ${error.message}`);
+    }
   }
 
   if (isLoading) return (
