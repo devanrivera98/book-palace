@@ -1,4 +1,6 @@
 import { RxCross1 } from 'react-icons/rx';
+import { useNavigate } from 'react-router-dom';
+import NavigateToBook from './NavigateToBook';
 export default function CartList({books, deleteBook}) {
 
   return (
@@ -14,14 +16,15 @@ export default function CartList({books, deleteBook}) {
 
 
 function EachBook({ book, deleteBook}) {
-  const { cartId, title, author, image, price } = book;
+  const { cartId, title, author, image, price, isbn } = book;
   const bookId = `book-id-${cartId}`;
+  const navigate = useNavigate();
 
   return (
     <li key={bookId} id={bookId} className="my-3" style={{ backgroundColor: '#F8F4EA' }}>
       <div className="d-flex">
         <div className="p-3 col-md-3 col-4 d-flex justify-content-center align-items-center">
-          <img className="checkout-image" src={image} alt={title} />
+          <img className="checkout-image" src={image} alt={title} onClick={() => NavigateToBook(navigate, title, isbn)} />
         </div>
         <div className="p-2 col-md-9 col-8 d-flex flex-column justify-content-between">
           <div>

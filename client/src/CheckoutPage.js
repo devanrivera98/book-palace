@@ -36,22 +36,6 @@ export default function CheckoutCart() {
     }
   }
 
-  // function deleteBook(cartId) {
-  //   async function removeRequest() {
-  //     try {
-  //       const response = await fetch((`/api/cart/${cartId}`), {method: 'DELETE'});
-  //       if (!response.ok) {
-  //         throw new Error(`Response error: ${response.status}`);
-  //       }
-  //       await getRequest();
-  //     }
-  //     catch (error) {
-  //       console.log(`There was a delete error: ${error.message}`);
-  //     }
-  //   }
-  //   removeRequest();
-  // }
-
   async function deleteBook(cartId) {
     try {
       const response = await fetch((`/api/cart/${cartId}`), { method: 'DELETE' });
@@ -83,7 +67,7 @@ export default function CheckoutCart() {
     <>
       <div className="container">
         <div className="py-4 d-flex justify-content-center text-center">
-          <h1>CHECKOUT</h1>
+          <h1>CART</h1>
         </div>
         <div className="cart-list col-lg-10">
           <h2>YOUR BAG</h2>
