@@ -54,6 +54,10 @@ li {
   padding-top: 4rem;
 }
 
+.wishlist-image {
+  cursor: pointer;
+}
+
 .wishlist {
   max-width: 1000px !important;
 }

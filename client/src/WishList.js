@@ -1,6 +1,7 @@
 import { RxCross1 } from "react-icons/rx";
 import {RiStarSFill} from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
+import NavigateToBook from "./NavigateToBook";
 
 export default function Wishlist({books}) {
 
@@ -83,7 +84,7 @@ function WishlistBook({book}) {
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
         <div className="col-lg-3 col-md-3 col-3 d-flex justify-content-center" >
-          <img className="wishlist-image img-fluid" alt={title} src={image} style={{ maxHeight: '205px', minHeight: '137px' }} />
+          <img className="wishlist-image img-fluid" alt={title} src={image} onClick={() => NavigateToBook(navigate, title, isbn)} style={{ maxHeight: '205px', minHeight: '137px' }} />
         </div>
         <div className="col-lg-9 col-md-9 col-9 pt-1 d-flex flex-column justify-content-between">
           <div>
