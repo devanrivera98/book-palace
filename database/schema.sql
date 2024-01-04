@@ -37,6 +37,10 @@ CREATE TABLE "public"."cart" (
   OIDS=FALSE
 );
 
+UPDATE "public"."cart"
+SET "quantity" = 1;
+
+COMMIT;
 
 
 CREATE TABLE "public"."users" (
