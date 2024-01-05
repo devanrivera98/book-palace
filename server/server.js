@@ -142,6 +142,30 @@ app.delete('/api/wishlist/:wishlistId', async (req, res, next) => {
   }
 });
 
+// new PUT code starts
+app.put('/api/cart/:cartId', async (req, res, next) => {
+  try {
+    const cartId = Number(req.params.cartId);
+    const newQuantity = req.body.quantity;
+    if (Number.isNaN(cartId)) {
+      throw new ClientError(400, `${cartId} was not a number`);
+    }
+    const sql = `
+  Update "cart"
+  set "quantity" = $1
+    where "cartId" = $2
+    Returning *
+  `;
+    const params = [newQuantity, cartId];
+    const results = await db.query(sql, params);
+    res.status(200).json(results.rows[0]);
+  } catch (err) {
+    next(err);
+  }
+});
+
+// new PUT code ends
+
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);
