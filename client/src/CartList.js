@@ -1,4 +1,5 @@
 import { RxCross1 } from 'react-icons/rx';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavigateToBook from './NavigateToBook';
 export default function CartList({books, deleteBook}) {
@@ -18,19 +19,20 @@ export default function CartList({books, deleteBook}) {
 function EachBook({ book, deleteBook}) {
   const { cartId, title, author, image, price, isbn, quantity } = book;
   const bookId = `book-id-${cartId}`;
+  const [selectedQuantity, setSelectedQuantity] = useState(quantity || 1);
   const navigate = useNavigate();
 
 
 
   async function handleQuantityChange(event, book) {
     const newQuantity = event.target.value;
-    console.log('this is new quantity', newQuantity);
-    console.log('this is cartId',cartId)
+    setSelectedQuantity(newQuantity)
     try {
       const response = await fetch((`/api/cart/${cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: newQuantity }) })
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`);
       }
+      book.quantity = newQuantity
    }
     catch (error) {
       console.log(`There was a put error: ${error.message} `);
@@ -53,14 +55,25 @@ function EachBook({ book, deleteBook}) {
             </div>
             <p className="chart-author">By {author}</p>
           </div>
-          <div className="row mt-auto">
-            <div className="col-7 d-flex justify-content-start">
-              <h5 className="pb-1" style={{fontSize: '19px'}}>Price: ${price}</h5>
+          <div className="row mt-auto align-items-center">
+            <div className="col-7 d-flex justify-content-start align-items-center">
+              <h5 style={{ fontSize: '16px', height: '24px', lineHeight: '35px' }}>Price: ${price}</h5>
             </div>
-            <div className="col-4 d-flex justify-content-end">
-              <h5>Qty: &nbsp;</h5>
-              <input className='pb-1' value={quantity} type='number' style={{ width: '40px', height: '30px' }} onChange={(event) => handleQuantityChange(event, book)}></input>
-              {/* <h5 className="pb-1" style={{ fontSize: '19px' }}>{quantity}</h5> */}
+            <div className="col-4 d-flex justify-content-end align-items-center">
+              <label className='' htmlFor='books' style={{ fontSize: '16px', height: '24px', }}>Qty: &nbsp;</label>
+              <select value={selectedQuantity} style={{ width: '50px', height: '30px', fontSize: '16px' }} onChange={(event) => handleQuantityChange(event, book)}>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+                <option value={6}>6</option>
+                <option value={7}>7</option>
+                <option value={8}>8</option>
+                <option value={9}>9</option>
+              </select>
+              {/* <h5>Qty: &nbsp;</h5>
+              <input className='pb-1' value={quantity} type='number' style={{ width: '40px', height: '30px' }} onChange={(event) => handleQuantityChange(event, book)}></input> */}
             </div>
             {/* <div className='d-flex justify-content-end'>
               <div className='px-1'>Minus</div>
