@@ -3,6 +3,7 @@ import CartList from './CartList';
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
+  const [amountItems, setAmountItems] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -25,9 +26,17 @@ export default function CheckoutCart() {
       console.log(jsonData)
       setCart(jsonData);
       let newTotal = 0;
+      console.log(jsonData[0].quantity)
       for (let i = 0; i < jsonData.length; i++) {
-        newTotal += Number(jsonData[i].price);
+        for (let j = 0; j <  Number(jsonData[i].quantity); j++) {
+          newTotal += Number(jsonData[i].price)
+        }
       }
+      let items = 0
+      for (let i = 0; i < jsonData.length; i++) {
+        items += Number(jsonData[i].quantity)
+      }
+      setAmountItems(items)
       setSubtotal(newTotal.toFixed(2));
       let grandTotal = 4.99 + newTotal;
       setTotal(grandTotal.toFixed(2));
@@ -74,7 +83,7 @@ export default function CheckoutCart() {
         </div>
         <div className="cart-list col-lg-10">
           <h2>YOUR BAG</h2>
-          <h3>Total Items: [{cart.length}]</h3>
+          <h3>Total Items: [{amountItems}]</h3>
         </div>
         <div className="pt-2 text-center">
           {cart.length === 0 ? <h4>Make sure to add to your cart if you are ready to checkout</h4> : <></>}

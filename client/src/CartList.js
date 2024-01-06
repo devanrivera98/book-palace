@@ -33,6 +33,7 @@ function EachBook({ book, deleteBook}) {
         throw new Error(`Response error: ${response.status}`);
       }
       book.quantity = newQuantity
+      window.location.reload()
    }
     catch (error) {
       console.log(`There was a put error: ${error.message} `);
@@ -60,8 +61,8 @@ function EachBook({ book, deleteBook}) {
               <h5 style={{ fontSize: '16px', height: '24px', lineHeight: '35px' }}>Price: ${price}</h5>
             </div>
             <div className="col-4 d-flex justify-content-end align-items-center">
-              <label className='' htmlFor='books' style={{ fontSize: '16px', height: '24px', }}>Qty: &nbsp;</label>
-              <select value={selectedQuantity} style={{ width: '50px', height: '30px', fontSize: '16px' }} onChange={(event) => handleQuantityChange(event, book)}>
+              <label htmlFor={`quantity${cartId}`} style={{ fontSize: '16px', height: '24px', }}>Qty: &nbsp;</label>
+              <select id={`quantity${cartId}`} value={selectedQuantity} style={{ width: '50px', height: '30px', fontSize: '16px' }} onChange={(event) => handleQuantityChange(event, book)}>
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
