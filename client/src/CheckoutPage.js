@@ -23,10 +23,8 @@ export default function CheckoutCart() {
       const jsonData = await response.json()
       //have the results come out in alphabetical order in the cart
       jsonData.sort((a, b) => a.cartId - b.cartId);
-      console.log(jsonData)
       setCart(jsonData);
       let newTotal = 0;
-      console.log(jsonData[0].quantity)
       for (let i = 0; i < jsonData.length; i++) {
         for (let j = 0; j <  Number(jsonData[i].quantity); j++) {
           newTotal += Number(jsonData[i].price)
