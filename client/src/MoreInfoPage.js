@@ -1,6 +1,7 @@
 import { BsFillHeartFill } from 'react-icons/bs';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 export default function  MoreInfoPage() {
   return (
@@ -12,6 +13,33 @@ function MoreInfo() {
   const location = useLocation();
   const navigate = useNavigate();
   const readBookObject = location.state;
+  const [isTrue, setisTrue] = useState(false);
+
+  useEffect(() => {
+    async function checkCart() {
+      try {
+        const response = await fetch((`/api/cart`));
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        console.log(readBookObject.volumeInfo.title)
+        const booksinCart = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
+        if (booksinCart) {
+          setisTrue(true)
+          console.log('true')
+        } else {
+          setisTrue(false)
+          console.log('false')
+        }
+      }
+      catch (error) {
+        console.log(`There was an issue retrieving the cart items ${error.message}`)
+      }
+    }
+    checkCart()
+  }, [readBookObject])
+
 
   function checkingCoditions(book) {
     const { volumeInfo } = readBookObject;
