@@ -5,6 +5,11 @@
 .cart-icon {
   font-size: 30px !important;
 }
+
+.hidden {
+  display: none;
+}
+
 .banner-holder {
   padding-top: 1.5rem;
   padding-left: 0.5rem;

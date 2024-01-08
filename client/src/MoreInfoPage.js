@@ -14,11 +14,12 @@ function MoreInfo() {
   const navigate = useNavigate();
   const readBookObject = location.state;
   const [isTrue, setisTrue] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function checkCart() {
       try {
-        const response = await fetch((`/api/cart`));
+        const response = await fetch((`/api/wishlist`));
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
@@ -32,6 +33,7 @@ function MoreInfo() {
           setisTrue(false)
           console.log('false')
         }
+        setIsLoading(false)
       }
       catch (error) {
         console.log(`There was an issue retrieving the cart items ${error.message}`)
@@ -99,6 +101,12 @@ function MoreInfo() {
     }
   };
 
+  if (isLoading) return (
+    <div className="d-flex justify-content-center pt-3">
+      <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+  )
+
   return (
     <div className="container pt-4 text-center">
       <div>
@@ -107,8 +115,8 @@ function MoreInfo() {
         <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
       </div>
       <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
-      <div className="py-3">
-        <button onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
+      <div className='py-3'>
+        <button className={isTrue ? 'hidden' : ''} onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
       </div>
       <div className="row justify-content-center">
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
