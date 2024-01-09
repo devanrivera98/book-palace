@@ -1,6 +1,8 @@
 import { RxCross1 } from "react-icons/rx";
 import {RiStarSFill} from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { useEffect } from "react";
 import NavigateToBook from "./NavigateToBook";
 
 export default function Wishlist({books}) {
@@ -20,6 +22,36 @@ function WishlistBook({book}) {
   const {wishlistId, title, author, image, price, rating, isbn} = book;
   const bookId = `book-id-${wishlistId}`;
   const navigate = useNavigate();
+  const [isTooMany, setIstooMany] = useState(null);
+
+useEffect(() => {
+
+  async function checkMyCart() {
+    try {
+      const response = await fetch('/api/cart');
+      if (!response.ok) {
+        throw new Error(`Response error: ${response.status}`)
+      }
+      const jsonData = await response.json();
+      const findBook = jsonData.find((item) => item.title === title)
+      console.log('is this ok')
+      if (findBook.quantity >= 9) {
+        setIstooMany(true)
+      } else {
+        setIstooMany(false)
+      }
+    }
+    catch (error) {
+      console.log(`There was an issue checking the cart: ${error.message}`);
+    }
+  }
+  async function getData() {
+    await checkMyCart()
+  }
+  getData()
+}, [title])
+
+
 
   async function addToCart(wishlist) {
     let moveBook = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://islandpress.org/sites/default/files/default_book_cover_2015.jpg", price: 19.99, quantity: 1 }
@@ -72,6 +104,10 @@ function WishlistBook({book}) {
     }
   }
 
+  function viewCart() {
+    navigate('/checkout')
+  }
+
   const stars = [];
   if (0 === Number(rating)) {
     stars.push(<div className="list-inline-item" key="not found">Not Found</div>)
@@ -80,6 +116,7 @@ function WishlistBook({book}) {
       stars.push(<RiStarSFill key={i} />)
     }
   }
+
   return (
     <li key={bookId} id={wishlistId} className="py-2 my-3" style={{ backgroundColor: '#F8F4EA'}}>
       <div className="row px-2">
@@ -109,7 +146,13 @@ function WishlistBook({book}) {
         </div>
       </div>
       <div className="row mx-1 pt-2">
-        <button type="button" className="btn btn-primary btn-lg btn-block" onClick={addToCart}>ADD TO CART</button>
+        {isTooMany === false && (
+          <button type="button" className="btn btn-primary btn-lg btn-block" onClick={addToCart}>ADD TO CART
+          </button>
+        )}
+        {isTooMany === true && (
+          <button type="button" className="btn btn-primary btn-lg btn-block" onClick={viewCart}>VIEW CART
+          </button>)}
       </div>
 
     </li>
