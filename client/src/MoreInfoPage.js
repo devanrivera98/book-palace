@@ -13,24 +13,26 @@ function MoreInfo() {
   const location = useLocation();
   const navigate = useNavigate();
   const readBookObject = location.state;
-  const [isTrue, setisTrue] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  // const [allBooks, setAllBooks] = useState();
 
   useEffect(() => {
-    async function checkCart() {
+    let jsonData;
+    async function checkWishlist() {
       try {
         const response = await fetch((`/api/wishlist`));
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
-        const jsonData = await response.json();
-        console.log(readBookObject.volumeInfo.title)
+        jsonData = await response.json();
         const booksinCart = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
+        // setAllBooks(jsonData)
         if (booksinCart) {
-          setisTrue(true)
+          setIsInCart(true)
           console.log('true')
         } else {
-          setisTrue(false)
+          setIsInCart(false)
           console.log('false')
         }
         setIsLoading(false)
@@ -39,9 +41,8 @@ function MoreInfo() {
         console.log(`There was an issue retrieving the cart items ${error.message}`)
       }
     }
-    checkCart()
+    checkWishlist()
   }, [readBookObject])
-
 
   function checkingCoditions(book) {
     const { volumeInfo } = readBookObject;
@@ -69,14 +70,47 @@ function MoreInfo() {
     }
   }
 
+  async function checkingCart() {
+    try {
+      const response = await fetch(('/api/cart'))
+      if (!response.ok) {
+        throw new Error(`Response error: ${response.status}`);
+      }
+      let jsonData = await response.json();
+      return jsonData
+    }
+    catch (error) {
+      console.log(`There was an error checking cart: ${error.message} `);
+    }
+  }
+
     async function addBook() {
     const book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
     checkingCoditions(book);
     try {
-    const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(book)})
-    if (!response.ok) {
-      throw new Error(`Response error: ${response.status}`);
-    }
+      let allBooks = await checkingCart()
+      const foundBook = allBooks.find((book) => book.title === readBookObject.volumeInfo.title);
+      let cartId;
+      let booksinCart = false;
+
+      if (foundBook) {
+        cartId = foundBook.cartId;
+        console.log(cartId)
+        booksinCart = true;
+      }
+      if (booksinCart) {
+        let increaseQuantity = Number(foundBook.quantity) + 1
+        console.log(increaseQuantity)
+        const response = await fetch((`/api/cart/${foundBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({quantity: increaseQuantity}) })
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+      } else {
+        const response = await fetch((`/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) })
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+      }
     navigate('/checkout');
 
     }
@@ -116,7 +150,7 @@ function MoreInfo() {
       </div>
       <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
       <div className='py-3'>
-        <button className={isTrue ? 'hidden' : ''} onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
+        <button className={isInCart ? 'hidden' : ''} onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
       </div>
       <div className="row justify-content-center">
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
