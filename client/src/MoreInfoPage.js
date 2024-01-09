@@ -14,8 +14,8 @@ function MoreInfo() {
   const navigate = useNavigate();
   const readBookObject = location.state;
   const [isInCart, setIsInCart] = useState(false);
+  const [isTooMany, setIsTooMany] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  // const [allBooks, setAllBooks] = useState();
 
   useEffect(() => {
     let jsonData;
@@ -27,7 +27,6 @@ function MoreInfo() {
         }
         jsonData = await response.json();
         const booksinCart = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
-        // setAllBooks(jsonData)
         if (booksinCart) {
           setIsInCart(true)
           console.log('true')
@@ -35,13 +34,34 @@ function MoreInfo() {
           setIsInCart(false)
           console.log('false')
         }
-        setIsLoading(false)
       }
       catch (error) {
         console.log(`There was an issue retrieving the cart items ${error.message}`)
       }
     }
-    checkWishlist()
+
+    async function checkCartQuantity() {
+      try {
+        const response = await fetch('/api/cart');
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+        const jsonData = await response.json();
+        const booksinCart = jsonData.find((book) => book.title === readBookObject.volumeInfo.title);
+        if (booksinCart.quantity >= 9) {
+          setIsTooMany(true)
+        }
+      } catch (error) {
+        console.log(`There was an issue checking the cart: ${error.message}`);
+      }
+    }
+    
+    async function fetchData() {
+      await checkWishlist();
+      await checkCartQuantity();
+      setIsLoading(false);
+    }
+    fetchData()
   }, [readBookObject])
 
   function checkingCoditions(book) {
@@ -135,6 +155,10 @@ function MoreInfo() {
     }
   };
 
+  function viewCart() {
+    navigate('/checkout');
+  }
+
   if (isLoading) return (
     <div className="d-flex justify-content-center pt-3">
       <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -154,7 +178,8 @@ function MoreInfo() {
       </div>
       <div className="row justify-content-center">
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
-        <button onClick={addBook} className="col-6 btn btn-block btn-primary">ADD TO CART</button>
+        <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
+        <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
       </div>
       <div className="pt-3 row justify-content-center">
         <h1>Overview</h1>
