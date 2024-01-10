@@ -16,7 +16,7 @@ function HomepageImage() {
   return (
     <div className='banner-holder d-flex justify-content-center'>
      <div>
-        <img className='img-fluid' alt='library' src='https://img.freepik.com/free-vector/literature-book-club-twitch-banner-template_23-2149730151.jpg'/>
+        <img className='img-fluid' alt='library' src='images/book-club-banner.jpg'/>
      </div>
     </div>
 
@@ -108,7 +108,7 @@ function RecommendationThisMonth() {
 
 function AboutUs() {
   return (
-    <div className='pt-5 pb-3 px-5 d-flex'>
+    <div className='pt-5 pb-3 px-5 d-flex justify-content-center'>
       <div className='text-center pt-1 px-1' style={{ backgroundColor: '#F6F1E9' }}>
         <h3>Our Promise</h3>
         <p>We will have all your favorite books. No matter what you're a fan of, from Mystery to Romance, Adventure, History, Anime, and more. Discover books including classics like Brave New World to modern favorites like Gone Girl.</p>

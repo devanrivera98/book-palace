@@ -7,7 +7,11 @@ export default function ViewWishlist() {
   const [error, setError] = useState();
 
   useEffect(() => {
-    requestWishlist();
+    async function getData() {
+      await requestWishlist()
+      setIsLoading(false)
+    }
+    getData()
   }, [])
 
   async function requestWishlist() {
@@ -19,7 +23,6 @@ export default function ViewWishlist() {
       }
       const jsonData = await response.json();
       setView(jsonData);
-      setIsLoading(false);
     }
     catch (err) {
       setIsLoading(false);

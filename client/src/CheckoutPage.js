@@ -3,6 +3,7 @@ import CartList from './CartList';
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
+  const [amountItems, setAmountItems] = useState(0);
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -20,11 +21,20 @@ export default function CheckoutCart() {
         throw new Error(`Response error: ${response.status}`);
       }
       const jsonData = await response.json()
+
+      jsonData.sort((a, b) => a.cartId - b.cartId);
       setCart(jsonData);
       let newTotal = 0;
       for (let i = 0; i < jsonData.length; i++) {
-        newTotal += Number(jsonData[i].price);
+        for (let j = 0; j <  Number(jsonData[i].quantity); j++) {
+          newTotal += Number(jsonData[i].price)
+        }
       }
+      let items = 0
+      for (let i = 0; i < jsonData.length; i++) {
+        items += Number(jsonData[i].quantity)
+      }
+      setAmountItems(items)
       setSubtotal(newTotal.toFixed(2));
       let grandTotal = 4.99 + newTotal;
       setTotal(grandTotal.toFixed(2));
@@ -35,22 +45,6 @@ export default function CheckoutCart() {
       setError(error);
     }
   }
-
-  // function deleteBook(cartId) {
-  //   async function removeRequest() {
-  //     try {
-  //       const response = await fetch((`/api/cart/${cartId}`), {method: 'DELETE'});
-  //       if (!response.ok) {
-  //         throw new Error(`Response error: ${response.status}`);
-  //       }
-  //       await getRequest();
-  //     }
-  //     catch (error) {
-  //       console.log(`There was a delete error: ${error.message}`);
-  //     }
-  //   }
-  //   removeRequest();
-  // }
 
   async function deleteBook(cartId) {
     try {
@@ -83,11 +77,11 @@ export default function CheckoutCart() {
     <>
       <div className="container">
         <div className="py-4 d-flex justify-content-center text-center">
-          <h1>CHECKOUT</h1>
+          <h1>CART</h1>
         </div>
         <div className="cart-list col-lg-10">
           <h2>YOUR BAG</h2>
-          <h3>Total Items: [{cart.length}]</h3>
+          <h3>Total Items: [{amountItems}]</h3>
         </div>
         <div className="pt-2 text-center">
           {cart.length === 0 ? <h4>Make sure to add to your cart if you are ready to checkout</h4> : <></>}
