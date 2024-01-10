@@ -29,10 +29,8 @@ function MoreInfo() {
         const booksinCart = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
         if (booksinCart) {
           setIsInCart(true)
-          console.log('true')
         } else {
           setIsInCart(false)
-          console.log('false')
         }
       }
       catch (error) {
@@ -48,7 +46,7 @@ function MoreInfo() {
         }
         const jsonData = await response.json();
         const booksinCart = jsonData.find((book) => book.title === readBookObject.volumeInfo.title);
-        console.log(booksinCart)
+
         if (booksinCart) {
           if (booksinCart.quantity >= 9) {
             setIsTooMany(true)
@@ -113,17 +111,13 @@ function MoreInfo() {
     try {
       let allBooks = await checkingCart()
       const foundBook = allBooks.find((book) => book.title === readBookObject.volumeInfo.title);
-      let cartId;
       let booksinCart = false;
 
       if (foundBook) {
-        cartId = foundBook.cartId;
-        console.log(cartId)
         booksinCart = true;
       }
       if (booksinCart) {
         let increaseQuantity = Number(foundBook.quantity) + 1
-        console.log(increaseQuantity)
         const response = await fetch((`/api/cart/${foundBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({quantity: increaseQuantity}) })
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);

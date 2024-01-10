@@ -73,14 +73,7 @@ function EachBook({ book, deleteBook}) {
                 <option value={8}>8</option>
                 <option value={9}>9</option>
               </select>
-              {/* <h5>Qty: &nbsp;</h5>
-              <input className='pb-1' value={quantity} type='number' style={{ width: '40px', height: '30px' }} onChange={(event) => handleQuantityChange(event, book)}></input> */}
             </div>
-            {/* <div className='d-flex justify-content-end'>
-              <div className='px-1'>Minus</div>
-              <input value={quantity} type='number' style={{ width: '40px' }}></input>
-              <div className='px-1'>Plus</div>
-            </div> */}
           </div>
         </div>
       </div>

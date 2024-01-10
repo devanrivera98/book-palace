@@ -11,7 +11,6 @@ export default function ViewWishlist() {
       await requestWishlist()
       setIsLoading(false)
     }
-    // requestWishlist();
     getData()
   }, [])
 
@@ -24,7 +23,6 @@ export default function ViewWishlist() {
       }
       const jsonData = await response.json();
       setView(jsonData);
-      // setIsLoading(false);
     }
     catch (err) {
       setIsLoading(false);

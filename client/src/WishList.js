@@ -81,7 +81,6 @@ useEffect(() => {
 
     try {
       const findBook = jsonData.find((item) => item.isbn === isbn)
-      console.log('this is findbook',findBook)
       if (findBook) {
         let increaseQuantity = Number(findBook.quantity) + 1
         const response = await fetch((`/api/cart/${findBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: increaseQuantity }) })

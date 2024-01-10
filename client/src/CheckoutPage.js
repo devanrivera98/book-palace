@@ -21,7 +21,7 @@ export default function CheckoutCart() {
         throw new Error(`Response error: ${response.status}`);
       }
       const jsonData = await response.json()
-      //have the results come out in alphabetical order in the cart
+
       jsonData.sort((a, b) => a.cartId - b.cartId);
       setCart(jsonData);
       let newTotal = 0;
