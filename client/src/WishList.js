@@ -23,6 +23,7 @@ function WishlistBook({book}) {
   const bookId = `book-id-${wishlistId}`;
   const navigate = useNavigate();
   const [isTooMany, setIstooMany] = useState(null);
+  const [jsonData, setJsonData] = useState([])
 
 useEffect(() => {
 
@@ -33,10 +34,14 @@ useEffect(() => {
         throw new Error(`Response error: ${response.status}`)
       }
       const jsonData = await response.json();
+      setJsonData(jsonData)
       const findBook = jsonData.find((item) => item.title === title)
-      console.log('is this ok')
-      if (findBook.quantity >= 9) {
-        setIstooMany(true)
+      if (findBook) {
+        if (findBook.quantity >= 9) {
+          setIstooMany(true)
+        } else {
+          setIstooMany(false)
+        }
       } else {
         setIstooMany(false)
       }
@@ -75,15 +80,25 @@ useEffect(() => {
     }
 
     try {
-      const response = await fetch((`/api/cart`), {method: 'POST', headers: {"Content-Type" : "application/json"}, body : JSON.stringify(moveBook)});
-      if (!response.ok) {
-        throw new Error(`Response error: ${response.status}`);
-      }
+      const findBook = jsonData.find((item) => item.isbn === isbn)
+      console.log('this is findbook',findBook)
+      if (findBook) {
+        let increaseQuantity = Number(findBook.quantity) + 1
+        const response = await fetch((`/api/cart/${findBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: increaseQuantity }) })
 
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+      } else {
+        const response = await fetch((`/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(moveBook) });
+        if (!response.ok) {
+          throw new Error(`Response error: ${response.status}`);
+        }
+      }
       navigate('/checkout');
       const remove = await fetch((`/api/wishlist/${book.wishlistId}`), { method: 'DELETE' });
       if (!remove.ok) {
-        throw new Error(`Reponse error: ${response.status}`)
+        throw new Error(`Reponse error: ${remove.status}`)
       }
     }
     catch (error) {

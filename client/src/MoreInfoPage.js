@@ -48,14 +48,17 @@ function MoreInfo() {
         }
         const jsonData = await response.json();
         const booksinCart = jsonData.find((book) => book.title === readBookObject.volumeInfo.title);
-        if (booksinCart.quantity >= 9) {
-          setIsTooMany(true)
+        console.log(booksinCart)
+        if (booksinCart) {
+          if (booksinCart.quantity >= 9) {
+            setIsTooMany(true)
+          }
         }
       } catch (error) {
         console.log(`There was an issue checking the cart: ${error.message}`);
       }
     }
-    
+
     async function fetchData() {
       await checkWishlist();
       await checkCartQuantity();
