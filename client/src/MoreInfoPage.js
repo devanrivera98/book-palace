@@ -13,7 +13,7 @@ function MoreInfo() {
   const location = useLocation();
   const navigate = useNavigate();
   const readBookObject = location.state;
-  const [isInCart, setIsInCart] = useState(false);
+  const [isInWishlist, setIsInWishlist] = useState(false);
   const [isTooMany, setIsTooMany] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,11 +26,11 @@ function MoreInfo() {
           throw new Error(`Response error: ${response.status}`);
         }
         jsonData = await response.json();
-        const booksinCart = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
-        if (booksinCart) {
-          setIsInCart(true)
+        const booksinWishlist = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
+        if (booksinWishlist) {
+          setIsInWishlist(true)
         } else {
-          setIsInCart(false)
+          setIsInWishlist(false)
         }
       }
       catch (error) {
@@ -156,6 +156,10 @@ function MoreInfo() {
     navigate('/checkout');
   }
 
+  function viewWishlist() {
+    navigate('/wishlist');
+  }
+
   if (isLoading) return (
     <div className="d-flex justify-content-center pt-3">
       <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
@@ -171,7 +175,7 @@ function MoreInfo() {
       </div>
       <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
       <div className='py-3'>
-        <button className={isInCart ? 'hidden' : ''} onClick={addToWishlist}><BsFillHeartFill/> Add to Wishlist</button>
+        <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill/>{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
       </div>
       <div className="row justify-content-center">
         <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
