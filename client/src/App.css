@@ -10,6 +10,44 @@
   display: none;
 }
 
+.banner-left-container {
+  width: 40%;
+}
+
+.homepage-banner-container {
+  width: 80%;
+  height: 200px;
+  margin: auto;
+  background-color: bisque;
+  padding-top: 1rem;
+  margin-top: 3rem;
+  box-sizing: border-box;
+}
+
+.homepage-banner {
+  height: 100%;
+  display: flex;
+}
+
+.banner-text-container {
+  padding-left: 2rem;
+}
+
+.homepage-image {
+  width: 600px;
+  height: 100%;
+  margin: auto;
+}
+
+.banner-button {
+  background-color:  rgb(97, 113, 67);
+  color: white;
+}
+
+.banner-button:hover {
+  background-color:rgb(67, 93, 37);
+}
+
 .banner-holder {
   padding-top: 1.5rem;
   padding-left: 0.5rem;
@@ -184,4 +222,44 @@ a {
   50% {
     transform: scale(1.5);
   }
+}
+
+
+@media screen and (min-width:767px) {
+
+  .banner-text-container p {
+    font-size: 32px;
+    font-weight:500;
+    line-height: 1.1;
+  }
+
+    .banner-left-container {
+      width: 40%;
+    }
+
+    .homepage-banner-container {
+      width: 80%;
+      height: 200px;
+      margin: auto;
+      background-color: bisque;
+      padding-top: 1rem;
+      margin-top: 3rem;
+      box-sizing: border-box;
+    }
+
+    .homepage-banner {
+      height: 100%;
+      display: flex;
+    }
+
+    .banner-text-container {
+      padding-left: 2rem;
+    }
+
+    .homepage-image {
+      width: 600px;
+      height: 100%;
+      margin: auto;
+    }
+
 }

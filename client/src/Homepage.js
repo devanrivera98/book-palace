@@ -14,14 +14,33 @@ export default function Homepage() {
 
 function HomepageImage() {
   return (
-    <div className='banner-holder d-flex justify-content-center'>
-     <div>
-        <img className='img-fluid' alt='library' src='images/book-club-banner.jpg'/>
-     </div>
+    <div className="homepage-banner-container">
+      <div className="homepage-banner">
+        <div className="banner-left-container">
+          <div className="banner-text-container">
+            <h2>Welcome to our Grand Opening!</h2>
+            <h6>Take a look at our favorite selection!</h6>
+            <button className="banner-button">Shop our favorites</button>
+          </div>
+        </div>
+        <div className="w-50 d-flex justify-content-center">
+          <img className="homepage-image" src="images/books2.webp" alt="books" />
+        </div>
+      </div>
     </div>
-
   )
 }
+
+// function HomepageImage() {
+//   return (
+//     <div className='banner-holder d-flex justify-content-center'>
+//      <div className="w-">
+//         <img className='img-fluid' alt='library' src='images/BookPalace.png'/>
+//      </div>
+//     </div>
+
+//   )
+// }
 
 function RecommendationModernClassics() {
   const navigate = useNavigate()
