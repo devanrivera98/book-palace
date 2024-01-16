@@ -18,12 +18,12 @@ function HomepageImage() {
       <div className="homepage-banner">
         <div className="banner-left-container">
           <div className="banner-text-container">
-            <h2>Welcome to our Grand Opening!</h2>
-            <h6>Take a look at our favorite selection!</h6>
+            <h2 className="banner-title">Welcome to Our Grand Opening!</h2>
+            <h6 className="banner-paragraph">Take a look at our favorite selection!</h6>
             <button className="banner-button">Shop our favorites</button>
           </div>
         </div>
-        <div className="w-50 d-flex justify-content-center">
+        <div className="banner-right-container d-flex justify-content-center">
           <img className="homepage-image" src="images/books2.webp" alt="books" />
         </div>
       </div>
