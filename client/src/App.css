@@ -30,6 +30,7 @@
 }
 
 .homepage-banner-container {
+  padding: 0 .25rem;
   width: 80%;
   height: 275px;
   margin: auto;
