@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
 
 export default function Homepage() {
 
@@ -13,6 +14,13 @@ export default function Homepage() {
 }
 
 function HomepageImage() {
+  const navigate = useNavigate();
+
+
+  function viewOurFavorites(){
+    navigate('/results', {state: ourFavoriteBooks})
+  }
+
   return (
     <div className="homepage-banner-container">
       <div className="homepage-banner">
@@ -20,7 +28,7 @@ function HomepageImage() {
           <div className="banner-text-container">
             <h2 className="banner-title">Welcome to Our Grand Opening!</h2>
             <h6 className="banner-paragraph">Take a look at our favorite selection!</h6>
-            <button className="banner-button">Shop our favorites</button>
+            <button className="banner-button" onClick={viewOurFavorites}>Shop our favorites</button>
           </div>
         </div>
         <div className="banner-right-container d-flex justify-content-center">
