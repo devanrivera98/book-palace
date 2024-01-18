@@ -36,7 +36,7 @@ function ResultsTable() {
         <img className="pb-2 results-books hover-button" onClick={() => handleClick(item)} src={item.image ? item.image : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} alt={item.title} />
         <h6>{item.title ? item.title : 'Title Unknown'}</h6>
         <p>By: {item.author ? item.author : 'Author Unknown'}</p>
-        <p>Price <b>{item.price ? item.price : `${19.99}`}</b></p>
+        <p>Price <b>${item.price ? item.price : `${19.99}`}</b></p>
       </div>
     )
   }

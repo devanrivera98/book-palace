@@ -12,7 +12,7 @@ CREATE TABLE "public"."wishlist" (
 	"title" TEXT NOT NULL,
 	"author" TEXT NOT NULL,
 	"isbn" TEXT NOT NULL,
-	"rating" DECIMAL NOT NULL,
+	"rating" VARCHAR NOT NULL,
 	"image" TEXT NOT NULL,
 	"description" TEXT NOT NULL,
 	"price" DECIMAL NOT NULL,

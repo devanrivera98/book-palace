@@ -26,7 +26,13 @@ function MoreInfo() {
           throw new Error(`Response error: ${response.status}`);
         }
         jsonData = await response.json();
-        const booksinWishlist = jsonData.some((book) => book.title === readBookObject.volumeInfo.title);
+        let titleToMatch;
+        if (readBookObject.volumeInfo && readBookObject.volumeInfo.title) {
+          titleToMatch = readBookObject.volumeInfo.title;
+        } else {
+          titleToMatch = readBookObject.title;
+        }
+        const booksinWishlist = jsonData.some((book) => book.title === titleToMatch);
         if (booksinWishlist) {
           setIsInWishlist(true)
         } else {
@@ -34,7 +40,7 @@ function MoreInfo() {
         }
       }
       catch (error) {
-        console.log(`There was an issue retrieving the cart items ${error.message}`)
+        console.log(`There was an issue retrieving the wishlist items ${error.message}`)
       }
     }
 
@@ -45,8 +51,13 @@ function MoreInfo() {
           throw new Error(`Response error: ${response.status}`);
         }
         const jsonData = await response.json();
-        const booksinCart = jsonData.find((book) => book.title === readBookObject.volumeInfo.title);
-
+        let titleToMatch;
+        if (readBookObject.volumeInfo && readBookObject.volumeInfo.title) {
+          titleToMatch = readBookObject.volumeInfo.title;
+        } else {
+          titleToMatch = readBookObject.title;
+        }
+        const booksinCart = jsonData.find((item) => item.title === titleToMatch);
         if (booksinCart) {
           if (booksinCart.quantity >= 9) {
             setIsTooMany(true)
@@ -65,7 +76,7 @@ function MoreInfo() {
     fetchData()
   }, [readBookObject])
 
-  function checkingCoditions(book) {
+  function checkingConditions(book) {
     const { volumeInfo } = readBookObject;
     if (volumeInfo) {
       const { title, authors, industryIdentifiers, averageRating, imageLinks } = volumeInfo;
@@ -85,9 +96,29 @@ function MoreInfo() {
       if (imageLinks) {
         book.image = imageLinks.thumbnail;
       }
-    }
-    if (readBookObject.saleInfo.retailPrice) {
-      book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
+      if (readBookObject.saleInfo.retailPrice) {
+        book.price = readBookObject.saleInfo.retailPrice.amount.toFixed(2);
+      }
+    } else if (readBookObject) {
+      const { title, author, isbn, rating, image, price } = readBookObject;
+      if (title) {
+        book.title = title;
+      }
+      if (author) {
+        book.author = author;
+      }
+      if (isbn) {
+        book.isbn = isbn;
+      }
+      if (rating) {
+        book.rating = rating;
+      }
+      if (image) {
+        book.image = image;
+      }
+      if (price) {
+        book.price = price
+      }
     }
   }
 
@@ -107,10 +138,10 @@ function MoreInfo() {
 
     async function addBook() {
     const book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
-    checkingCoditions(book);
+    checkingConditions(book);
     try {
       let allBooks = await checkingCart()
-      const foundBook = allBooks.find((book) => book.title === readBookObject.volumeInfo.title);
+      const foundBook = allBooks.find((item) => item.title === book.title);
       let booksinCart = false;
 
       if (foundBook) {
@@ -138,7 +169,7 @@ function MoreInfo() {
 
   async function addToWishlist() {
     let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, description: 'There was no description found for this book.'};
-    checkingCoditions(book);
+    checkingConditions(book);
     try {
       const response = await fetch((`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) });
       if (!response.ok) {
@@ -166,26 +197,77 @@ function MoreInfo() {
     </div>
   )
 
-  return (
-    <div className="container pt-4 text-center">
-      <div>
-        <h1>{readBookObject.volumeInfo.title ? readBookObject.volumeInfo.title : 'Title Unknown'}</h1>
-        <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
-        <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
+  if (readBookObject.volumeInfo) {
+    return (
+      <div className="container pt-4 text-center">
+        <div>
+          <h1>{readBookObject.volumeInfo.title ? readBookObject.volumeInfo.title : 'Title Unknown'}</h1>
+          <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
+          <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
+        </div>
+        <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
+        <div className='py-3'>
+          <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill />{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
+        </div>
+        <div className="row justify-content-center">
+          <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) : '19.99'}</h4>
+          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
+          <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
+        </div>
+        <div className="pt-3 row justify-content-center">
+          <h1>Overview</h1>
+          <p className="col-10">{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
+        </div>
       </div>
-      <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
-      <div className='py-3'>
-        <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill/>{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
+    )
+  }
+
+  if (readBookObject.title) {
+    return (
+      <div className="container pt-4 text-center">
+        <div>
+          <h1>{readBookObject.title ? readBookObject.title : 'Title Unknown'}</h1>
+          <h5>By {readBookObject.author ? readBookObject.author : 'Author Unknown'}</h5>
+          <p>Average Review: {readBookObject.rating ? readBookObject.rating : 'No Rating'}/5</p>
+        </div>
+        <img className="more-info-image" alt="book" src={readBookObject.image ? readBookObject.image : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
+        <div className='py-3'>
+          <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill />{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
+        </div>
+        <div className="row justify-content-center">
+          <h4>Retail Price ${readBookObject.price ? readBookObject.price : '19.99'}</h4>
+          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
+          <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
+        </div>
+        <div className="pt-3 row justify-content-center">
+          <h1>Overview</h1>
+          <p className="col-10">{readBookObject.description ? readBookObject.description : 'Unfortunately, a book description was not found for this book.'}</p>
+        </div>
       </div>
-      <div className="row justify-content-center">
-        <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
-        <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
-        <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
-      </div>
-      <div className="pt-3 row justify-content-center">
-        <h1>Overview</h1>
-        <p className="col-10">{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
-      </div>
-    </div>
-  )
+    )
+  }
+
+
+  // return (
+  //   <div className="container pt-4 text-center">
+  //     <div>
+  //       <h1>{readBookObject.volumeInfo.title ? readBookObject.volumeInfo.title : 'Title Unknown'}</h1>
+  //       <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
+  //       <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
+  //     </div>
+  //     <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
+  //     <div className='py-3'>
+  //       <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill/>{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
+  //     </div>
+  //     <div className="row justify-content-center">
+  //       <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
+  //       <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
+  //       <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
+  //     </div>
+  //     <div className="pt-3 row justify-content-center">
+  //       <h1>Overview</h1>
+  //       <p className="col-10">{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
+  //     </div>
+  //   </div>
+  // )
 }
