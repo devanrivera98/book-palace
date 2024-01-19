@@ -27,6 +27,8 @@
 .banner-button {
   padding: 0.325rem .75rem;
   border-radius: .1875rem;
+  position: relative;
+  z-index: 2;
 }
 
 .homepage-banner-container {
@@ -47,7 +49,6 @@
 }
 
 .banner-right-container {
-  padding-top: 4rem;
   width: 100%;
   position: absolute;
   bottom: 0;

@@ -6,6 +6,7 @@ export default function Homepage() {
   return (
     <>
       <HomepageImage/>
+      <ViewByAuthor/>
       <RecommendationModernClassics/>
       <RecommendationThisMonth/>
       <AboutUs/>
@@ -36,6 +37,44 @@ function HomepageImage() {
         </div>
       </div>
     </div>
+  )
+}
+
+function ViewByAuthor() {
+  return (
+    <>
+    <div className="p-3">
+      <div>
+        <h3>Shop by Author</h3>
+      </div>
+      <div className="d-flex">
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/mark-twain.png" alt="mark-twain"></img>
+          <h5 className="text-center">Mark Twain</h5>
+        </div>
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/emily-dickinson.png" alt="emily-dickinson"></img>
+            <h5 className="text-center">Emily Dickinson</h5>
+          </div>
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/margaret-atwood.png" alt="margaret-atwood"></img>
+            <h5 className="text-center">Margaret Atwood</h5>
+          </div>
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/edgar-allan-poe.png" alt="edgar-allen-poe"></img>
+            <h5 className="text-center">Edgar Allen Poe</h5>
+          </div>
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/harper-lee.png" alt="mark-twain"></img>
+            <h5 className="text-center">Harper Lee</h5>
+          </div>
+          <div className="w-25 mx-2">
+            <img className="w-100 rounded" src="images/john-steinbeck.png" alt="mark-twain"></img>
+            <h5 className="text-center">John Steinbejck</h5>
+          </div>
+      </div>
+    </div>
+    </>
   )
 }
 
