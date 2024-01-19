@@ -10,6 +10,10 @@
   display: none;
 }
 
+.pointer-finger:hover {
+  cursor: pointer;
+}
+
 .banner-left-container {
   width: 100%;
   text-align: center;

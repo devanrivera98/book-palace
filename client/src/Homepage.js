@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
+import EachAuthor from "./components/EachAuthor";
+
 
 export default function Homepage() {
 
@@ -47,47 +49,18 @@ function ViewByAuthor() {
       <div>
         <h3>Shop by Author</h3>
       </div>
-      <div className="d-flex">
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/mark-twain.png" alt="mark-twain"></img>
-          <h5 className="text-center">Mark Twain</h5>
-        </div>
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/emily-dickinson.png" alt="emily-dickinson"></img>
-            <h5 className="text-center">Emily Dickinson</h5>
-          </div>
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/margaret-atwood.png" alt="margaret-atwood"></img>
-            <h5 className="text-center">Margaret Atwood</h5>
-          </div>
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/edgar-allan-poe.png" alt="edgar-allen-poe"></img>
-            <h5 className="text-center">Edgar Allen Poe</h5>
-          </div>
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/harper-lee.png" alt="mark-twain"></img>
-            <h5 className="text-center">Harper Lee</h5>
-          </div>
-          <div className="w-25 mx-2">
-            <img className="w-100 rounded" src="images/john-steinbeck.png" alt="mark-twain"></img>
-            <h5 className="text-center">John Steinbejck</h5>
-          </div>
+        <div className="d-flex overflow-auto ">
+          <EachAuthor author={'Mark Twain'} image={"images/mark-twain.png"} alt={'mark-twain'} />
+          <EachAuthor author={'Emily Dickinson'} image={"images/emily-dickinson.png"} alt={'emily-dickinson'} />
+          <EachAuthor author={'Margaret Atwood'} image={"images/margaret-atwood.png"} alt={'margaret-atwood'} />
+          <EachAuthor author={'Edgar Allen Poe'} image={"images/edgar-allen-poe.png"} alt={'edgar-allen-poe'} />
+          <EachAuthor author={'Harper Lee'} image={"images/harper-lee.png"} alt={'harper-lee'} />
+          <EachAuthor author={'John Steinbeck'} image={"images/john-steinbeck.png"} alt={'john-steinbeck'} />
       </div>
     </div>
     </>
   )
 }
-
-// function HomepageImage() {
-//   return (
-//     <div className='banner-holder d-flex justify-content-center'>
-//      <div className="w-">
-//         <img className='img-fluid' alt='library' src='images/BookPalace.png'/>
-//      </div>
-//     </div>
-
-//   )
-// }
 
 function RecommendationModernClassics() {
   const navigate = useNavigate()
