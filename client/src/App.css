@@ -82,6 +82,10 @@
   margin: 0 auto;
 }
 
+.each-author {
+  min-width: 200px;
+}
+
 .recommended-books {
   width: 85px !important;
   cursor: pointer;

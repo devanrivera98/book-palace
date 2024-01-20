@@ -49,7 +49,7 @@ function ViewByAuthor() {
       <div>
         <h3>Shop by Author</h3>
       </div>
-        <div className="d-flex overflow-auto ">
+        <div className="d-flex overflow-auto">
           <EachAuthor author={'Mark Twain'} image={"images/mark-twain.png"} alt={'mark-twain'} />
           <EachAuthor author={'Emily Dickinson'} image={"images/emily-dickinson.png"} alt={'emily-dickinson'} />
           <EachAuthor author={'Margaret Atwood'} image={"images/margaret-atwood.png"} alt={'margaret-atwood'} />
