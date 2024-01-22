@@ -62,8 +62,10 @@ function ViewByAuthor() {
   )
 }
 
+
 function RecommendationModernClassics() {
   const navigate = useNavigate()
+
   const handleImageClick = async (title, isbn) => {
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${title}+isbn:${isbn}&key=${process.env.REACT_APP_API_KEY}`)
@@ -80,27 +82,50 @@ function RecommendationModernClassics() {
   }
 
 
-  const recommendationModern = [{ title: 'The+Overstory', isbn: '9780393356687', image: 'http://books.google.com/books/content?id=AmxFtwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api'}, { title: 'Dune', isbn: '9780143111580', image: 'http://books.google.com/books/content?id=ydQiDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Gone+Girl', isbn: '9780553418361', image: 'http://books.google.com/books/content?id=pd6MDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'The+Circle', isbn: '9780385351409', image: 'http://books.google.com/books/content?id=sbxWAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, {
-    title: 'The+Goldfinch', isbn: '9780316248679', image: 'http://books.google.com/books/content?id=dvuK7isszLIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'}, { title: 'Piranesi', isbn: '9781635575644', image: 'http://books.google.com/books/content?id=FCTYDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Fun+Home', isbn: '9780618871711', image: 'http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Pachinko+(National+Book+Award+Finalist)', isbn: '9781455563913', image: 'http://books.google.com/books/content?id=cxteDAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }]
+  const recommendationModern = [{ title: 'The Overstory', isbn: '9780393356687', image: 'http://books.google.com/books/content?id=AmxFtwEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api' }, { title: 'Dune', isbn: '9780143111580', image: 'http://books.google.com/books/content?id=ydQiDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Gone Girl', isbn: '9780553418361', image: 'http://books.google.com/books/content?id=pd6MDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'The Circle', isbn: '9780385351409', image: 'http://books.google.com/books/content?id=sbxWAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, {
+    title: 'The Goldfinch', isbn: '9780316248679', image: 'http://books.google.com/books/content?id=dvuK7isszLIC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+  }, { title: 'Piranesi', isbn: '9781635575644', image: 'http://books.google.com/books/content?id=FCTYDwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' }, { title: 'Fun Home', isbn: '9780618871711', image: 'http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api' },]
 
-  const mapModern = recommendationModern.map(recommendationModern =>
-    <div className='col-lg-1 col-md-3 col-sm-3 col-3 d-flex justify-content-center' key={recommendationModern.isbn}>
-    <img className='p-2 recommended-books' onClick={() => handleImageClick(recommendationModern.title, recommendationModern.isbn)} key={recommendationModern.isbn} alt={recommendationModern.title} src={recommendationModern.image} />
-    </div>
-  )
+  const mapModern = recommendationModern.map(item =>
+    <figure key={item.isbn} onClick={() => handleImageClick(item.title, item.isbn)} >
+      <picture>
+        <img src={item.image} alt={item.title} />
+      </picture>
+      <figcaption>{item.title}</figcaption>
+      <p>Susanne Cl</p>
+      <p>$19.99</p>
+    </figure>
+    )
+
+  // const mapModern = recommendationModern.map(item =>
+  //   <div className="d-flex flex-column justify-content-center align-items-center text-center recommended-image-card" key={item.isbn} >
+  //     <img className="recommended-image pointer-finger" src={item.image} alt={item.title} onClick={() => handleImageClick(item.title, item.isbn)} />
+  //     <div className="recommended-card-body">
+  //       <h5 className="card-title pointer-finger" onClick={() => handleImageClick(item.title, item.isbn)}>{item.title}</h5>
+  //       <p className="card-text">By Susanna Clarke</p>
+  //       <p className="card-title">$19.99</p>
+  //     </div>
+  //   </div>
+  // )
 
   return (
-    <div className='pt-5 px-3'>
-      <div>
+    <div className='pt-4'>
+      <hr></hr>
+      <div className="row-title px-3">
         <h3>Modern Classics</h3>
       </div>
-      <div style={{ backgroundColor: '#EDE4E0'}}>
-      <div className='row justify-content-around'>
+      {/* <div className="d-flex justify-content-center overflow-auto horizontal-media-scroller"> */}
+      <div className="horizontal-media-scroller">
+        {/* <figure>
+          <picture>
+            <img src="http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="fun"/>
+          </picture>
+          <figcaption>Legend</figcaption>
+        </figure> */}
         {mapModern}
       </div>
     </div>
-  </div>
-);
+  );
 }
 
 function RecommendationThisMonth() {

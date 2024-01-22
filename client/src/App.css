@@ -1,3 +1,5 @@
+
+
 .heart-icon {
   font-size: 30px !important;
 }
@@ -85,6 +87,78 @@
 .each-author {
   min-width: 200px;
 }
+
+.row-title {
+  padding-left: 0rem;
+}
+
+.horizontal-media-scroller {
+  display: grid;
+  padding-inline: 1ex;
+  padding-block-end: 0.5rem;
+  grid-auto-flow: column;
+  grid-auto-columns: 225px;
+  gap: 0rem;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  /* scroll-padding-inline-start: 2rem; */
+
+}
+
+.horizontal-media-scroller > figure {
+  scroll-snap-align: start;
+  display: grid;
+  gap: 0rem;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+
+
+figure > picture {
+  display: inline-block;
+  inline-size: 175px;
+  max-height: 275px;
+  block-size: 275px;
+  border-radius: 1ex;
+  text-align: center;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+picture > img {
+  display: block;
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: fill;
+}
+
+figure > figcaption {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -.5px;
+}
+
+/* .recommended-image-card {
+  flex: 0 0 14%;
+  max-width: 14%;
+  box-sizing: border-box;
+}
+
+.recommended-image {
+  width: 60%;
+  height: 60%;
+}
+
+.card-text {
+  font-size: 11px;
+} */
 
 .recommended-books {
   width: 85px !important;
@@ -273,6 +347,10 @@ a {
     width: 100%;
     position: relative;
   }
+
+}
+
+@media screen and (min-width:950px) {
 
 }
 
