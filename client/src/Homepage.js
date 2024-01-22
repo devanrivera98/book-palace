@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom"
 import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
 import EachAuthor from "./components/EachAuthor";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { FaArrowAltCircleRight } from "react-icons/fa";
+
 
 
 export default function Homepage() {
@@ -97,36 +100,29 @@ function RecommendationModernClassics() {
     </figure>
     )
 
-  // const mapModern = recommendationModern.map(item =>
-  //   <div className="d-flex flex-column justify-content-center align-items-center text-center recommended-image-card" key={item.isbn} >
-  //     <img className="recommended-image pointer-finger" src={item.image} alt={item.title} onClick={() => handleImageClick(item.title, item.isbn)} />
-  //     <div className="recommended-card-body">
-  //       <h5 className="card-title pointer-finger" onClick={() => handleImageClick(item.title, item.isbn)}>{item.title}</h5>
-  //       <p className="card-text">By Susanna Clarke</p>
-  //       <p className="card-title">$19.99</p>
-  //     </div>
-  //   </div>
-  // )
-
   return (
     <div className='pt-4'>
       <hr></hr>
-      <div className="row-title px-3">
+      <div className="row-title ">
         <h3>Modern Classics</h3>
       </div>
-      {/* <div className="d-flex justify-content-center overflow-auto horizontal-media-scroller"> */}
-      <div className="horizontal-media-scroller">
-        {/* <figure>
-          <picture>
-            <img src="http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="fun"/>
-          </picture>
-          <figcaption>Legend</figcaption>
-        </figure> */}
-        {mapModern}
+      <div className="position-relative">
+        <FaArrowAltCircleLeft className="left-arrow" />
+        <FaArrowAltCircleRight className="right-arrow" />
+        <div className="horizontal-media-scroller mx-auto">
+          {mapModern}
+        </div>
       </div>
     </div>
   );
 }
+
+/* <figure>
+          <picture>
+            <img src="http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="fun"/>
+          </picture>
+          <figcaption>Legend</figcaption>
+        </figure> */
 
 function RecommendationThisMonth() {
   const navigate = useNavigate()
