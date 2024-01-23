@@ -11,6 +11,7 @@ export default function  MoreInfoPage() {
 
 function MoreInfo() {
   const location = useLocation();
+  console.log(location.state)
   const navigate = useNavigate();
   const readBookObject = location.state;
   const [isInWishlist, setIsInWishlist] = useState(false);
