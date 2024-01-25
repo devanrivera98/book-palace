@@ -33,5 +33,17 @@ export const recommendationModern = [
 },
 {
   title: 'Moneyball', author: 'Michael Lewis', isbn: '0393057658', image: "http://books.google.com/books/content?id=RWOX_2eYPcAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", price: 19.99
+},
+{
+  title: 'The Hobbit', author: 'J.R.R. Tolkien', isbn: '9780547951973', image: "http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", price: 11.99
+},
+{
+  title: 'The Martian', author: 'Andy Weir', isbn: '9780804139038', image: "http://books.google.com/books/content?id=MQeHAAAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", price: 8.99
+},
+{
+  title: 'The Girl on the Train', author: 'Paula Hawkins', isbn: '9780552779777', image: "http://books.google.com/books/content?id=DvoDDAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", price: 19.99
+},
+{
+  title: 'Six of Crows', author: 'Leigh Bardugo', isbn: '9781780622293', image: "http://books.google.com/books/content?id=uqUwCgAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", price: 19.99
 }
 ];

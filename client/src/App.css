@@ -107,7 +107,7 @@
   padding-inline: 1ex;
   padding-block-end: 0.5rem;
   grid-auto-flow: column;
-  grid-auto-columns: 200px;
+  grid-auto-columns: 150px;
   gap: 0.5rem;
   overflow-x: auto;
   scroll-snap-type: x proximity;
@@ -116,7 +116,7 @@
 .horizontal-media-scroller > figure {
   scroll-snap-align: start;
   display: grid;
-  inline-size: 200px;
+  inline-size: 150px;
   gap: 0rem;
   margin: 0;
   text-align: center;
@@ -128,9 +128,9 @@
 
 figure > picture {
   display: inline-block;
-  inline-size: 200px;
-  max-height: 300px;
-  block-size: 300px;
+  inline-size: 150px;
+  max-height: 250px;
+  block-size: 250px;
   border-radius: 1ex;
   text-align: center;
   overflow: hidden;
@@ -154,25 +154,57 @@ figure > figcaption {
   letter-spacing: -.5px;
 }
 
-/* .recommended-image-card {
-  flex: 0 0 14%;
-  max-width: 14%;
+.homepage-second-banner {
+  display: flex;
+  width: 90%;
+  /* height: auto; */
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  /* background-image: url('../public/images/gray-background.jpeg'); */
+  background-color: rgb(188, 188, 178);
+}
+
+.homepage-two-columns {
+
+}
+
+.trending-first-title {
+  font-size: 37px;
+}
+
+.trending-banner {
+  padding-top: 1.5rem;
+}
+
+.trending-image-container {
   box-sizing: border-box;
+  width: 100%;
+    position: relative;
+      overflow: hidden;
 }
 
-.recommended-image {
-  width: 60%;
-  height: 60%;
+.trending-image {
+width: 100%;
+  height: 100%;
+  object-fit:cover;
 }
 
-.card-text {
-  font-size: 11px;
-} */
+.trending-button {
+  background-color: rgb(97, 113, 67);
+  color: white;
+    padding: 0.325rem .75rem;
+      border-radius: .1875rem;
+}
 
-.recommended-books {
+.trending-button:hover {
+  background-color: rgb(67, 93, 37);
+}
+
+/* .recommended-books {
   width: 85px !important;
   cursor: pointer;
-}
+} */
 
 
 .results-books {
@@ -363,8 +395,8 @@ a {
 
 }
 
-
 @media screen and (min-width:767px) {
+
 
   .banner-text-container p {
     font-size: 32px;
@@ -423,6 +455,12 @@ a {
   overflow-x: hidden;
 }
 
+}
+
+@media screen and (max-width:767px) {
+  .trending-banner {
+    text-align: center;
+  }
 }
 
 

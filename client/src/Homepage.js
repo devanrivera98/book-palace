@@ -91,7 +91,7 @@ function RecommendationModernClassics() {
     <div className='pt-4'>
       <hr></hr>
       <div className="row-title ">
-        <h3>Modern Classics</h3>
+        <h3>Modern Favorites</h3>
       </div>
       <div className="position-relative ">
         <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
@@ -133,7 +133,7 @@ function RecommendationThisMonth() {
     <div className='pt-4'>
       <hr></hr>
       <div className="row-title ">
-        <h3>Modern Classics</h3>
+        <h3>Instant Classics</h3>
       </div>
       <div className="position-relative ">
         <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
@@ -149,8 +149,19 @@ function RecommendationThisMonth() {
 function HomepageBanner() {
   return (
     <>
-    <div className="container homepage-second-banner w-64">
-
+    <div className="homepage-second-banner mt-4 mt-md-2 mx-auto">
+      <div className="homepage-two-columns row ">
+        <div className="col-md-5 trending-banner">
+          <h1 className="trending-first-title col-11 mx-auto">Trending Favorites of 2023</h1>
+          <h5 className="col-11 mx-auto">Discover the most popular books from this past year!</h5>
+          <button className="trending-button">Check them out!</button>
+        </div>
+        <div className="col-md-7 d-flex justify-content-center">
+            <div className="trending-image-container">
+              <img className="trending-image" src="images/book-row-one.png" />
+          </div>
+        </div>
+      </div>
     </div>
     </>
   )

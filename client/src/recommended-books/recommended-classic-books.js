@@ -21,7 +21,7 @@ export const recommendationClassics = [
   title: 'On the Road: the Original Scroll', author: 'Jack Kerouac', isbn: '9780143105466', image: 'http://books.google.com/books/content?id=DaKMEAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api', price: 19.99
 },
 {
-  title: 'Pride and Prejudice', author:'Jane Austen', isbn: '9780521825146', image: 'http://books.google.com/books/content?id=yxIHAemJKM4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 19.99
+  title: 'The Time Machine', author: 'H.G. Wells', isbn: '9781877527180', image: 'http://books.google.com/books/content?id=f3H6SMzlQQwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 5.95
 },
 {
   title: '1984', author: 'George Orwell', isbn: '9780547249643', image: 'http://books.google.com/books/content?id=kotPYEqx7kMC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 13.99
@@ -31,5 +31,14 @@ export const recommendationClassics = [
 },
 {
   title: 'White Teeth', author: 'Zadie Smith', isbn: '9781400075508', image: 'http://books.google.com/books/content?id=zZFlmid0HOYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 12.99
+},
+{
+  title: 'Dracula', author: 'Bram Stoker', isbn: '1677290390', image: "http://books.google.com/books/content?id=zcuTzAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", price: 19.99
+},
+{
+  title: 'Pride and Prejudice', author: 'Jane Austen', isbn: '9780521825146', image: 'http://books.google.com/books/content?id=yxIHAemJKM4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 19.99
+},
+{
+  title: 'Anna Karenina', author: 'Leo Tolstoy', isbn: '9781101042472', image: 'http://books.google.com/books/content?id=W4r7lF_MSMYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api', price: 14.99
 }
 ];
