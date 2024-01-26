@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react";
 import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
+import { trendingBooks } from "./recommended-books/recommended-trending-books";
 import EachAuthor from "./components/EachAuthor";
 import { recommendationModern } from "./recommended-books/recommended-modern-books";
 import { recommendationClassics } from "./recommended-books/recommended-classic-books";
@@ -8,6 +9,7 @@ import { changeScrollPosition } from "./functions/changeScrollPosition";
 import { handleImageClick } from "./functions/handleImageClick";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
 import { FaArrowAltCircleRight } from "react-icons/fa";
+import Footer from "./Footer";
 
 
 export default function Homepage() {
@@ -20,6 +22,7 @@ export default function Homepage() {
       <HomepageBanner/>
       <RecommendationThisMonth/>
       <AboutUs/>
+      <Footer/>
     </>
   )
 }
@@ -139,6 +142,12 @@ function RecommendationThisMonth() {
 }
 
 function HomepageBanner() {
+  const navigate = useNavigate();
+
+  function viewTrendingBooks() {
+    navigate('/results', { state: trendingBooks })
+  }
+
   return (
     <>
     <div className="homepage-second-banner mt-4 mt-md-2 mx-auto">
@@ -146,7 +155,7 @@ function HomepageBanner() {
         <div className="col-md-5 trending-banner my-auto">
           <h1 className="trending-first-title col-11 mx-auto">Trending Favorites of 2023</h1>
           <h5 className="col-11 mx-auto">Discover the most popular books from this past year!</h5>
-          <button className="trending-button">Check them out!</button>
+          <button className="trending-button" onClick={viewTrendingBooks}>Check them out!</button>
         </div>
         <div className="col-md-7 d-flex justify-content-center">
             <div className="trending-image-container">
@@ -161,7 +170,7 @@ function HomepageBanner() {
 
 function AboutUs() {
   return (
-    <div className='pt-5 pb-3 px-5 d-flex justify-content-center'>
+    <div className='row col-7 mx-auto d-flex justify-content-center'>
       <div className='text-center pt-1 px-1' style={{ backgroundColor: '#F6F1E9' }}>
         <h3>Our Promise</h3>
         <p>We will have all your favorite books. No matter what you're a fan of, from Mystery to Romance, Adventure, History, Anime, and more. Discover books including classics like Brave New World to modern favorites like Gone Girl.</p>
