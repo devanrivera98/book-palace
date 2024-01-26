@@ -104,14 +104,6 @@ function RecommendationModernClassics() {
   );
 }
 
-/* <figure>
-          <picture>
-            <img src="http://books.google.com/books/content?id=eq0n9Ck79ysC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api" alt="fun"/>
-          </picture>
-          <figcaption>Legend</figcaption>
-        </figure> */
-
-
 function RecommendationThisMonth() {
   const navigate = useNavigate()
   const containerRef = useRef(null);

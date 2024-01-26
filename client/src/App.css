@@ -42,7 +42,7 @@
   width: 80%;
   height: 275px;
   margin: auto;
-  background-color: bisque;
+  background-color: rgb(188, 188, 178);
   margin-top: 3rem;
   box-sizing: border-box;
 }
@@ -408,7 +408,6 @@ a {
       width: 80%;
       height: 200px;
       margin: auto;
-      background-color: bisque;
       margin-top: 3rem;
       box-sizing: border-box;
     }
@@ -427,7 +426,7 @@ a {
     .homepage-image {
       width: 600px;
       height: 100%;
-      margin: auto;
+      margin-bottom: 0;
     }
 
 
