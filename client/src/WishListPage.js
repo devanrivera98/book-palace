@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Wishlist from "./WishList";
+import Footer from "./Footer";
 
 export default function ViewWishlist() {
   const [view, setView] = useState([]);
@@ -44,7 +45,8 @@ export default function ViewWishlist() {
   }
 
   return (
-    <div className="container my-4 wishlist">
+    <>
+    <div className="container my-4 wishlist content">
       <div className="row d-flex justify-content-center text-center">
        <h1>WISHLIST</h1>
       </div>
@@ -52,6 +54,8 @@ export default function ViewWishlist() {
         {view[0] === undefined ? <h3 className="text-center pt-3">There is nothing to display here.</h3> : <Wishlist books={view}/>}
       </div>
     </div>
+    <Footer />
+    </>
   )
 
 }

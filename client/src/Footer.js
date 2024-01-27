@@ -1,7 +1,7 @@
-export default function Footer() {
+export default function Footer({placement}) {
   return (
     <>
-    <div className="footer-container mt-5 py-3">
+    <footer className={`${placement} footer-position footer-container mt-5 py-3`}>
       <div className="d-flex justify-content-center  footer-image-box">
           <a href="https://github.com/devanrivera98">
             <img className="mx-3 icon-image" src="images/github-logo-book.png" />
@@ -27,7 +27,7 @@ export default function Footer() {
       <div className="d-flex justify-content-center">
         <h6 className="text-center my-auto">@2024 Devan Rivera | All Rights Reserved</h6>
       </div>
-    </div>
+    </footer>
     </>
 
   )
