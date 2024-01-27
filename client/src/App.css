@@ -16,6 +16,23 @@
   cursor: pointer;
 }
 
+.footer-container {
+  background-color: #4b5c33;
+  color: white;
+}
+
+.icon-image {
+  width: 50px;
+}
+
+.footer-title {
+  color: black;
+}
+
+.footer-title:hover {
+  color: #0d6efd;
+}
+
 .banner-left-container {
   width: 100%;
   text-align: center;
