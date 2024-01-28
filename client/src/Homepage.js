@@ -83,7 +83,7 @@ function RecommendationModernClassics() {
       <picture>
         <img src={item.image} alt={item.title} />
       </picture>
-      <figcaption>{item.title}</figcaption>
+      <figcaption className="underline">{item.title}</figcaption>
       <p>By {item.author}</p>
       <p>${item.price.toFixed(2)}</p>
     </figure>
@@ -117,7 +117,7 @@ function RecommendationThisMonth() {
       <picture>
         <img src={item.image} alt={item.title} />
       </picture>
-      <figcaption>{item.title}</figcaption>
+      <figcaption className="underline">{item.title}</figcaption>
       <p>By {item.author}</p>
       <p>${item.price.toFixed(2)}</p>
     </figure>
