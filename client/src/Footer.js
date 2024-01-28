@@ -4,13 +4,13 @@ export default function Footer({placement}) {
     <footer className={`${placement} footer-position footer-container mt-5 py-3`}>
       <div className="d-flex justify-content-center  footer-image-box">
           <a href="https://github.com/devanrivera98">
-            <img className="mx-3 icon-image" src="images/github-logo-book.png" />
+            <img className="mx-3 icon-image rounded" src="images/github-logo-book.png" />
           </a>
           <a href="https://devanrivera.netlify.app/">
-            <img className="mx-3 icon-image bg-white" src="images/resume-icon.jpeg" />
+            <img className="mx-3 icon-image bg-white rounded" src="images/resume-icon.jpeg" />
           </a>
           <a href="https://www.linkedin.com/in/devanrivera/">
-            <img className="mx-3 icon-image" src="images/linkedin-logo.png" />
+            <img className="mx-3 icon-image rounded" src="images/linkedin-logo.png" />
           </a>
       </div>
       <div className="d-flex py-2 justify-content-center">
