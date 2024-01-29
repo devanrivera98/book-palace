@@ -44,7 +44,7 @@ function ResultsTable() {
   }
 
   return (
-    <div className="pt-4 row">
+    <div className="pt-4 row m-0">
       <h3 className="px-4 pb-4">Your Results</h3>
       <div className="d-flex justify-content-center">
         <div className="container-fluid row">
