@@ -44,6 +44,8 @@ export default function ViewWishlist() {
     )
   }
 
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
   return (
     <>
     <div className="container my-4 wishlist content">

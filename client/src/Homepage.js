@@ -14,6 +14,8 @@ import Footer from "./Footer";
 
 export default function Homepage() {
 
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
   return (
     <>
       <HomepageImage/>

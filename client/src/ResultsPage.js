@@ -2,6 +2,8 @@ import './App.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 export default function ResultsPage() {
 
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
 
   return (
     <ResultsTable/>

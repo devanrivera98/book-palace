@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function  MoreInfoPage() {
+
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
   return (
     <MoreInfo/>
   )

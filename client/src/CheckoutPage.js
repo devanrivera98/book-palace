@@ -73,6 +73,9 @@ export default function CheckoutCart() {
       </div>
     )
   }
+
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
   return (
     <>
       <div className="container cart-container content">
