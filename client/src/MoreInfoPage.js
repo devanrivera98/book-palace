@@ -140,7 +140,7 @@ function MoreInfo() {
   }
 
     async function addBook() {
-    const book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
+    const book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 4, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, quantity: 1 }
     checkingConditions(book);
     try {
       let allBooks = await checkingCart()
@@ -171,7 +171,7 @@ function MoreInfo() {
   }
 
   async function addToWishlist() {
-    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 0, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, description: 'There was no description found for this book.'};
+    let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 4, image: "https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif", price: 19.99, description: 'There was no description found for this book.'};
     checkingConditions(book);
     try {
       const response = await fetch((`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) });
@@ -206,7 +206,7 @@ function MoreInfo() {
         <div>
           <h1>{readBookObject.volumeInfo.title ? readBookObject.volumeInfo.title : 'Title Unknown'}</h1>
           <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
-          <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
+          <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 4}/5</p>
         </div>
         <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
         <div className='py-3'>
@@ -231,7 +231,7 @@ function MoreInfo() {
         <div>
           <h1>{readBookObject.title ? readBookObject.title : 'Title Unknown'}</h1>
           <h5>By {readBookObject.author ? readBookObject.author : 'Author Unknown'}</h5>
-          <p>Average Review: {readBookObject.rating ? readBookObject.rating : 'No Rating'}/5</p>
+          <p>Average Review: {readBookObject.rating ? readBookObject.rating : 4}/5</p>
         </div>
         <img className="more-info-image" alt="book" src={readBookObject.image ? readBookObject.image : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
         <div className='py-3'>
