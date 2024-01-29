@@ -15,8 +15,6 @@ export default function Header() {
     event.preventDefault();
     try {
       const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${process.env.REACT_APP_API_KEY}`)
-      // remember to swap the title search
-      // const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=inauthor:${search}&key=${process.env.REACT_APP_API_KEY}`)
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }

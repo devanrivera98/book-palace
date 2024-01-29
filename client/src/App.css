@@ -205,7 +205,6 @@ figure > figcaption {
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  /* background-image: url('../public/images/gray-background.jpeg'); */
   background-color: rgb(188, 188, 178);
 }
 
@@ -241,12 +240,6 @@ figure > figcaption {
 .trending-button:hover {
   background-color: rgb(67, 93, 37);
 }
-
-/* .recommended-books {
-  width: 85px !important;
-  cursor: pointer;
-} */
-
 
 .results-books {
   width: 150px !important;

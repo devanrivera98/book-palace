@@ -14,7 +14,6 @@ export default function  MoreInfoPage() {
 
 function MoreInfo() {
   const location = useLocation();
-  console.log(location.state)
   const navigate = useNavigate();
   const readBookObject = location.state;
   const [isInWishlist, setIsInWishlist] = useState(false);
@@ -251,27 +250,4 @@ function MoreInfo() {
     )
   }
 
-
-  // return (
-  //   <div className="container pt-4 text-center">
-  //     <div>
-  //       <h1>{readBookObject.volumeInfo.title ? readBookObject.volumeInfo.title : 'Title Unknown'}</h1>
-  //       <h5>By {readBookObject.volumeInfo.authors ? readBookObject.volumeInfo.authors : 'Author Unknown'}</h5>
-  //       <p>Average Review: {readBookObject.volumeInfo.averageRating ? readBookObject.volumeInfo.averageRating : 'No Rating'}/5</p>
-  //     </div>
-  //     <img className="more-info-image" alt="book" src={readBookObject.volumeInfo.imageLinks ? readBookObject.volumeInfo.imageLinks.thumbnail : 'https://blog.springshare.com/wp-content/uploads/2010/02/nc-md.gif'} />
-  //     <div className='py-3'>
-  //       <button onClick={isInWishlist ? viewWishlist : addToWishlist}><BsFillHeartFill/>{isInWishlist ? 'View Wishlist' : 'Add to Wishlist'}</button>
-  //     </div>
-  //     <div className="row justify-content-center">
-  //       <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) :  '19.99'}</h4>
-  //       <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
-  //       <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
-  //     </div>
-  //     <div className="pt-3 row justify-content-center">
-  //       <h1>Overview</h1>
-  //       <p className="col-10">{readBookObject.volumeInfo.description ? readBookObject.volumeInfo.description : 'Unfortunately, a book description was not found for this book.'}</p>
-  //     </div>
-  //   </div>
-  // )
 }

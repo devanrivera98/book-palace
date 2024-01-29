@@ -168,14 +168,3 @@ function HomepageBanner() {
     </>
   )
 }
-
-// function AboutUs() {
-//   return (
-//     <div className='row col-7 mx-auto d-flex justify-content-center'>
-//       <div className='text-center pt-1 px-1' style={{ backgroundColor: '#F6F1E9' }}>
-//         <h3>Our Promise</h3>
-//         <p>We will have all your favorite books. No matter what you're a fan of, from Mystery to Romance, Adventure, History, Anime, and more. Discover books including classics like Brave New World to modern favorites like Gone Girl.</p>
-//       </div>
-//     </div>
-//   )
-// }
