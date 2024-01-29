@@ -23,7 +23,7 @@ export default function EachAuthor({author, image, alt  }) {
       <div className="pointer-finger each-author mx-2 d-flex flex-column" onClick={() => findBooks(author)}>
         <img className="w-100 rounded" src={image} alt={alt}></img>
         <div className="flex-grow-1 d-flex justify-content-center align-items-center">
-          <h5 className="text-center">{author}</h5>
+          <h5 className="text-center pt-2 underline">{author}</h5>
         </div>
       </div>
     </>
