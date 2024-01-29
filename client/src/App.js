@@ -4,13 +4,14 @@ import ResultsPage from './ResultsPage';
 import MoreInfoPage from './MoreInfoPage';
 import CheckoutCart from './CheckoutPage';
 import ViewWishlist from './WishListPage';
+import Footer from './Footer';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 
 function App() {
 
   return (
-    <div>
+    <div className='app-container'>
       <Routes>
         <Route path='/' element={<Header />}>
           <Route index element={<Homepage />}/>

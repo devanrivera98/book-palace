@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import CartList from './CartList';
+import Footer from "./Footer";
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
@@ -73,9 +74,11 @@ export default function CheckoutCart() {
     )
   }
 
+  document.body.scrollTop = document.documentElement.scrollTop = 0;
+
   return (
     <>
-      <div className="container">
+      <div className="container cart-container content">
         <div className="py-4 d-flex justify-content-center text-center">
           <h1>CART</h1>
         </div>
@@ -109,10 +112,11 @@ export default function CheckoutCart() {
         }
       </div>
       {cart.length === 0 ? <></> :
-        <div className="d-flex justify-content-center py-4 cart-list col-lg-10">
+        <div className="d-flex justify-content-center py-4 cart-list col-10">
           <button className="col-10 btn btn-block btn-primary">CHECKOUT</button>
         </div>
       }
+      <Footer />
     </>
   )
 }
