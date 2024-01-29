@@ -14,7 +14,7 @@ export default function Footer({placement}) {
           </a>
       </div>
       <div className="d-flex py-2 justify-content-center">
-        <a href="/home">
+        <a href="/">
           <h4 className="px-3 my-auto footer-title">Home</h4>
         </a>
         <a href="/wishlist">
