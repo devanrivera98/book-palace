@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import CartList from './CartList';
 import Footer from "./Footer";
 
@@ -9,10 +10,13 @@ export default function CheckoutCart() {
   const [total, setTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState();
+  const navigate = useNavigate()
 
   useEffect(() => {
     getRequest();
   }, [])
+
+  console.log(cart)
 
   async function getRequest() {
     try {
@@ -58,6 +62,16 @@ export default function CheckoutCart() {
     catch (error) {
       console.log(`There was a delete error: ${error.message}`);
     }
+  }
+
+  function viewPayment() {
+    const paymentState = {
+      items: cart,
+      subtotal: subtotal,
+      total: total,
+      amountItems: amountItems
+    }
+    navigate('/payment', {state: paymentState})
   }
 
   if (isLoading) return (
@@ -113,7 +127,7 @@ export default function CheckoutCart() {
       </div>
       {cart.length === 0 ? <></> :
         <div className="d-flex justify-content-center py-4 cart-list col-10">
-          <button className="col-10 btn btn-block btn-primary">CHECKOUT</button>
+          <button className="col-10 btn btn-block btn-primary" onClick={viewPayment}>CHECKOUT</button>
         </div>
       }
       <Footer />

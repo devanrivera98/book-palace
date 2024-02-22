@@ -4,6 +4,7 @@ import ResultsPage from './ResultsPage';
 import MoreInfoPage from './MoreInfoPage';
 import CheckoutCart from './CheckoutPage';
 import ViewWishlist from './WishListPage';
+import PaymentPage from './PaymentPage';
 import Footer from './Footer';
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
@@ -19,6 +20,7 @@ function App() {
           <Route path='info' element={<MoreInfoPage/>}/>
           <Route path='checkout' element={<CheckoutCart/>}/>
           <Route path='wishlist' element={<ViewWishlist/>}/>
+          <Route path='payment' element={<PaymentPage/>}/>
         </Route>
       </Routes>
     </div>
