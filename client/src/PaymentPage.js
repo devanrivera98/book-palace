@@ -18,43 +18,44 @@ export default function PaymentPage() {
         <h1 className="pb-1">Checkout</h1>
         <p className="d-lg-none">{amountItems} item: ${total}</p>
       </div>
-      <aside className="checkout-bag">
+      <aside className="checkout-bag d-none d-lg-block">
         <section>
-          <h3>In your Bag</h3>
-          <div>
+          <h3 className="py-2">In your Bag</h3>
+          <div className="px-1">
               <div className="d-flex justify-content-between">
                 <div>
-                  <p>Subtotal</p>
+                  <span>Subtotal</span>
                 </div>
                 <div>
-                  <p>${subtotal}</p>
+                  <span>${subtotal}</span>
                 </div>
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <p>Delivery Fee</p>
+                  <span>Delivery Fee</span>
                 </div>
                 <div>
-                  <p>$4.99</p>
+                  <span>$4.99</span>
                 </div>
               </div>
               <div className="d-flex justify-content-between">
                 <div>
-                  <p><b>Total</b></p>
+                  <span><b>Total</b></span>
                 </div>
                 <div>
-                  <p>${total}</p>
+                  <span>${total}</span>
                 </div>
               </div>
           </div>
-          <div>
+          <hr></hr>
+          <div className="py-2">
             <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center px-1">
             <img className="w-25" src={items[0].image}></img>
             <div className="px-4">
               <h5>{items[0].title}</h5>
-              <p>Qty: {items[0].quantity} @ ${items[0].price}</p>
+              <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
               <p>Price: ${items[0].quantity * items[0].price}</p>
             </div>
           </div>
