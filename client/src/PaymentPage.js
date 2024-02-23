@@ -18,10 +18,20 @@ export default function PaymentPage() {
         <h1 className="pb-1">Checkout</h1>
         <p className="d-lg-none">{amountItems} item: ${total}</p>
       </div>
-      <aside className="checkout-bag d-none d-lg-block">
+      <div>
         <section>
-          <h3 className="py-2">In your Bag</h3>
-          <div className="px-1">
+          <hr></hr>
+          <header className="d-flex justify-content-between">
+            <h2>In your Bag</h2>
+            <button></button>
+          </header>
+          <h3>Arrives by {estimatedMonth} {estimatedDay}</h3>
+          <hr></hr>
+        </section>
+        <aside className="checkout-bag d-none d-lg-block">
+          <section>
+            <h3 className="py-2">In your Bag</h3>
+            <div className="px-1">
               <div className="d-flex justify-content-between">
                 <div>
                   <span>Subtotal</span>
@@ -46,21 +56,22 @@ export default function PaymentPage() {
                   <span>${total}</span>
                 </div>
               </div>
-          </div>
-          <hr></hr>
-          <div className="py-2">
-            <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
-          </div>
-          <div className="d-flex align-items-center px-1">
-            <img className="w-25" src={items[0].image}></img>
-            <div className="px-4">
-              <h5>{items[0].title}</h5>
-              <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
-              <p>Price: ${items[0].quantity * items[0].price}</p>
             </div>
-          </div>
-        </section>
-      </aside>
+            <hr></hr>
+            <div className="py-2">
+              <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
+            </div>
+            <div className="d-flex align-items-center px-1">
+              <img className="w-25" src={items[0].image}></img>
+              <div className="px-4">
+                <h5>{items[0].title}</h5>
+                <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
+                <p>Price: ${items[0].quantity * items[0].price}</p>
+              </div>
+            </div>
+          </section>
+        </aside>
+      </div>
     </div>
     </>
   )
