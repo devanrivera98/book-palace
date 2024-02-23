@@ -9,8 +9,7 @@ export default function PaymentPage() {
   let deliveryDate = new Date(currentDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000)
   let estimatedDay = deliveryDate.getDate();
   let estimatedMonth = deliveryDate.toLocaleString('default', {month: 'long'})
-  console.log(estimatedDay)
-  console.log(checkoutState)
+  console.log(items)
 
   return (
     <>
@@ -19,9 +18,9 @@ export default function PaymentPage() {
         <h1 className="pb-1">Checkout</h1>
         <p className="d-lg-none">{amountItems} item: ${total}</p>
       </div>
-      <aside>
+      <aside className="checkout-bag">
         <section>
-          <h1>In your Bag</h1>
+          <h3>In your Bag</h3>
           <div>
               <div className="d-flex justify-content-between">
                 <div>
@@ -49,7 +48,15 @@ export default function PaymentPage() {
               </div>
           </div>
           <div>
-            <h2>Arrives by {estimatedMonth} {estimatedDay}</h2>
+            <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
+          </div>
+          <div className="d-flex align-items-center">
+            <img className="w-25" src={items[0].image}></img>
+            <div className="px-4">
+              <h5>{items[0].title}</h5>
+              <p>Qty: {items[0].quantity} @ ${items[0].price}</p>
+              <p>Price: ${items[0].quantity * items[0].price}</p>
+            </div>
           </div>
         </section>
       </aside>
