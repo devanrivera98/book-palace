@@ -30,11 +30,11 @@ export default function PaymentPage() {
     <>
     <div>
       <div className="d-flex justify-content-center align-items-center flex-column py-4">
-        <h1 className="pb-1">Checkout</h1>
-        <p className="d-lg-none">{amountItems} item: ${total}</p>
+        <h1 className="pb-1 m-0">Checkout</h1>
+        <p className="d-lg-none m-0">{amountItems} item: ${total}</p>
       </div>
-      <div>
-        <CheckoutYourBag isActive={activeIndex} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
+      <div className="payment-accordian-container">
+        <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
         {/* <section>
           <hr></hr>
           <header className="d-flex justify-content-between">

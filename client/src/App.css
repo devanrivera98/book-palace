@@ -293,6 +293,13 @@ li {
   width: 25%;
 }
 
+.payment-accordian-container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 a {
   text-decoration: none !important;
 }
