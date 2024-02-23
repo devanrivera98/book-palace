@@ -1,4 +1,7 @@
 import { useLocation } from "react-router-dom"
+import { useState } from "react";
+import CheckoutSide from "./components/checkoutSide";
+import CheckoutYourBag from "./components/checkoutYourBag";
 
 export default function PaymentPage() {
   const location = useLocation();
@@ -9,7 +12,19 @@ export default function PaymentPage() {
   let deliveryDate = new Date(currentDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000)
   let estimatedDay = deliveryDate.getDate();
   let estimatedMonth = deliveryDate.toLocaleString('default', {month: 'long'})
+  const [activeIndex, setActiveIndex] = useState(0);
   console.log(items)
+
+  function accordianSwitch(num) {
+    if (activeIndex === false) {
+      setActiveIndex(num)
+    } else if (activeIndex === num) {
+      setActiveIndex(false)
+    } else {
+      setActiveIndex(num)
+    }
+    console.log(activeIndex)
+  }
 
   return (
     <>
@@ -19,58 +34,20 @@ export default function PaymentPage() {
         <p className="d-lg-none">{amountItems} item: ${total}</p>
       </div>
       <div>
-        <section>
+        <CheckoutYourBag isActive={activeIndex} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
+        {/* <section>
           <hr></hr>
           <header className="d-flex justify-content-between">
             <h2>In your Bag</h2>
-            <button></button>
+            <button>
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" data-attr="caretDown"><path stroke="currentColor" strokeWidth="1.5" d="M18.966 8.476L12 15.443 5.033 8.476"></path></svg>
+
+            </button>
           </header>
           <h3>Arrives by {estimatedMonth} {estimatedDay}</h3>
           <hr></hr>
-        </section>
-        <aside className="checkout-bag d-none d-lg-block">
-          <section>
-            <h3 className="py-2">In your Bag</h3>
-            <div className="px-1">
-              <div className="d-flex justify-content-between">
-                <div>
-                  <span>Subtotal</span>
-                </div>
-                <div>
-                  <span>${subtotal}</span>
-                </div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>
-                  <span>Delivery Fee</span>
-                </div>
-                <div>
-                  <span>$4.99</span>
-                </div>
-              </div>
-              <div className="d-flex justify-content-between">
-                <div>
-                  <span><b>Total</b></span>
-                </div>
-                <div>
-                  <span>${total}</span>
-                </div>
-              </div>
-            </div>
-            <hr></hr>
-            <div className="py-2">
-              <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
-            </div>
-            <div className="d-flex align-items-center px-1">
-              <img className="w-25" src={items[0].image}></img>
-              <div className="px-4">
-                <h5>{items[0].title}</h5>
-                <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
-                <p>Price: ${items[0].quantity * items[0].price}</p>
-              </div>
-            </div>
-          </section>
-        </aside>
+        </section> */}
+        <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
       </div>
     </div>
     </>

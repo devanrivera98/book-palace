@@ -1,4 +1,5 @@
 export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMonth, items}) {
+  
   return (
     <aside className="checkout-bag d-none d-lg-block">
       <section>
