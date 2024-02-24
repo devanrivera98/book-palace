@@ -1,5 +1,17 @@
 export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estimatedDay, items}) {
 
+  const bagMap = items.map((item, index) =>
+    <div className={index === items.length - 1 ? 'd-flex pt-2' : 'd-flex py-2'} key={item.isbn}>
+      <div style={{ width: 100, height: 150 }}>
+        <img className="w-100 h-100" src={item.image} />
+      </div>
+      <div className="px-3">
+        <h5>{item.title}</h5>
+        <span>Qty: {item.quantity} @ ${item.price}</span>
+        <p>Price: ${item.quantity * item.price}</p>
+      </div>
+    </div>
+  )
 
   return (
     <section>
@@ -15,7 +27,8 @@ export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estim
       {isActive === 0 ?
         <div>
           <h4>Arrives by {estimatedMonth} {estimatedDay}</h4>
-          <div className="d-flex">
+          {bagMap}
+          {/* <div className="d-flex">
             <div style={{ width: 100 }}>
               <img className="w-100" src={items[0].image} />
             </div>
@@ -24,7 +37,7 @@ export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estim
               <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
               <p>Price: ${items[0].quantity * items[0].price}</p>
             </div>
-          </div>
+          </div> */}
         </div>
         :
         <></>
