@@ -28,16 +28,6 @@ export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estim
         <div>
           <h4>Arrives by {estimatedMonth} {estimatedDay}</h4>
           {bagMap}
-          {/* <div className="d-flex">
-            <div style={{ width: 100 }}>
-              <img className="w-100" src={items[0].image} />
-            </div>
-            <div className="px-3">
-              <h5>{items[0].title}</h5>
-              <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
-              <p>Price: ${items[0].quantity * items[0].price}</p>
-            </div>
-          </div> */}
         </div>
         :
         <></>

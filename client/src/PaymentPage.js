@@ -1,7 +1,8 @@
 import { useLocation } from "react-router-dom"
 import { useState } from "react";
-import CheckoutSide from "./components/checkoutSide";
-import CheckoutYourBag from "./components/checkoutYourBag";
+import CheckoutSide from "./components/CheckoutSide";
+import CheckoutYourBag from "./components/CheckoutYourBag";
+import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
 
 export default function PaymentPage() {
   const location = useLocation();
@@ -35,6 +36,7 @@ export default function PaymentPage() {
       </div>
       <div className="payment-accordian-container">
         <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
+        <CheckoutDeliverInfo isActive={activeIndex}/>
         {/* <section>
           <hr></hr>
           <header className="d-flex justify-content-between">
