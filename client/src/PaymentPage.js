@@ -36,7 +36,7 @@ export default function PaymentPage() {
       </div>
       <div className="payment-accordian-container">
         <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
-        <CheckoutDeliverInfo isActive={activeIndex}/>
+        <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)}/>
         {/* <section>
           <hr></hr>
           <header className="d-flex justify-content-between">
