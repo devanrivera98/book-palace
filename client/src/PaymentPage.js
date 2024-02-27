@@ -3,6 +3,7 @@ import { useState } from "react";
 import CheckoutSide from "./components/CheckoutSide";
 import CheckoutYourBag from "./components/CheckoutYourBag";
 import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
+import CheckoutPaymentInfo from "./components/CheckoutPaymentInfo";
 
 export default function PaymentPage() {
   const location = useLocation();
