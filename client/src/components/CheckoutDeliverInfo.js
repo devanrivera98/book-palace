@@ -1,4 +1,5 @@
 export default function CheckoutDeliverInfo({isActive, onShow}) {
+
   return (
     <div>
       <div className="d-flex justify-content-between">
@@ -9,9 +10,48 @@ export default function CheckoutDeliverInfo({isActive, onShow}) {
           </svg>
         </button>
       </div>
-      <form>
-
-      </form>
+      {isActive === 1 ?
+        <form className="py-3">
+          <div>
+            <div className="d-flex flex-wrap">
+              <div className="w-100 pb-3">
+                <input placeholder="First Name" className="w-100 py-2 rounded" required />
+              </div>
+              <div className="w-100 py-3">
+                <input placeholder="Last Name" className="w-100 py-2 rounded" required />
+              </div>
+            </div>
+            <div>
+              <div className="w-100 py-3">
+                <input placeholder="Address" className="w-100 py-2 rounded" required />
+              </div>
+            <div>
+              <div>
+                <div className="w-100 py-3">
+                  <input placeholder="City" className="w-100 py-2 rounded" required />
+                </div>
+                <div className="w-100 py-3">
+                  <input placeholder="State" className="w-100 py-2 rounded" required />
+                </div>
+                <div className="w-100 py-3">
+                  <input placeholder="Postal Code" className="w-100 py-2 rounded" required />
+                </div>
+              </div>
+              <div>
+                <div className="w-100 py-3">
+                  <input placeholder="Email" className="w-100 py-2 rounded" required />
+                </div>
+                <div className="w-100 pt-3">
+                  <input placeholder="Phone Number" className="w-100 py-2 rounded" required />
+                </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </form>
+        :
+        <></>
+      }
       <hr></hr>
     </div>
   )
