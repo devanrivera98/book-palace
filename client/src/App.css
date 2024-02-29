@@ -300,6 +300,10 @@ li {
   margin: 0 auto;
 }
 
+.payment-box-container {
+  width: 95%;
+}
+
 a {
   text-decoration: none !important;
 }
