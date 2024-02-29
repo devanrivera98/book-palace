@@ -2,7 +2,7 @@ export default function CheckoutPaymentInfo({onShow, isActive }) {
 
  return (
   <div>
-    <div>
+    <div className="d-flex justify-content-between">
       <h2 className="m-0">Payment</h2>
        <button onClick={onShow}>
          <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" data-attr={isActive === 2 ? "caretDown" : "caretUp"}>
@@ -12,7 +12,9 @@ export default function CheckoutPaymentInfo({onShow, isActive }) {
     </div>
     { isActive === 2 ?
     <div>
-      
+      <div>
+        <input placeholder="Card Number" />
+      </div>
     </div>
     :
     <></>
