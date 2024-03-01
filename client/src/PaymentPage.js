@@ -19,9 +19,10 @@ export default function PaymentPage() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [formData, setFormData] = useState({
     cardNumber: '',
-    expirationData: '',
+    expirationDate: '',
     cvv: '',
   })
+  console.log(formData)
 
   const updatePaymentInfo = (paymentInfo) => {
     setFormData((prevData) => ({

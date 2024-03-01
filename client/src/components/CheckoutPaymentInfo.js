@@ -1,7 +1,25 @@
+import { useState, useEffect } from "react";
+
 export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo, paymentInfo }) {
 
   const {cardNumber, expirationDate, cvv} = paymentInfo
+  const [isFormValid, setIsFormValid] = useState(false)
   console.log(expirationDate)
+
+  useEffect(() => {
+
+    const isValidCardNumber = cardNumber.match(/^\d{16}$/);
+    console.log(isValidCardNumber)
+    const isValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
+    const isValidCvv = cvv.match(/^\d{3,4}$/);
+
+    if(isValidCardNumber && isValidExpiryDate && isValidCvv ) {
+      setIsFormValid(true)
+    } else {
+      setIsFormValid(false)
+    }
+
+  }, [cardNumber, expirationDate, cvv]);
 
  return (
   <div>
@@ -16,14 +34,9 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
     { isActive === 2 ?
     <div>
       <div className="border d-flex flex-column my-4">
-        {/* <div>
-          <div>
-            <h5>Add payment</h5>
-          </div>
-        </div> */}
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
           <div className="w-100 py-3">
-            <input className="w-100 py-2" pattern="/d{16}" maxLength={16} placeholder="Card Number" required onChange={(e) => updatePaymentInfo({cardNumber: e.target.value})}/>
+            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="\d{16}" maxLength={16} placeholder="Card Number" required onChange={(e) => updatePaymentInfo({cardNumber: e.target.value})}/>
           </div>
           <div className="w-100 py-3">
             <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentInfo({expirationDate: e.target.value})}/>
@@ -34,7 +47,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
         </div>
       </div>
       <div className="d-flex">
-        <button className="mx-auto">Continue to Order Review</button>
+        <button className={`mx-auto checkout-button ${isFormValid ? 'dark-checkout-button' : 'light-checkout-button'}`}>Continue to Order Review</button>
       </div>
     </div>
     :

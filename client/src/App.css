@@ -293,6 +293,22 @@ li {
   width: 25%;
 }
 
+.checkout-button {
+  border: none;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.light-checkout-button {
+  background-color: #E5E5E5;
+    color: #B1B1B3;
+}
+
+.dark-checkout-button {
+  background-color: rgb(17, 17, 17);
+  color: white;
+}
+
 .payment-accordian-container {
   width: 95%;
   display: flex;
