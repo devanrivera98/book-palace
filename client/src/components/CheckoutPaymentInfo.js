@@ -49,7 +49,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
       <div className="border d-flex flex-column my-4">
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
           <div className="w-100 py-3">
-            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={19} placeholder="Card Number" required  onChange={(e) => handleCreditCard(e.target.value)} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
+            <input className="w-100 py-2" type="text" inputMode="numeric" maxLength={19} placeholder="Card Number" required  onChange={(e) => handleCreditCard(e.target.value)} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
               />
           </div>
           <div className="w-100 py-3">
