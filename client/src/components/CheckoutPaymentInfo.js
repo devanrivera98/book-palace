@@ -8,7 +8,8 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
 
   useEffect(() => {
 
-    const isValidCardNumber = cardNumber.match(/^\d{4}( \d{4}){3}$/);
+    const isValidCardNumber = cardNumber.replace(/\s/g, '').match(/^\d{16}$/);
+
     console.log(isValidCardNumber)
     const isValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
     const isValidCvv = cvv.match(/^\d{3,4}$/);
@@ -48,7 +49,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
       <div className="border d-flex flex-column my-4">
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
           <div className="w-100 py-3">
-            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={19} placeholder="Card Number" required onChange={(e) => handleCreditCard(e.target.value)} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
+            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={19} placeholder="Card Number" required  onChange={(e) => handleCreditCard(e.target.value)} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
               />
           </div>
           <div className="w-100 py-3">
@@ -60,7 +61,12 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
         </div>
       </div>
       <div className="d-flex">
-        <button type="submit" className={`mx-auto checkout-button ${isFormValid ? 'dark-checkout-button' : 'light-checkout-button'}`}>Continue to Order Review</button>
+        {isFormValid ?
+        <button type="submit" className='mx-auto checkout-button dark-checkout-button'>Continue to Order Review</button>
+        :
+        <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Order Review</button>
+      }
+        {/* <button type="submit" className={`mx-auto checkout-button ${isFormValid ? 'dark-checkout-button' : 'light-checkout-button'}`}>Continue to Order Review</button> */}
       </div>
     </div>
     :
