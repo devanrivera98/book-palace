@@ -8,7 +8,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
 
   useEffect(() => {
 
-    const isValidCardNumber = cardNumber.match(/^\d{16}$/);
+    const isValidCardNumber = cardNumber.match(/^\d{4}( \d{4}){3}$/);
     console.log(isValidCardNumber)
     const isValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
     const isValidCvv = cvv.match(/^\d{3,4}$/);
@@ -20,6 +20,17 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
     }
 
   }, [cardNumber, expirationDate, cvv]);
+
+  function handleCreditCard(e) {
+    const formattedValue = e.target.value.replace(/(.{4})/g, '$1 ').trim();
+    updatePaymentInfo({ cardNumber: formattedValue })
+  }
+
+  function handleNumbericInputs(e) {
+    if (!/[0-9]/.test(e.key) && e.key !== "Backspace" && e.key !== "Tab" && e.key !== "ArrowLeft" && e.key !== "ArrowRight" && e.key !== "Delete" && e.key !== "Enter") {
+      e.preventDefault();
+    }
+  }
 
  return (
   <div>
@@ -36,13 +47,14 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
       <div className="border d-flex flex-column my-4">
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
           <div className="w-100 py-3">
-            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="\d{16}" maxLength={16} placeholder="Card Number" required onChange={(e) => updatePaymentInfo({cardNumber: e.target.value})}/>
+            <input className="w-100 py-2" type="text" inputMode="numeric" pattern="[0-9]*" maxLength={19} placeholder="Card Number" required onChange={(e) => updatePaymentInfo({cardNumber: e.target.value})} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
+              />
           </div>
           <div className="w-100 py-3">
-            <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentInfo({expirationDate: e.target.value})}/>
+               <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentInfo({ expirationDate: e.target.value })} value={expirationDate} />
           </div>
           <div className="w-100 py-3">
-            <input className="w-100 py-2" placeholder="CVV" required onChange={(e) => updatePaymentInfo({cvv: e.target.value})}  />
+               <input className="w-100 py-2" placeholder="CVV" maxLength={4} required onChange={(e) => updatePaymentInfo({ cvv: e.target.value })} value={cvv} />
           </div>
         </div>
       </div>
