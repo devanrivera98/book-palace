@@ -1,4 +1,7 @@
-export default function CheckoutPaymentInfo({onShow, isActive }) {
+export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo, paymentInfo }) {
+
+  const {cardNumber, expirationDate, cvv} = paymentInfo
+  console.log(expirationDate)
 
  return (
   <div>
@@ -20,13 +23,13 @@ export default function CheckoutPaymentInfo({onShow, isActive }) {
         </div> */}
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
           <div className="w-100 py-3">
-            <input className="w-100 py-2" placeholder="Card Number" />
+            <input className="w-100 py-2" pattern="/d{16}" maxLength={16} placeholder="Card Number" required onChange={(e) => updatePaymentInfo({cardNumber: e.target.value})}/>
           </div>
           <div className="w-100 py-3">
-            <input className="w-100 py-2" placeholder="MM/YY" />
+            <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentInfo({expirationDate: e.target.value})}/>
           </div>
           <div className="w-100 py-3">
-            <input className="w-100 py-2" placeholder="CVV" />
+            <input className="w-100 py-2" placeholder="CVV" required onChange={(e) => updatePaymentInfo({cvv: e.target.value})}  />
           </div>
         </div>
       </div>

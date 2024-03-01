@@ -11,8 +11,8 @@ export default function CheckoutDeliverInfo({isActive, onShow}) {
         </button>
       </div>
       {isActive === 1 ?
-        <form className="py-3">
-          <div>
+        // <form className="py-3">
+          <div className="py-3">
             <div className="d-flex flex-wrap">
               <div className="w-100 pb-3">
                 <input placeholder="First Name" className="w-100 py-2 rounded" required />
@@ -48,7 +48,7 @@ export default function CheckoutDeliverInfo({isActive, onShow}) {
             </div>
             </div>
           </div>
-        </form>
+        // </form>
         :
         <></>
       }

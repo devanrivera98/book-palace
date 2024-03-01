@@ -14,8 +14,21 @@ export default function PaymentPage() {
   let deliveryDate = new Date(currentDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000)
   let estimatedDay = deliveryDate.getDate();
   let estimatedMonth = deliveryDate.toLocaleString('default', {month: 'long'})
+
+
   const [activeIndex, setActiveIndex] = useState(0);
-  console.log(items)
+  const [formData, setFormData] = useState({
+    cardNumber: '',
+    expirationData: '',
+    cvv: '',
+  })
+
+  const updatePaymentInfo = (paymentInfo) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ...paymentInfo
+    }))
+  }
 
   function accordianSwitch(num) {
     if (activeIndex === false) {
@@ -28,6 +41,10 @@ export default function PaymentPage() {
     console.log(activeIndex)
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
+
   return (
     <>
     <div>
@@ -36,9 +53,14 @@ export default function PaymentPage() {
         <p className="d-lg-none m-0">{amountItems} item: ${total}</p>
       </div>
       <div className="payment-accordian-container">
-        <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
+        <form onSubmit={handleSubmit}>
+          <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
+          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} />
+          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} />
+        </form>
+        {/* <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
         <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)}/>
-        <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} />
+        <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} /> */}
         {/* <section>
           <hr></hr>
           <header className="d-flex justify-content-between">
