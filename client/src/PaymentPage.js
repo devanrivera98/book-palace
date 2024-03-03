@@ -18,6 +18,14 @@ export default function PaymentPage() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    address: '',
+    city:'',
+    state: '',
+    postalCode: '',
+    email: '',
+    phoneNumber: '',
     cardNumber: '',
     expirationDate: '',
     cvv: '',
@@ -54,26 +62,11 @@ export default function PaymentPage() {
         <p className="d-lg-none m-0">{amountItems} item: ${total}</p>
       </div>
       <div className="payment-accordian-container">
-        <form onSubmit={handleSubmit}>
+        <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
-          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} />
+          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} />
           <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} />
         </form>
-        {/* <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)}/>
-        <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)}/>
-        <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} /> */}
-        {/* <section>
-          <hr></hr>
-          <header className="d-flex justify-content-between">
-            <h2>In your Bag</h2>
-            <button>
-                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" data-attr="caretDown"><path stroke="currentColor" strokeWidth="1.5" d="M18.966 8.476L12 15.443 5.033 8.476"></path></svg>
-
-            </button>
-          </header>
-          <h3>Arrives by {estimatedMonth} {estimatedDay}</h3>
-          <hr></hr>
-        </section> */}
         <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
       </div>
     </div>
