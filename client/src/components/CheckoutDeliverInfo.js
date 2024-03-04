@@ -3,8 +3,17 @@ import { useState, useEffect } from "react"
 export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo}) {
 
   const {firstName, lastName, address, city, state, postalCode, email, phoneNumber } = paymentInfo
+  const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
+  const [isDeliveryValid, setIsDeliveryValid] = useState(false);
 
   useEffect(() => {
+
+    if (deliveryProps.every(prop => prop.length > 0)) {
+      setIsDeliveryValid(true)
+    } else {
+      setIsDeliveryValid(false)
+    }
+
 
   }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber])
 
@@ -55,6 +64,12 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo
                 </div>
               </div>
             </div>
+            </div>
+            <div className="d-flex pt-4">
+            {isDeliveryValid ? <button type="submit" className='mx-auto checkout-button dark-checkout-button'>Continue to Add Payment</button>
+            :
+            <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Add Payment</button>
+            }
             </div>
           </div>
         :
