@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react"
 
-export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo}) {
+export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo, updateDeliveryInfo, isDeliveryValid}) {
 
   const {firstName, lastName, address, city, state, postalCode, email, phoneNumber } = paymentInfo
-  const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
-  const [isDeliveryValid, setIsDeliveryValid] = useState(false);
+  // const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
+  // const [isDeliveryValid, setIsDeliveryValid] = useState(false);
 
   useEffect(() => {
 
-    if (deliveryProps.every(prop => prop.length > 0)) {
-      setIsDeliveryValid(true)
-    } else {
-      setIsDeliveryValid(false)
-    }
+    updateDeliveryInfo()
+
+    // if (deliveryProps.every(prop => prop.length > 0)) {
+    //   setIsDeliveryValid(true)
+    // } else {
+    //   setIsDeliveryValid(false)
+    // }
 
 
   }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber])

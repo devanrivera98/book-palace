@@ -32,6 +32,18 @@ export default function PaymentPage() {
   })
   console.log(formData)
 
+  const { firstName, lastName, address, city, state, postalCode, email, phoneNumber } = formData
+  const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
+  const [isDeliveryValid, setIsDeliveryValid] = useState(false);
+
+  const updateDeliveryInfo = () => {if (deliveryProps.every(prop => prop.length > 0)) {
+    setIsDeliveryValid(true)
+  } else {
+    setIsDeliveryValid(false)
+  }
+  }
+  console.log(isDeliveryValid)
+
   const updatePaymentInfo = (paymentInfo) => {
     setFormData((prevData) => ({
       ...prevData,
@@ -64,7 +76,7 @@ export default function PaymentPage() {
       <div className="payment-accordian-container">
         <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
-          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} />
+          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} />
           <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} />
         </form>
         <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
