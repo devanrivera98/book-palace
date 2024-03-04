@@ -66,7 +66,6 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
         :
         <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Order Review</button>
       }
-        {/* <button type="submit" className={`mx-auto checkout-button ${isFormValid ? 'dark-checkout-button' : 'light-checkout-button'}`}>Continue to Order Review</button> */}
       </div>
     </div>
     :
