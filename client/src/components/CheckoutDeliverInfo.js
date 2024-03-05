@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo, updateDeliveryInfo, isDeliveryValid}) {
+export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo, updateDeliveryInfo, isDeliveryValid, continueToPayment}) {
 
   const {firstName, lastName, address, city, state, postalCode, email, phoneNumber } = paymentInfo
   // const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
@@ -68,7 +68,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo
             </div>
             </div>
             <div className="d-flex pt-4">
-            {isDeliveryValid ? <button type="submit" className='mx-auto checkout-button dark-checkout-button'>Continue to Add Payment</button>
+            {isDeliveryValid ? <button type="submit" className='mx-auto checkout-button dark-checkout-button' onClick={continueToPayment}>Continue to Add Payment</button>
             :
             <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Add Payment</button>
             }

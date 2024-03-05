@@ -289,6 +289,10 @@ li {
   cursor: pointer;
 }
 
+.grey-text {
+  color: gray;
+}
+
 .checkout-bag {
   width: 25%;
 }
