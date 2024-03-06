@@ -4,6 +4,7 @@ import CheckoutSide from "./components/CheckoutSide";
 import CheckoutYourBag from "./components/CheckoutYourBag";
 import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
 import CheckoutPaymentInfo from "./components/CheckoutPaymentInfo";
+import CheckoutOrderReview from "./components/CheckoutOrderReview";
 
 export default function PaymentPage() {
   const location = useLocation();
@@ -95,6 +96,7 @@ export default function PaymentPage() {
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
           <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
           <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid} />
+          <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} />
         </form>
         <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
       </div>
