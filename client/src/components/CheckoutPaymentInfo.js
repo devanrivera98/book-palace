@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm, updatePaymentInfo, paymentInfo, isDeliveryValid, isPaymentValid }) {
+export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm, updatePaymentInfo, paymentInfo, isDeliveryValid, isPaymentValid, continueToOrderReview }) {
 
   const {cardNumber, expirationDate, cvv} = paymentInfo
   const [isFormValid, setIsFormValid] = useState(false)
@@ -61,7 +61,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
       </div>
       <div className="d-flex">
         {isPaymentValid ?
-        <button type="submit" className='mx-auto checkout-button dark-checkout-button'>Continue to Order Review</button>
+        <button type="submit" className='mx-auto checkout-button dark-checkout-button' onClick={continueToOrderReview}>Continue to Order Review</button>
         :
         <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Order Review</button>
       }
