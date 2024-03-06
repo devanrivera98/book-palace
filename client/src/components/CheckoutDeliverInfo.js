@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo, paymentInfo, updateDeliveryInfo, isDeliveryValid, continueToPayment}) {
+export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm, paymentInfo, updateDeliveryInfo, isDeliveryValid, continueToPayment}) {
 
   const {firstName, lastName, address, city, state, postalCode, email, phoneNumber } = paymentInfo
   // const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
@@ -35,34 +35,34 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentInfo
           <div className="py-3">
             <div className="d-flex flex-wrap">
               <div className="w-100 pb-3">
-                <input type='text' name="firstName" placeholder="First Name" className="w-100 py-2 rounded" required value={firstName} onChange={(e) => updatePaymentInfo({firstName: e.target.value})}/>
+                <input type='text' name="firstName" placeholder="First Name" className="w-100 py-2 rounded" required value={firstName} onChange={(e) => updatePaymentForm({firstName: e.target.value})}/>
               </div>
               <div className="w-100 py-3">
-                <input placeholder="Last Name" className="w-100 py-2 rounded" required value={lastName} onChange={(e) => updatePaymentInfo({lastName: e.target.value})} />
+                <input placeholder="Last Name" className="w-100 py-2 rounded" required value={lastName} onChange={(e) => updatePaymentForm({lastName: e.target.value})} />
               </div>
             </div>
             <div>
               <div className="w-100 py-3">
-                <input placeholder="Address" className="w-100 py-2 rounded" required value={address} onChange={(e) => updatePaymentInfo({address: e.target.value})}/>
+                <input placeholder="Address" className="w-100 py-2 rounded" required value={address} onChange={(e) => updatePaymentForm({address: e.target.value})}/>
               </div>
             <div>
               <div>
                 <div className="w-100 py-3">
-                  <input placeholder="City" className="w-100 py-2 rounded" required value={city} onChange={(e) => updatePaymentInfo({ city: e.target.value })} />
+                  <input placeholder="City" className="w-100 py-2 rounded" required value={city} onChange={(e) => updatePaymentForm({ city: e.target.value })} />
                 </div>
                 <div className="w-100 py-3">
-                  <input placeholder="State" className="w-100 py-2 rounded" required value={state} onChange={(e) => updatePaymentInfo({ state: e.target.value })} />
+                  <input placeholder="State" className="w-100 py-2 rounded" required value={state} onChange={(e) => updatePaymentForm({ state: e.target.value })} />
                 </div>
                 <div className="w-100 py-3">
-                  <input placeholder="Postal Code" className="w-100 py-2 rounded" required value={postalCode} onChange={(e) => updatePaymentInfo({ postalCode: e.target.value })} />
+                  <input placeholder="Postal Code" className="w-100 py-2 rounded" required value={postalCode} onChange={(e) => updatePaymentForm({ postalCode: e.target.value })} />
                 </div>
               </div>
               <div>
                 <div className="w-100 py-3">
-                  <input placeholder="Email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentInfo({ email: e.target.value })} />
+                  <input placeholder="Email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} />
                 </div>
                 <div className="w-100 pt-3">
-                  <input placeholder="Phone Number" className="w-100 py-2 rounded" required value={phoneNumber} onChange={(e) => updatePaymentInfo({ phoneNumber: e.target.value })} />
+                  <input placeholder="Phone Number" className="w-100 py-2 rounded" required value={phoneNumber} onChange={(e) => updatePaymentForm({ phoneNumber: e.target.value })} />
                 </div>
               </div>
             </div>

@@ -32,19 +32,29 @@ export default function PaymentPage() {
   })
   console.log(formData)
 
-  const { firstName, lastName, address, city, state, postalCode, email, phoneNumber } = formData
+  const { firstName, lastName, address, city, state, postalCode, email, phoneNumber, cardNumber, expirationDate, cvv } = formData
   const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
   const [isDeliveryValid, setIsDeliveryValid] = useState(false);
 
-  const updateDeliveryInfo = () => {if (deliveryProps.every(prop => prop.length > 0)) {
+  const updateDeliveryInfo = () => {
+    if (deliveryProps.every(prop => prop.length > 0)) {
     setIsDeliveryValid(true)
-  } else {
-    setIsDeliveryValid(false)
+    } else {
+      setIsDeliveryValid(false)
+    }
   }
-  }
-  console.log(isDeliveryValid)
 
-  const updatePaymentInfo = (paymentInfo) => {
+  const [isPaymentValid, setisPaymentValid] = useState(false);
+  const PaymentProps = [cardNumber, expirationDate, cvv]
+  const updatePaymentInfo = () => {
+    if (PaymentProps.every(prop => prop.length > 0)) {
+      setisPaymentValid(true)
+    } else {
+      setisPaymentValid(false)
+    }
+  }
+
+  const updatePaymentForm = (paymentInfo) => {
     setFormData((prevData) => ({
       ...prevData,
       ...paymentInfo
@@ -76,8 +86,8 @@ export default function PaymentPage() {
       <div className="payment-accordian-container">
         <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
-          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
-          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentInfo={updatePaymentInfo} isDeliveryValid={isDeliveryValid} />
+          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
+          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} />
         </form>
         <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
       </div>

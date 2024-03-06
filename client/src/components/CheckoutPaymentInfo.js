@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo, paymentInfo, isDeliveryValid }) {
+export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm, paymentInfo, isDeliveryValid }) {
 
   const {cardNumber, expirationDate, cvv} = paymentInfo
   const [isFormValid, setIsFormValid] = useState(false)
@@ -25,7 +25,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
   function handleCreditCard(value) {
     const cleanedValue = value.replace(/\D/g, '');
     const formattedValue = cleanedValue.replace(/(.{4})/g, '$1 ').trim();
-    updatePaymentInfo({ cardNumber: formattedValue })
+    updatePaymentForm({ cardNumber: formattedValue })
   }
 
   function handleNumbericInputs(e) {
@@ -62,10 +62,10 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentInfo
               />
           </div>
           <div className="w-100 py-3">
-               <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentInfo({ expirationDate: e.target.value })} value={expirationDate} />
+               <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentForm({ expirationDate: e.target.value })} value={expirationDate} />
           </div>
           <div className="w-100 py-3">
-               <input className="w-100 py-2" placeholder="CVV" maxLength={4} required onChange={(e) => updatePaymentInfo({ cvv: e.target.value })} value={cvv} />
+               <input className="w-100 py-2" placeholder="CVV" maxLength={4} required onChange={(e) => updatePaymentForm({ cvv: e.target.value })} value={cvv} />
           </div>
         </div>
       </div>
