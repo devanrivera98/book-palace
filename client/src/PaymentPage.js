@@ -38,19 +38,26 @@ export default function PaymentPage() {
 
   const updateDeliveryInfo = () => {
     if (deliveryProps.every(prop => prop.length > 0)) {
+      console.log('prop')
     setIsDeliveryValid(true)
     } else {
       setIsDeliveryValid(false)
     }
   }
 
-  const [isPaymentValid, setisPaymentValid] = useState(false);
-  const PaymentProps = [cardNumber, expirationDate, cvv]
+  const [isPaymentValid, setIsPaymentValid] = useState(false);
+  const paymentProps = [cardNumber, expirationDate, cvv];
+
   const updatePaymentInfo = () => {
-    if (PaymentProps.every(prop => prop.length > 0)) {
-      setisPaymentValid(true)
+    const isValidCardNumber = cardNumber.replace(/\s/g, '').match(/^\d{16}$/);
+    console.log(isValidCardNumber)
+    const isValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
+    const isValidCvv = cvv.match(/^\d{3,4}$/);
+
+    if (isValidCardNumber && isValidExpiryDate && isValidCvv) {
+      setIsPaymentValid(true)
     } else {
-      setisPaymentValid(false)
+      setIsPaymentValid(false)
     }
   }
 
@@ -87,7 +94,7 @@ export default function PaymentPage() {
         <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
           <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
-          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} />
+          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid} />
         </form>
         <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
       </div>

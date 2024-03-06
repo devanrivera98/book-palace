@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm, paymentInfo, isDeliveryValid }) {
+export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm, updatePaymentInfo, paymentInfo, isDeliveryValid, isPaymentValid }) {
 
   const {cardNumber, expirationDate, cvv} = paymentInfo
   const [isFormValid, setIsFormValid] = useState(false)
@@ -8,17 +8,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
 
   useEffect(() => {
 
-    const isValidCardNumber = cardNumber.replace(/\s/g, '').match(/^\d{16}$/);
-
-    console.log(isValidCardNumber)
-    const isValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
-    const isValidCvv = cvv.match(/^\d{3,4}$/);
-
-    if(isValidCardNumber && isValidExpiryDate && isValidCvv ) {
-      setIsFormValid(true)
-    } else {
-      setIsFormValid(false)
-    }
+  updatePaymentInfo();
 
   }, [cardNumber, expirationDate, cvv]);
 
@@ -70,7 +60,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
         </div>
       </div>
       <div className="d-flex">
-        {isFormValid ?
+        {isPaymentValid ?
         <button type="submit" className='mx-auto checkout-button dark-checkout-button'>Continue to Order Review</button>
         :
         <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Order Review</button>
