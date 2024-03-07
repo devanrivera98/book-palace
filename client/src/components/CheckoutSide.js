@@ -1,7 +1,7 @@
 export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMonth, items}) {
-  
+
   return (
-    <aside className="checkout-bag d-none d-lg-block">
+    <aside className="checkout-bag col-md-4 col-12  d-lg-block">
       <section>
         <h3 className="py-2">In your Bag</h3>
         <div className="px-1">

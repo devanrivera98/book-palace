@@ -1,4 +1,6 @@
-export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, isPaymentValid}) {
+import CheckoutSide from "./CheckoutSide"
+
+export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, isPaymentValid, subtotal, total, estimatedDay, estimatedMonth, items}) {
 
   return (
     <div>
@@ -13,6 +15,13 @@ export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, 
           :
           <></>
         }
+      </div>
+      <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
+      <div>
+        <h5 className="m-0 py-2 text-center">By clicking the "Submit Payment" button you confirm that you did not input any real information besides a email that will be used to send real confirmation</h5>
+      </div>
+      <div className="text-center pb-2">
+        <button type="submit" className='checkout-button dark-checkout-button px-5'>Submit Order</button>
       </div>
     </div>
   )

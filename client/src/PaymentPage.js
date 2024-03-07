@@ -96,9 +96,9 @@ export default function PaymentPage() {
           <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
           <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
           <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid} continueToOrderReview={() => accordianSwitch(3)}/>
-          <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} />
+          <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
         </form>
-        <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
+        {/* <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} /> */}
       </div>
     </div>
     </>
