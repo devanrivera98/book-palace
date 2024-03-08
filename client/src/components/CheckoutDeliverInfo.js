@@ -10,12 +10,6 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
 
     updateDeliveryInfo()
 
-    // if (deliveryProps.every(prop => prop.length > 0)) {
-    //   setIsDeliveryValid(true)
-    // } else {
-    //   setIsDeliveryValid(false)
-    // }
-
 
   }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber])
 
