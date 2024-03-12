@@ -2,6 +2,31 @@ import CheckoutSide from "./CheckoutSide"
 
 export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, isPaymentValid, subtotal, total, estimatedDay, estimatedMonth, items}) {
 
+  const sendEmail = async () => {
+    try {
+      const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: 'devanrivera98@gmail.com',
+          subject: 'Your Book Palace Receipt',
+          text: 'and easy to do anywhere, even with Node.js',
+          html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+        }),
+      });
+
+      if (response.ok) {
+        console.log('Email sent successfully');
+      } else {
+        throw new Error('Error sending email');
+      }
+    } catch (error) {
+      console.error('Error sending email:', error.message);
+    }
+  }
+
   return (
     <div>
       <div className="d-flex justify-content-between">
@@ -21,7 +46,7 @@ export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, 
         <h5 className="m-0 py-2 text-center">By clicking the "Submit Payment" button you confirm that you did not input any real information besides a email that will be used to send real confirmation</h5>
       </div>
       <div className="text-center pb-2">
-        <button type="submit" className='checkout-button dark-checkout-button px-5'>Submit Order</button>
+        <button type="submit" className='checkout-button dark-checkout-button px-5' onClick={sendEmail}>Submit Order</button>
       </div>
     </div>
   )

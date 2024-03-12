@@ -3,6 +3,7 @@ import express from 'express';
 import ClientError from './lib/client-error.js';
 import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
+import sgMail from '@sendgrid/mail';
 
 // eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
@@ -163,6 +164,30 @@ app.put('/api/cart/:cartId', async (req, res, next) => {
     next(err);
   }
 });
+
+// email receipt in progress
+app.post('/send-email', async (req, res) => {
+  try {
+    const { to, subject, text, html } = req.body;
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+    const msg = {
+      to,
+      from: 'bookpalace.azurewebsites@gmail.com',
+      subject,
+      text,
+      html,
+    };
+
+    await sgMail.send(msg);
+    console.log('Email sent');
+    res.status(200).send('Email sent');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error sending email');
+  }
+});
+// email receipt in progress
 
 // new PUT code ends
 

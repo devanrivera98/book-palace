@@ -1,35 +1,23 @@
-const ElasticEmail = require('@elasticemail/elasticemail-client');
-const client = ElasticEmail.ApiClient.instance;
-const elasticEmailApiKey = process.env.ELASTIC_EMAIL_API_KEY;
 
-const emailApi = new ElasticEmail.TemplatesApi();
+// export const sendMail = () => {
 
-const emailData = {
-  Recipients: {
-    To: ["devanrivera98@gmail.com"]
-  },
-  Content: {
-    Body: [
-      {
-        ContentType: "HTML",
-        Charset: "utf-8",
-        Content: "Mail content."
-      },
-
-    ],
-    From: "bookpalace.azurewebsites@gmail.com",
-    Subject: "Book Palace Test Receipt"
-  }
-};
+//   const sgMail = require('@sendgrid/mail')
+//   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
+//   const msg = {
+//     to: 'devanrivera98@gmail.com',
+//   from: 'bookpalace.azurewebsites@gmail.com',
+//   subject: 'Sending with SendGrid is Fun',
+//     text: 'and easy to do anywhere, even with Node.js',
+//     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+//   }
+//   sgMail
+//     .send(msg)
+//     .then(() => {
+//       console.log('Email sent')
+//     })
+//     .catch((error) => {
+//       console.error(error)
+//     })
 
 
-const callback = (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully.');
-    console.log('Email sent.');
-  }
-};
-
-emailApi.emailsTransactionalPost(emailData, callback);
+// }
