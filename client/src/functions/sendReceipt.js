@@ -1,23 +1,24 @@
 
-// export const sendMail = () => {
-
-//   const sgMail = require('@sendgrid/mail')
-//   sgMail.setApiKey(process.env.SENDGRID_API_KEY)
-//   const msg = {
-//     to: 'devanrivera98@gmail.com',
-//   from: 'bookpalace.azurewebsites@gmail.com',
-//   subject: 'Sending with SendGrid is Fun',
-//     text: 'and easy to do anywhere, even with Node.js',
-//     html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-//   }
-//   sgMail
-//     .send(msg)
-//     .then(() => {
-//       console.log('Email sent')
-//     })
-//     .catch((error) => {
-//       console.error(error)
-//     })
-
-
-// }
+export const sendEmail = async (email) => {
+  try {
+    const response = await fetch('/send-email', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        to: email,
+        subject: 'Your Book Palace Receipt',
+        text: 'Your order is ready',
+        html: '<strong>and easy to do anywhere, even with Node.js</strong>',
+      }),
+    });
+    if (response.ok) {
+      console.log('Email sent successfully');
+    } else {
+      throw new Error('Error sending email');
+    }
+  } catch (error) {
+    console.error('Error sending email:', error.message);
+  }
+}

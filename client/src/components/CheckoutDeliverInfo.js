@@ -19,7 +19,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
     <div>
       <div className="d-flex justify-content-between">
         <h2 className="m-0">Delivery Information</h2>
-        <button onClick={onShow}>
+        <button  type="button" onClick={onShow}>
           <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none" data-attr={isActive === 1 ? "caretDown" : "caretUp"}>
             {isActive === 1 ? <path stroke="currentColor" strokeWidth="1.5" d="M5.034 15.527L12 8.561l6.967 6.966"></path> : <path stroke="currentColor" strokeWidth="1.5" d="M18.966 8.476L12 15.443 5.033 8.476"></path>}
           </svg>
@@ -53,7 +53,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
               </div>
               <div>
                 <div className="w-100 py-3">
-                  <input placeholder="Email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} />
+                  <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} />
                 </div>
                 <div className="w-100 pt-3">
                   <input placeholder="Phone Number" className="w-100 py-2 rounded" required value={phoneNumber} onChange={(e) => updatePaymentForm({ phoneNumber: e.target.value })} />
@@ -62,9 +62,9 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
             </div>
             </div>
             <div className="d-flex pt-4">
-            {isDeliveryValid ? <button type="submit" className='mx-auto checkout-button dark-checkout-button' onClick={continueToPayment}>Continue to Add Payment</button>
+            {isDeliveryValid ? <button type="button"  className='mx-auto checkout-button dark-checkout-button' onClick={continueToPayment}>Continue to Add Payment</button>
             :
-            <button type="submit" className='mx-auto checkout-button light-checkout-button'>Continue to Add Payment</button>
+            <button type="button" className='mx-auto checkout-button light-checkout-button'>Continue to Add Payment</button>
             }
             </div>
           </div>

@@ -5,6 +5,7 @@ import CheckoutYourBag from "./components/CheckoutYourBag";
 import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
 import CheckoutPaymentInfo from "./components/CheckoutPaymentInfo";
 import CheckoutOrderReview from "./components/CheckoutOrderReview";
+import { sendEmail } from "./functions/sendReceipt";
 
 export default function PaymentPage() {
   const location = useLocation();
@@ -82,6 +83,7 @@ export default function PaymentPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    sendEmail(email)
   }
 
   return (

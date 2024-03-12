@@ -5,7 +5,6 @@ import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 import sgMail from '@sendgrid/mail';
 
-// eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
