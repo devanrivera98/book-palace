@@ -1,31 +1,8 @@
-import CheckoutSide from "./CheckoutSide"
+
+import CheckoutSideMobile from "./CheckoutSideMobile"
 
 export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, isPaymentValid, subtotal, total, estimatedDay, estimatedMonth, items}) {
 
-  // const sendEmail = async (event) => {
-  //   try {
-  //     const response = await fetch('/send-email', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         to: event.target.elements.email.value,
-  //         subject: 'Your Book Palace Receipt',
-  //         text: 'and easy to do anywhere, even with Node.js',
-  //         html: '<strong>and easy to do anywhere, even with Node.js</strong>',
-  //       }),
-  //     });
-  //     console.log(event.target.elements.email.value)
-  //     if (response.ok) {
-  //       console.log('Email sent successfully');
-  //     } else {
-  //       throw new Error('Error sending email');
-  //     }
-  //   } catch (error) {
-  //     console.error('Error sending email:', error.message);
-  //   }
-  // }
 
   return (
     <div>
@@ -41,13 +18,13 @@ export default function CheckoutOrderReview({isActive, onShow, isDeliveryValid, 
           <></>
         }
       </div>
-      <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
-      <div>
+      <CheckoutSideMobile subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} isActive={isActive} />
+      {/* <div>
         <h5 className="m-0 py-2 text-center">By clicking the "Submit Payment" button you confirm that you did not input any real information besides a email that will be used to send real confirmation</h5>
       </div>
       <div className="text-center pb-2">
         <button type="submit" className='checkout-button dark-checkout-button px-5' >Submit Order</button>
-      </div>
+      </div> */}
     </div>
   )
 }
