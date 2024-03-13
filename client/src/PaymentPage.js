@@ -84,7 +84,7 @@ export default function PaymentPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sendEmail(email, checkoutState)
+    sendEmail(email, checkoutState, formData)
   }
 
   return (

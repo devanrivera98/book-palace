@@ -1,4 +1,4 @@
-export const sendEmail = async (email, orderDetails) => {
+export const sendEmail = async (email, orderDetails, formData) => {
   try {
     const response = await fetch('/send-email', {
       method: 'POST',
@@ -9,7 +9,7 @@ export const sendEmail = async (email, orderDetails) => {
         to: email,
         subject: 'Your Book Palace Receipt',
         text: 'Your order is ready',
-        html: receiptBody(orderDetails),
+        html: receiptBody(orderDetails, formData),
       }),
     });
     if (response.ok) {
@@ -22,13 +22,13 @@ export const sendEmail = async (email, orderDetails) => {
   }
 }
 
-const receiptBody = (orderDetails) => {
+const receiptBody = (orderDetails, formData) => {
   console.log('here at body');
   console.log(orderDetails.items);
   return `
     <div style="font-family: Arial, sans-serif; color: #333; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
       <div style="text-align: center;">
-        <h1>Thank you for your order!</h1>
+        <h1>Thank you ${formData.firstName} for your order!</h1>
         <h3>Order Amount: ${orderDetails.amountItems}</h3>
         <h3>Date: ${new Date().toLocaleDateString()}</h3>
         <h5>Items:</h5>
@@ -50,7 +50,9 @@ const receiptBody = (orderDetails) => {
         </ul>
         <div style="padding-top: 10px;">
           <h3>Subtotal: $${orderDetails.subtotal}</h3>
-          <h3>Total: ${orderDetails.total}</h3>
+          <h3>Tax: $4.99
+          <hr></hr>
+          <h3>Total: $${orderDetails.total}</h3>
           <h3>Thank you for testing out Book Palace!</h3>
         </div>
       </div>
