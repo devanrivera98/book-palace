@@ -33,6 +33,7 @@ export default function PaymentPage() {
     cvv: '',
   })
   console.log(formData)
+  console.log(checkoutState)
 
   const { firstName, lastName, address, city, state, postalCode, email, phoneNumber, cardNumber, expirationDate, cvv } = formData
   const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
@@ -83,7 +84,7 @@ export default function PaymentPage() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sendEmail(email)
+    sendEmail(email, checkoutState)
   }
 
   return (
