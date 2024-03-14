@@ -1,7 +1,7 @@
 export default function CheckoutSideMobile({ subtotal, total, estimatedDay, estimatedMonth, items, isActive }) {
 
   const itemsMap = items.map((item) =>
-    <div className="d-flex align-items-center px-1 py-2">
+    <div key={item.isbn} className="d-flex align-items-center px-1 py-2">
       <img className="w-25" src={item.image} alt={item.title} />
       <div className="px-4">
         <h5>{item.title}</h5>
