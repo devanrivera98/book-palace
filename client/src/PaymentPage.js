@@ -60,11 +60,11 @@ export default function PaymentPage() {
     const checkValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
     const checkValidCvv = cvv.match(/^\d{3,4}$/);
 
-    if(checkValidCardNumber) {
-      setIsValidCardNumber(true)
-    } else {
-      setIsValidCardNumber(false)
-    }
+    // if(checkValidCardNumber) {
+    //   setIsValidCardNumber(true)
+    // } else {
+    //   setIsValidCardNumber(false)
+    // }
     // might be able to remove line 63 to 67
 
     if (checkValidCardNumber && checkValidExpiryDate && checkValidCvv) {

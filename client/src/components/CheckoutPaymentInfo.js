@@ -5,8 +5,8 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
   const {cardNumber, expirationDate, cvv} = paymentInfo
   const [isFormValid, setIsFormValid] = useState(false)
   const [isCardNumberGood, setIsCardNumberGood] = useState(true)
-  let isValidExpiryDate;
-  let isValidCVV;
+  // let isValidExpiryDate;
+  // let isValidCVV;
   console.log(expirationDate)
   const [verifyPayment, setVerifyPayment] = useState(null);
 
@@ -74,7 +74,7 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
           </div>
           <div className="w-100 py-3">
             <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentForm({ expirationDate: e.target.value })} value={expirationDate} />
-            <span className="text-danger pt-1 d-flex">Enter a valid expiration date: 01/24</span>
+            <span className="text-danger pt-1 d-flex">Enter a valid expiration date: 01/25</span>
           </div>
           <div className="w-100 py-3">
             <input className="w-100 py-2" placeholder="CVV" maxLength={4} required onChange={(e) => updatePaymentForm({ cvv: e.target.value })} value={cvv} />
