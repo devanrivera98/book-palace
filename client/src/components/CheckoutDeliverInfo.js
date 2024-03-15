@@ -3,8 +3,7 @@ import { useState, useEffect } from "react"
 export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm, paymentInfo, updateDeliveryInfo, isDeliveryValid, continueToPayment}) {
 
   const {firstName, lastName, address, city, state, postalCode, email, phoneNumber } = paymentInfo
-  // const deliveryProps = [firstName, lastName, address, city, state, postalCode,email, phoneNumber]
-  // const [isDeliveryValid, setIsDeliveryValid] = useState(false);
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
   useEffect(() => {
 
@@ -14,6 +13,24 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
   }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber])
 
   console.log(paymentInfo)
+
+  function handleEmailBlur(value) {
+    var validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    console.log(value)
+    if (value.match(validEmailCheck)) {
+      setIsEmailValid(true)
+    } else {
+      setIsEmailValid(false)
+    }
+  }
+
+  function handleEmailFocus() {
+    setIsEmailValid(true)
+  }
+
+  function handleEmailChange(value) {
+    
+  }
 
   return (
     <div>
@@ -53,7 +70,11 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
               </div>
               <div>
                 <div className="w-100 py-3">
-                  <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} />
+                  <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} onBlur={(e) => handleEmailBlur(e.target.value)} onFocus={() => handleEmailFocus} />
+                  {isEmailValid ? <></>
+                  :
+                  <span className="text-danger pt-1 d-flex">Enter a valid email: johndoe@yahoo.com</span>
+                  }
                 </div>
                 <div className="w-100 pt-3">
                   <input placeholder="Phone Number" className="w-100 py-2 rounded" required value={phoneNumber} onChange={(e) => updatePaymentForm({ phoneNumber: e.target.value })} />
@@ -62,7 +83,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
             </div>
             </div>
             <div className="d-flex pt-4">
-            {isDeliveryValid ? <button type="button"  className='mx-auto checkout-button dark-checkout-button' onClick={continueToPayment}>Continue to Add Payment</button>
+            {(isDeliveryValid && isEmailValid) ? <button type="button"  className='mx-auto checkout-button dark-checkout-button' onClick={continueToPayment}>Continue to Add Payment</button>
             :
             <button type="button" className='mx-auto checkout-button light-checkout-button'>Continue to Add Payment</button>
             }
