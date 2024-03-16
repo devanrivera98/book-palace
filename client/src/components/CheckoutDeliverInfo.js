@@ -15,9 +15,10 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
   console.log(paymentInfo)
 
   function handleEmailBlur(value) {
-    var validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    var validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+/
     console.log(value)
     if (value.match(validEmailCheck)) {
+      console.log('it matches')
       setIsEmailValid(true)
     } else {
       setIsEmailValid(false)
@@ -28,8 +29,12 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
     setIsEmailValid(true)
   }
 
-  function handleEmailChange(value) {
-    
+  function handleEmailChange(e) {
+    var validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    updatePaymentForm({ email: e.target.value })
+    if (e.target.value.match(validEmailCheck)) {
+      setIsEmailValid(true)
+    }
   }
 
   return (
@@ -70,7 +75,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
               </div>
               <div>
                 <div className="w-100 py-3">
-                  <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => updatePaymentForm({ email: e.target.value })} onBlur={(e) => handleEmailBlur(e.target.value)} onFocus={() => handleEmailFocus} />
+                  <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => handleEmailChange(e)} onBlur={(e) => handleEmailBlur(e.target.value)} onFocus={() => handleEmailFocus}  />
                   {isEmailValid ? <></>
                   :
                   <span className="text-danger pt-1 d-flex">Enter a valid email: johndoe@yahoo.com</span>
