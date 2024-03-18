@@ -107,16 +107,20 @@ export default function PaymentPage() {
     <div>
       <div className="d-flex justify-content-center align-items-center flex-column py-4">
         <h1 className="pb-1 m-0">Checkout</h1>
-        <p className="d-lg-none m-0">{amountItems} item: ${total}</p>
+        <p className="d-md-none m-0">{amountItems} item: ${total}</p>
       </div>
-      <div className="payment-accordian-container">
-        <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
-          <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
-          <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
-          <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid}  continueToOrderReview={() => accordianSwitch(3)}/>
-          <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
-        </form>
-        {/* <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} /> */}
+      <div className="d-flex px-1">
+        <div className="payment-accordian-container col-12 col-md-7">
+          <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
+            <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
+            <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
+            <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid}  continueToOrderReview={() => accordianSwitch(3)}/>
+            <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
+          </form>
+        </div>
+        <div className="d-none col-md-4 d-md-flex">
+          <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
+        </div>
       </div>
     </div>
     </>

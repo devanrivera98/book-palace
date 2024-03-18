@@ -1,7 +1,7 @@
 export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMonth, items}) {
 
   return (
-    <aside className="checkout-bag col-md-4 col-12  d-lg-block">
+    <aside className="checkout-bag d-none col-md-12 d-md-block">
       <section>
         <h3 className="py-2">In your Bag</h3>
         <div className="px-1">
@@ -35,7 +35,9 @@ export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMo
           <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
         </div>
         <div className="d-flex align-items-center px-1">
-          <img className="w-25" src={items[0].image}></img>
+          <div style={{ width: 100, height: 150 }}>
+            <img className="w-100 h-100" src={items[0].image}></img>
+          </div>
           <div className="px-4">
             <h5>{items[0].title}</h5>
             <span>Qty: {items[0].quantity} @ ${items[0].price}</span>
