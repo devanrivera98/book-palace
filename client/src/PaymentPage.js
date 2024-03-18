@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CheckoutSide from "./components/CheckoutSide";
 import CheckoutYourBag from "./components/CheckoutYourBag";
 import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
@@ -16,8 +16,6 @@ export default function PaymentPage() {
   let deliveryDate = new Date(currentDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000)
   let estimatedDay = deliveryDate.getDate();
   let estimatedMonth = deliveryDate.toLocaleString('default', {month: 'long'})
-
-
   const [activeIndex, setActiveIndex] = useState(0);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -34,10 +32,28 @@ export default function PaymentPage() {
   })
   console.log(formData)
   console.log(checkoutState)
-
   const { firstName, lastName, address, city, state, postalCode, email, phoneNumber, cardNumber, expirationDate, cvv } = formData
   const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
   const [isDeliveryValid, setIsDeliveryValid] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+      if (windowWidth > 768 && activeIndex === 0) {
+        setActiveIndex(1);
+      }
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [])
+
+  function handleResizeAccordian() {
+    if (windowWidth > 768 && activeIndex === 0) {
+      setActiveIndex(1)
+    }
+  }
+  handleResizeAccordian()
 
   const updateDeliveryInfo = () => {
     if (deliveryProps.every(prop => prop.length > 0)) {
@@ -102,7 +118,11 @@ export default function PaymentPage() {
       <div className="d-flex px-1">
         <div className="payment-accordian-container col-12 col-md-7">
           <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
+            {windowWidth > 768 ?
+              <></>
+              :
             <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
+            }
             <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
             <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid}  continueToOrderReview={() => accordianSwitch(3)}/>
             <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />

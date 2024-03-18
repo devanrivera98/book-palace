@@ -26,7 +26,7 @@ export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estim
       </header>
       {isActive === 0 ?
         <div>
-          <h4>Arrives by {estimatedMonth} {estimatedDay}</h4>
+          <h4 className="m-0 py-1">Arrives by {estimatedMonth} {estimatedDay}</h4>
           {bagMap}
         </div>
         :
