@@ -1,7 +1,7 @@
 export default function CheckoutSideMobile({ subtotal, total, estimatedDay, estimatedMonth, items, isActive }) {
 
   const itemsMap = items.map((item) =>
-    <div key={item.isbn} className="d-flex align-items-center px-1 py-2">
+    <div key={item.isbn} className="d-flex d-md-none align-items-center px-1 py-2">
       <img className="w-25" src={item.image} alt={item.title} />
       <div className="px-4">
         <h5>{item.title}</h5>
@@ -12,11 +12,10 @@ export default function CheckoutSideMobile({ subtotal, total, estimatedDay, esti
   )
 
   return (
-      <section className="checkout-bag d-md-none col-12 ">
-        <hr></hr>
+      <section className="checkout-bag col-12 ">
         {isActive === 3 ?
         <>
-          <div className="py-2">
+          <div className="py-2 d-md-none">
             <h5>Arrives by {estimatedMonth} {estimatedDay}</h5>
           </div>
           {itemsMap}
@@ -30,6 +29,7 @@ export default function CheckoutSideMobile({ subtotal, total, estimatedDay, esti
         :
         <> </>
       }
+      <hr></hr>
       </section>
   )
 }
