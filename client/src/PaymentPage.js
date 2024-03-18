@@ -38,9 +38,6 @@ export default function PaymentPage() {
   const { firstName, lastName, address, city, state, postalCode, email, phoneNumber, cardNumber, expirationDate, cvv } = formData
   const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
   const [isDeliveryValid, setIsDeliveryValid] = useState(false);
-  const [isValidCardNumber, setIsValidCardNumber] = useState(true)
-  let isValidExpiryDate;
-  let isValidCVV;
 
   const updateDeliveryInfo = () => {
     if (deliveryProps.every(prop => prop.length > 0)) {
@@ -59,13 +56,6 @@ export default function PaymentPage() {
     console.log(checkValidCardNumber)
     const checkValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
     const checkValidCvv = cvv.match(/^\d{3,4}$/);
-
-    // if(checkValidCardNumber) {
-    //   setIsValidCardNumber(true)
-    // } else {
-    //   setIsValidCardNumber(false)
-    // }
-    // might be able to remove line 63 to 67
 
     if (checkValidCardNumber && checkValidExpiryDate && checkValidCvv) {
       setIsPaymentValid(true)
