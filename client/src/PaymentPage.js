@@ -116,7 +116,7 @@ export default function PaymentPage() {
         <p className="d-md-none m-0">{amountItems} item: ${total}</p>
       </div>
       <div className="d-flex px-1">
-        <div className="payment-accordian-container col-12 col-md-7">
+        <div className="payment-accordian-container col-12 col-md-8 px-2">
           <form method="POST" onSubmit={handleSubmit} autoComplete='on'>
             {windowWidth > 768 ?
               <></>
@@ -128,7 +128,7 @@ export default function PaymentPage() {
             <CheckoutOrderReview onShow={() => accordianSwitch(3)} isActive={activeIndex} isDeliveryValid={isDeliveryValid} isPaymentValid={isPaymentValid} subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
           </form>
         </div>
-        <div className="d-none col-md-4 d-md-flex">
+        <div className="d-none col-md-4 d-md-flex px-2">
           <CheckoutSide subtotal={subtotal} total={total} estimatedDay={estimatedDay} estimatedMonth={estimatedMonth} items={items} />
         </div>
       </div>
