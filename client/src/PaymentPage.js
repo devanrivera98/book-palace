@@ -6,6 +6,7 @@ import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
 import CheckoutPaymentInfo from "./components/CheckoutPaymentInfo";
 import CheckoutOrderReview from "./components/CheckoutOrderReview";
 import { sendEmail } from "./functions/sendReceipt";
+import CheckoutModal from "./components/CheckoutModal";
 
 export default function PaymentPage() {
   const location = useLocation();
@@ -110,6 +111,7 @@ export default function PaymentPage() {
 
   return (
     <>
+    <CheckoutModal/>
     <div>
       <div className="d-flex justify-content-center align-items-center flex-column py-4">
         <h1 className="pb-1 m-0">Checkout</h1>

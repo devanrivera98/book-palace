@@ -208,10 +208,6 @@ figure > figcaption {
   background-color: rgb(188, 188, 178);
 }
 
-.homepage-two-columns {
-
-}
-
 .trending-first-title {
   font-size: 37px;
 }
@@ -311,6 +307,30 @@ li {
 .dark-checkout-button {
   background-color: rgb(17, 17, 17);
   color: white;
+}
+
+.checkout-modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.checkout-modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #E5E5E5;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  height: 50%;
 }
 
 .payment-accordian-container {
