@@ -1,5 +1,7 @@
 import { useLocation } from "react-router-dom"
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 import CheckoutSide from "./components/CheckoutSide";
 import CheckoutYourBag from "./components/CheckoutYourBag";
 import CheckoutDeliverInfo from "./components/CheckoutDeliverInfo";
@@ -10,6 +12,7 @@ import CheckoutModal from "./components/CheckoutModal";
 
 export default function PaymentPage() {
   const location = useLocation();
+  const navigate = useNavigate();
   const checkoutState = location.state;
   const {amountItems, items, subtotal, total} = checkoutState
   const currentDate = new Date();
@@ -107,6 +110,7 @@ export default function PaymentPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     sendEmail(email, checkoutState, formData)
+    navigate('/confirmation', {state: formData})
   }
 
   return (
@@ -135,6 +139,7 @@ export default function PaymentPage() {
         </div>
       </div>
     </div>
+    <Footer/>
     </>
   )
 }
