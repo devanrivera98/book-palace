@@ -329,8 +329,14 @@ li {
   background-color: #E5E5E5;
   padding: 20px;
   border: 1px solid #888;
-  width: 50%;
-  height: 50%;
+  width: 60%;
+  height: 55%;
+}
+
+.checkout-modal-button {
+  border: none;
+    border-radius: 0.5rem;
+    padding: 1rem 6rem;
 }
 
 .payment-accordian-container {
@@ -553,6 +559,10 @@ a {
 @media screen and (max-width:767px) {
   .trending-banner {
     text-align: center;
+  }
+
+  .checkout-modal-content {
+    width: 85%;
   }
 }
 
