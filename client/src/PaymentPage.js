@@ -110,7 +110,7 @@ export default function PaymentPage() {
   const handleSubmit = (event) => {
     event.preventDefault();
     sendEmail(email, checkoutState, formData)
-    navigate('/confirmation', {state: formData})
+    navigate('/confirmation', {state: {formData, checkoutState, estimatedMonth, estimatedDay}})
   }
 
   return (
