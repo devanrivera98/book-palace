@@ -36,10 +36,10 @@ export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMo
           </div>
           <div className="d-flex justify-content-between">
             <div>
-              <span><b>Total</b></span>
+              <span style={{ fontWeight: '700' }}>Total</span>
             </div>
             <div>
-              <span>${total}</span>
+              <span style={{ fontWeight: '700' }}>${total}</span>
             </div>
           </div>
         </div>
