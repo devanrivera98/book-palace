@@ -569,7 +569,8 @@ a {
   }
 
   .checkout-modal-content {
-    width: 85%;
+    width: 90%;
+    height: 65%;
   }
 }
 
