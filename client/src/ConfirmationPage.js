@@ -22,9 +22,9 @@ export default function ConfirmationPage() {
         <img className="w-100 h-100" src={item.image} alt='product' />
       </div>
       <div className="px-1">
-        <h5>{item.title}</h5>
-        <span>Qty: {item.quantity} @ ${item.price}</span>
-        <p>Price: ${item.quantity * item.price}</p>
+        <span style={{ fontSize: '15px' }} className='d-block'>{item.title}</span>
+        <span className='d-block'>Qty: {item.quantity} @ ${item.price}</span>
+        <span className='d-block'>Price: ${item.quantity * item.price}</span>
       </div>
     </div>
   )
