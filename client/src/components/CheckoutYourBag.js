@@ -1,4 +1,4 @@
-export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estimatedDay, items}) {
+export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estimatedDay, items, subtotal, total}) {
 
   const bagMap = items.map((item, index) =>
     <div className={index === items.length - 1 ? 'd-flex pt-2' : 'd-flex py-2'} key={item.isbn}>
@@ -25,10 +25,26 @@ export default function CheckoutYourBag({isActive, onShow, estimatedMonth, estim
         </button>
       </header>
       {isActive === 0 ?
+      <>
         <div>
           <h4 className="m-0 py-1">Arrives by {estimatedMonth} {estimatedDay}</h4>
           {bagMap}
         </div>
+        <div className="pt-3">
+          <div className="d-flex justify-content-between">
+            <span>Subtotal</span>
+            <span>${subtotal}</span>
+          </div>
+          <div className="d-flex justify-content-between">
+            <span>Shipping</span>
+            <span>$4.99</span>
+          </div>
+          <div className="d-flex justify-content-between">
+            <span style={{ fontWeight: '700' }}>Total</span>
+            <span style={{ fontWeight: '700' }}>${total}</span>
+          </div>
+        </div>
+      </>
         :
         <></>
       }

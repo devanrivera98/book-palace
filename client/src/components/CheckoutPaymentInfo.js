@@ -7,7 +7,6 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
   const [isCardNumberGood, setIsCardNumberGood] = useState(true)
   const [isCardExpirationGood, setIsCardExpirationGood] = useState(true);
   const [isCardCvvGood, setIsCardCvvGood] = useState(true)
-  console.log(expirationDate)
   const [verifyPayment, setVerifyPayment] = useState(null);
 
   useEffect(() => {
@@ -15,7 +14,6 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
   updatePaymentInfo();
     const paymentCheck = updatePaymentInfo();
     setVerifyPayment(paymentCheck);
-    console.log(verifyPayment)
 
   }, [cardNumber, expirationDate, cvv]);
 

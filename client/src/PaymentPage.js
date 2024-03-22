@@ -20,7 +20,7 @@ export default function PaymentPage() {
   let deliveryDate = new Date(currentDate.getTime() + daysToAdd * 24 * 60 * 60 * 1000)
   let estimatedDay = deliveryDate.getDate();
   let estimatedMonth = deliveryDate.toLocaleString('default', {month: 'long'})
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(1);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -34,8 +34,7 @@ export default function PaymentPage() {
     expirationDate: '',
     cvv: '',
   })
-  console.log(formData)
-  console.log(checkoutState)
+
   const { firstName, lastName, address, city, state, postalCode, email, phoneNumber, cardNumber, expirationDate, cvv } = formData
   const deliveryProps = [firstName, lastName, address, city, state, postalCode, email, phoneNumber]
   const [isDeliveryValid, setIsDeliveryValid] = useState(false);
@@ -65,7 +64,6 @@ export default function PaymentPage() {
 
   const updateDeliveryInfo = () => {
     if (deliveryProps.every(prop => prop.length > 0)) {
-      console.log('prop')
     setIsDeliveryValid(true)
     } else {
       setIsDeliveryValid(false)
@@ -77,7 +75,6 @@ export default function PaymentPage() {
 
   const updatePaymentInfo = () => {
     const checkValidCardNumber = cardNumber.replace(/\s/g, '').match(/^\d{16}$/);
-    console.log(checkValidCardNumber)
     const checkValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
     const checkValidCvv = cvv.match(/^\d{3,4}$/);
 
@@ -108,7 +105,6 @@ export default function PaymentPage() {
     } else {
       setActiveIndex(num)
     }
-    console.log(activeIndex)
   }
 
   const handleSubmit = (event) => {
@@ -131,7 +127,7 @@ export default function PaymentPage() {
             {windowWidth > 768 ?
               <></>
               :
-            <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} onShow={() => accordianSwitch(0)} />
+            <CheckoutYourBag isActive={activeIndex} items={items} estimatedMonth={estimatedMonth} estimatedDay={estimatedDay} subtotal={subtotal} total={total} onShow={() => accordianSwitch(0)} />
             }
             <CheckoutDeliverInfo isActive={activeIndex} onShow={() => accordianSwitch(1)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} updateDeliveryInfo={updateDeliveryInfo} isDeliveryValid={isDeliveryValid} continueToPayment={() => accordianSwitch(2)} />
             <CheckoutPaymentInfo isActive={activeIndex} onShow={() => accordianSwitch(2)} paymentInfo={formData} updatePaymentForm={updatePaymentForm} isDeliveryValid={isDeliveryValid} updatePaymentInfo={updatePaymentInfo} isPaymentValid={isPaymentValid}  continueToOrderReview={() => accordianSwitch(3)}/>
