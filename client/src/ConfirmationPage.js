@@ -30,16 +30,16 @@ export default function ConfirmationPage() {
       <span style={{fontSize: '36px', fontWeight: '450'}} className='d-block text-center mx-auto'>Thank you {formData.firstName} for your order!</span>
       <div>
         <span style={{ fontSize: '25px', fontWeight: '450' }} >Shipment</span>
-        <hr></hr>
+        <hr className="my-1"></hr>
         <div className="d-flex flex-column">
           <span className="d-block">{formData.firstName} {formData.lastName}</span>
           <span className="d-block">{formData.address}</span>
           <span className="d-block">{formData.city}, {formData.state} {formData.postalCode}</span>
         </div>
       </div>
-      <div>
+      <div className="pt-1">
         <span style={{ fontSize: '25px', fontWeight: '450' }}>Payment</span>
-        <hr></hr>
+        <hr className="my-1"></hr>
         <span className="d-block">{formData.firstName} {formData.lastName}</span>
         <span className="d-block">{formData.address}</span>
         <span className="d-block">{formData.city}, {formData.state} {formData.postalCode}</span>
@@ -52,13 +52,14 @@ export default function ConfirmationPage() {
           <span> *****{endingCardNumber}</span>
         </div>
       </div>
-      <div>
+      <div className="pt-1">
         <span style={{ fontSize: '25px', fontWeight: '450' }}>Estimated Arrival: {estimatedMonth} {estimatedDay}</span>
-        <hr></hr>
+        <hr className="my-1"></hr>
         {bagMap}
       </div>
-      <div>
+      <div className="pt-1">
         <span style={{ fontSize: '25px', fontWeight: '450' }}>Summary</span>
+        <hr className="my-1"></hr>
         <div className="col-md-3">
           <div className="d-flex justify-content-between">
             <span>Subtotal</span>
