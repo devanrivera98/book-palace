@@ -339,6 +339,13 @@ li {
     padding: 1rem 5rem;
 }
 
+.confirmation-container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
 .payment-accordian-container {
   width: 95%;
   display: flex;
