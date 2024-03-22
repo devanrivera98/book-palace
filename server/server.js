@@ -117,6 +117,23 @@ app.delete('/api/cart/:cartId', async (req, res, next) => {
 
 });
 
+app.delete('/api/cart', async (req, res, next) => {
+  try {
+    const sql = `
+  Delete
+    from "cart"
+ `;
+    const result = await db.query(sql);
+    if (result) {
+      res.status(200).send({ message: 'All items deleted from cart successfully.' });
+    }
+    // res.status(200).send({ message: 'All items deleted from cart successfully.' });
+  } catch (err) {
+    next(err);
+  }
+
+});
+
 app.delete('/api/wishlist/:wishlistId', async (req, res, next) => {
   try {
     const wishlistId = Number(req.params.wishlistId);
@@ -164,7 +181,6 @@ app.put('/api/cart/:cartId', async (req, res, next) => {
   }
 });
 
-// email receipt in progress
 app.post('/send-email', async (req, res) => {
   try {
     const { to, subject, text, html } = req.body;
@@ -186,9 +202,6 @@ app.post('/send-email', async (req, res) => {
     res.status(500).send('Error sending email');
   }
 });
-// email receipt in progress
-
-// new PUT code ends
 
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 

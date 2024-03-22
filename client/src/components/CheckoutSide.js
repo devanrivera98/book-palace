@@ -2,13 +2,13 @@ export default function CheckoutSide({subtotal, total, estimatedDay, estimatedMo
 
   const bagMap = items.map((item) =>
     <div key={item.isbn} className="d-flex align-items-center px-1 py-2">
-      <div style={{ width: 100, height: 150 }}>
-        <img className="w-100 h-100" src={item.image}></img>
+      <div style={{ width: '75px', height: '125px'}}>
+        <img style={{objectFit: 'fill'}} className="w-100 h-100" src={item.image} alt='product'></img>
       </div>
-      <div className="px-4">
-        <h5>{item.title}</h5>
-        <span>Qty: {item.quantity} @ ${item.price}</span>
-        <p>Price: ${item.quantity * item.price}</p>
+      <div className="px-2">
+        <span style={{ fontSize: '15px' }} className='d-block'>{item.title}</span>
+        <span style={{ fontSize: '15px' }} className='d-block'>Qty: {item.quantity} @ ${item.price}</span>
+        <span style={{ fontSize: '15px' }} className='d-block'>Price: ${item.quantity * item.price}</span>
       </div>
     </div>
   )

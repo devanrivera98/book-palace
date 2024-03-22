@@ -1,7 +1,12 @@
 import { useLocation } from "react-router-dom"
+import { useEffect } from "react";
 import Footer from "./Footer";
 
 export default function ConfirmationPage() {
+
+  useEffect(() => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }, []);
 
   const location = useLocation();
   const { formData, checkoutState, estimatedMonth, estimatedDay } = location.state;
@@ -13,10 +18,10 @@ export default function ConfirmationPage() {
 
   const bagMap = checkoutState.items.map((item, index) =>
     <div className={index === checkoutState.items.length - 1 ? 'd-flex pt-2' : 'd-flex py-2'} key={item.isbn}>
-      <div style={{ width: 100, height: 150 }}>
-        <img className="w-100 h-100" src={item.image} />
+      <div style={{ width: '75px', height: '125px' }}>
+        <img className="w-100 h-100" src={item.image} alt='product' />
       </div>
-      <div className="px-3">
+      <div className="px-1">
         <h5>{item.title}</h5>
         <span>Qty: {item.quantity} @ ${item.price}</span>
         <p>Price: ${item.quantity * item.price}</p>
@@ -63,7 +68,7 @@ export default function ConfirmationPage() {
         <div className="col-md-3">
           <div className="d-flex justify-content-between">
             <span>Subtotal</span>
-            <span>{checkoutState.subtotal}</span>
+            <span>${checkoutState.subtotal}</span>
           </div>
           <div className="d-flex justify-content-between">
             <span>Shipping</span>
@@ -71,7 +76,7 @@ export default function ConfirmationPage() {
           </div>
           <div className="d-flex justify-content-between">
             <span style={{ fontWeight: '700' }}>Total</span>
-            <span style={{ fontWeight: '700' }}>{checkoutState.total}</span>
+            <span style={{ fontWeight: '700' }}>${checkoutState.total}</span>
           </div>
         </div>
       </div>

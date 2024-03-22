@@ -11,9 +11,7 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
     updateDeliveryInfo()
 
 
-  }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber])
-
-  console.log(paymentInfo)
+  }, [firstName, lastName,address, city,state,postalCode,email, phoneNumber, updateDeliveryInfo])
 
   function handleEmailBlur(value) {
     const validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+/
@@ -28,9 +26,9 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
     }
   }
 
-  function handleEmailFocus() {
-    setIsEmailValid(true)
-  }
+  // function handleEmailFocus() {
+  //   setIsEmailValid(true)
+  // }
 
   function handleEmailChange(e) {
     const validEmailCheck = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+/
