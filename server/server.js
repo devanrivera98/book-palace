@@ -3,8 +3,8 @@ import express from 'express';
 import ClientError from './lib/client-error.js';
 import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
+import sgMail from '@sendgrid/mail';
 
-// eslint-disable-next-line no-unused-vars -- Remove when used
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -117,6 +117,22 @@ app.delete('/api/cart/:cartId', async (req, res, next) => {
 
 });
 
+app.delete('/api/cart', async (req, res, next) => {
+  try {
+    const sql = `
+  Delete
+    from "cart"
+ `;
+    const result = await db.query(sql);
+    if (result) {
+      res.status(200).send({ message: 'All items deleted from cart successfully.' });
+    }
+  } catch (err) {
+    next(err);
+  }
+
+});
+
 app.delete('/api/wishlist/:wishlistId', async (req, res, next) => {
   try {
     const wishlistId = Number(req.params.wishlistId);
@@ -164,7 +180,27 @@ app.put('/api/cart/:cartId', async (req, res, next) => {
   }
 });
 
-// new PUT code ends
+app.post('/send-email', async (req, res) => {
+  try {
+    const { to, subject, text, html } = req.body;
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+    const msg = {
+      to,
+      from: 'bookpalace.azurewebsites@gmail.com',
+      subject,
+      text,
+      html,
+    };
+
+    await sgMail.send(msg);
+    console.log('Email sent');
+    res.status(200).send('Email sent');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error sending email');
+  }
+});
 
 app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
