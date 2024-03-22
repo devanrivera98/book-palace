@@ -127,7 +127,6 @@ app.delete('/api/cart', async (req, res, next) => {
     if (result) {
       res.status(200).send({ message: 'All items deleted from cart successfully.' });
     }
-    // res.status(200).send({ message: 'All items deleted from cart successfully.' });
   } catch (err) {
     next(err);
   }

@@ -31,15 +31,6 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
     }
   }
 
-  // function handleCardNumberBlur() {
-  //   console.log(verifyPayment.checkValidCardNumber)
-  //   if (verifyPayment.checkValidCardNumber) {
-  //     setIsCardNumberGood(true)
-  //   } else {
-  //     setIsCardNumberGood(false)
-  //   }
-  // }
-
   function handleCardInputBlur(prop, setState) {
     if (prop) {
       setState(true)
