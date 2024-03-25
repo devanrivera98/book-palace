@@ -116,7 +116,7 @@ export default function PaymentPage() {
   return (
     <>
     <CheckoutModal/>
-    <div>
+    <div className="content">
       <div className="d-flex justify-content-center align-items-center flex-column py-4">
         <h1 className="pb-1 m-0">Checkout</h1>
         <p className="d-md-none m-0">{amountItems} item: ${total}</p>
