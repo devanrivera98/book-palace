@@ -34,6 +34,14 @@ body {
   display: none;
 }
 
+.dark-green-button {
+  background-color: rgb(97, 113, 67);
+}
+
+.dark-green-button:hover {
+  background-color: rgb(67, 93, 37);
+}
+
 .pointer-finger:hover {
   cursor: pointer;
 }
