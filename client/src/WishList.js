@@ -161,11 +161,11 @@ useEffect(() => {
       </div>
       <div className="row mx-1 pt-2">
         {isTooMany === false && (
-          <button type="button" className="dark-green-button btn-lg btn-block" onClick={addToCart}>ADD TO CART
+          <button type="button" className="dark-purple-button btn-lg btn-block rounded" onClick={addToCart}>ADD TO CART
           </button>
         )}
         {isTooMany === true && (
-          <button type="button" className="btn btn-primary btn-lg btn-block" onClick={viewCart}>VIEW CART
+          <button type="button" className="dark-purple-button btn-lg btn-block rounded" onClick={viewCart}>VIEW CART
           </button>)}
       </div>
 

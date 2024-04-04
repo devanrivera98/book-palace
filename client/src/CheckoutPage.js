@@ -127,7 +127,7 @@ export default function CheckoutCart() {
       </div>
       {cart.length === 0 ? <></> :
         <div className="d-flex justify-content-center py-4 cart-list col-10">
-          <button className="col-10 btn btn-block btn-primary" onClick={viewPayment}>CHECKOUT</button>
+          <button className="col-10 col-6 dark-purple-button py-1 btn-block rounded" onClick={viewPayment}>CHECKOUT</button>
         </div>
       }
       <Footer />

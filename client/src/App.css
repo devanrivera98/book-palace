@@ -34,12 +34,13 @@ body {
   display: none;
 }
 
-.dark-green-button {
-  background-color: rgb(97, 113, 67);
+.dark-purple-button {
+  background-color: #714361;
+  color: white;
 }
 
-.dark-green-button:hover {
-  background-color: rgb(67, 93, 37);
+.dark-purple-button:hover {
+  background-color: #955980;
 }
 
 .pointer-finger:hover {

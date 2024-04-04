@@ -214,8 +214,8 @@ function MoreInfo() {
         </div>
         <div className="row justify-content-center">
           <h4>Retail Price ${readBookObject.saleInfo.retailPrice ? readBookObject.saleInfo.retailPrice.amount.toFixed(2) : '19.99'}</h4>
-          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
-          <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
+          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 dark-purple-button py-1 btn-block rounded"}`}>ADD TO CART</button>
+          <button onClick={viewCart} className={`${isTooMany ? "col-6 dark-purple-button py-1 btn-block rounded" : 'hidden'}`}>View Cart</button>
         </div>
         <div className="pt-3 row justify-content-center">
           <h1>Overview</h1>
@@ -239,8 +239,8 @@ function MoreInfo() {
         </div>
         <div className="row justify-content-center">
           <h4>Retail Price ${readBookObject.price ? readBookObject.price : '19.99'}</h4>
-          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 btn btn-block btn-primary"}`}>ADD TO CART</button>
-          <button onClick={viewCart} className={`${isTooMany ? "col-6 btn btn-block btn-primary" : 'hidden'}`}>View Cart</button>
+          <button onClick={addBook} className={`${isTooMany ? 'hidden' : "col-6 dark-purple-button py-1 btn-block rounded"}`}>ADD TO CART</button>
+          <button onClick={viewCart} className={`${isTooMany ? "col-6 dark-purple-button py-1 btn-block rounded" : 'hidden'}`}>View Cart</button>
         </div>
         <div className="pt-3 row justify-content-center">
           <h1>Overview</h1>
