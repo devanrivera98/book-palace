@@ -76,7 +76,7 @@ export default function CheckoutCart() {
 
   if (isLoading) return (
     <div className="d-flex justify-content-center pt-3">
-      <div className="lds-default" style={{ backgroundColor: '#617143' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      <div className="lds-default" style={{ backgroundColor: '#FFFFFF' }}><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
     </div>
   )
 
