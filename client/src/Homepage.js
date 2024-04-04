@@ -18,11 +18,18 @@ export default function Homepage() {
 
   return (
     <>
-      <HomepageImage/>
+    <div className="max">
+      <HomepageImage />
+      <ViewByAuthor />
+      <RecommendationModernClassics />
+      <HomepageBanner />
+      <RecommendationThisMonth />
+    </div>
+      {/* <HomepageImage/>
       <ViewByAuthor/>
       <RecommendationModernClassics/>
       <HomepageBanner/>
-      <RecommendationThisMonth/>
+      <RecommendationThisMonth/> */}
       <Footer />
     </>
   )
@@ -57,7 +64,7 @@ function HomepageImage() {
 function ViewByAuthor() {
   return (
     <>
-    <div className="p-3">
+    <div className="p-2">
       <div className="px-2">
         <h3>Shop by Top Authors</h3>
       </div>

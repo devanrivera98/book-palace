@@ -34,6 +34,12 @@ body {
   display: none;
 }
 
+.max {
+  max-width: 92.5%;
+  margin: 0 auto;
+
+}
+
 .dark-purple-button {
   background-color: #714361;
   color: white;
@@ -139,7 +145,7 @@ body {
 }
 
 .each-author {
-  min-width: 200px;
+  min-width: 175px;
 }
 
 .row-title {
