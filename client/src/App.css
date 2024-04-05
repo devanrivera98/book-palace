@@ -60,7 +60,7 @@ body {
 }
 
 .footer-container {
-  background-color: #4b5c33;
+  background-color: #394D32;
   color: white;
 }
 
@@ -220,7 +220,7 @@ figure > figcaption {
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  background-color: rgb(188, 188, 178);
+  background-image: url('../public/images/neutral-green-background.png');
 }
 
 .trending-first-title {

@@ -29,7 +29,7 @@ export default function Header() {
 
   return (
     <>
-      <nav className="navbar sticky-top" style={{ backgroundColor: '#617143' }}>
+      <nav className="navbar sticky-top" style={{ backgroundColor: '#394D32' }}>
         <div className="d-md-block d-none">
           <Link to="/" className="px-3 text-decoration-none navbar-brand text-white underline" style={{ fontSize: '35px' }}>Book Palace</Link>
           <Link to="/wishlist" className="pr-3 text-white underline" style={{ fontSize: '25px' }}>Wishlist</Link>
