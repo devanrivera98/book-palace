@@ -18,8 +18,11 @@ export default function Homepage() {
 
   return (
     <>
+    <div className="">
+      <img src="images/test2.png" className="w-100" />
+    </div>
     <div className="max">
-      <HomepageImage />
+      {/* <HomepageImage /> */}
       <ViewByAuthor />
       <RecommendationModernClassics />
       <HomepageBanner />
@@ -64,7 +67,7 @@ function HomepageImage() {
 function ViewByAuthor() {
   return (
     <>
-    <div className="p-2">
+    <div className="p-2 pt-4">
       <div className="px-2">
         <h3>Shop by Top Authors</h3>
       </div>
@@ -161,8 +164,8 @@ function HomepageBanner() {
     <div className="homepage-second-banner mt-4 mt-md-2 mx-auto">
       <div className="homepage-two-columns row ">
         <div className="col-md-5 trending-banner my-auto">
-          <h1 className="trending-first-title col-11 mx-auto">Trending Favorites of 2023</h1>
-          <h5 className="col-11 mx-auto">Discover the most popular books from this past year!</h5>
+          <h1 className="trending-first-title col-11 mx-auto text-white">Trending Favorites of 2023</h1>
+          <h5 className="col-11 mx-auto text-white">Discover the most popular books from this past year!</h5>
           <button className="trending-button" onClick={viewTrendingBooks}>Check them out!</button>
         </div>
         <div className="col-md-7 d-flex justify-content-center">

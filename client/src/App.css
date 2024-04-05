@@ -41,12 +41,12 @@ body {
 }
 
 .dark-purple-button {
-  background-color: #714361;
+  background-color: #46324D;
   color: white;
 }
 
 .dark-purple-button:hover {
-  background-color: #955980;
+  background-color: #35263a;
 }
 
 .pointer-finger:hover {
@@ -242,14 +242,14 @@ figure > figcaption {
 }
 
 .trending-button {
-  background-color: rgb(97, 113, 67);
+  background-color: #394D32;
   color: white;
-    padding: 0.325rem .75rem;
-      border-radius: .1875rem;
+  padding: 0.325rem .75rem;
+  border-radius: .1875rem;
 }
 
 .trending-button:hover {
-  background-color: rgb(67, 93, 37);
+  background-color: #2d3c28;
 }
 
 .results-books {
