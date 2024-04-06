@@ -18,8 +18,10 @@ export default function Homepage() {
 
   return (
     <>
+    {/* <HomepageScroller/> */}
     <div className="">
-      <img src="images/test2.png" className="w-100" />
+      <img src="images/homepage-slider-one.png" className="w-100"></img>
+      <img src="images/slider-two.png" className="w-100" />
     </div>
     <div className="max">
       {/* <HomepageImage /> */}
@@ -34,6 +36,19 @@ export default function Homepage() {
       <HomepageBanner/>
       <RecommendationThisMonth/> */}
       <Footer />
+    </>
+  )
+}
+
+function HomepageScroller() {
+
+  return (
+    <>
+      <picture>
+        <source srcSet="images/homepage-slider-one-mini.png" media="(max-width: 761px)"></source>
+        <source srcSet="images/homepage-slider-one.png" media="(max-width: 1200px)"></source>
+        <img src="images/homepage-slider-one.png"/>
+      </picture>
     </>
   )
 }
