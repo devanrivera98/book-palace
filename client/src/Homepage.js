@@ -20,8 +20,8 @@ export default function Homepage() {
     <>
     {/* <HomepageScroller/> */}
     <div className="">
-      <img src="images/homepage-slider-one.png" className="w-100"></img>
-      <img src="images/slider-two.png" className="w-100" />
+      <img src="images/homepage-slider-one-mini.png" className="w-100"></img>
+      <img src="images/slider-two-mini.png" className="w-100" />
     </div>
     <div className="max">
       {/* <HomepageImage /> */}
@@ -179,7 +179,7 @@ function HomepageBanner() {
     <div className="homepage-second-banner mt-4 mt-md-2 mx-auto">
       <div className="homepage-two-columns row ">
         <div className="col-md-5 trending-banner my-auto">
-          <h1 className="trending-first-title col-11 mx-auto text-white">Trending Favorites of 2023</h1>
+          <h1 className="trending-first-title col-11 mx-auto text-white">Trending Favorites of 2024</h1>
           <h5 className="col-11 mx-auto text-white">Discover the most popular books from this past year!</h5>
           <button className="trending-button" onClick={viewTrendingBooks}>Check them out!</button>
         </div>
