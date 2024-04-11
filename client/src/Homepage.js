@@ -1,3 +1,4 @@
+import HomepageCarousel from "./components/HomepageCarousel";
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react";
 import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
@@ -18,11 +19,8 @@ export default function Homepage() {
 
   return (
     <>
-    {/* <HomepageScroller/> */}
-    <div className="">
-      {/* <img src="images/homepage-slider-one-mini.png" className="w-100"></img> */}
-      <img src="images/homepage-slider-three.png" className="w-100"></img>
-    </div>
+    <HomepageCarousel/>
+
     <div className="max">
       {/* <HomepageImage /> */}
       <ViewByAuthor />
@@ -30,25 +28,7 @@ export default function Homepage() {
       <HomepageBanner />
       <RecommendationThisMonth />
     </div>
-      {/* <HomepageImage/>
-      <ViewByAuthor/>
-      <RecommendationModernClassics/>
-      <HomepageBanner/>
-      <RecommendationThisMonth/> */}
       <Footer />
-    </>
-  )
-}
-
-function HomepageScroller() {
-
-  return (
-    <>
-      <picture>
-        <source srcSet="images/homepage-slider-one-mini.png" media="(max-width: 761px)"></source>
-        <source srcSet="images/homepage-slider-one.png" media="(max-width: 1200px)"></source>
-        <img src="images/homepage-slider-one.png"/>
-      </picture>
     </>
   )
 }
