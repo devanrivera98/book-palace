@@ -20,8 +20,8 @@ export default function Homepage() {
     <>
     {/* <HomepageScroller/> */}
     <div className="">
-      <img src="images/homepage-slider-one-mini.png" className="w-100"></img>
-      <img src="images/slider-two-mini.png" className="w-100" />
+      {/* <img src="images/homepage-slider-one-mini.png" className="w-100"></img> */}
+      <img src="images/homepage-slider-three.png" className="w-100"></img>
     </div>
     <div className="max">
       {/* <HomepageImage /> */}
