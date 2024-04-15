@@ -34,6 +34,21 @@ body {
   display: none;
 }
 
+.max {
+  max-width: 92.5%;
+  margin: 0 auto;
+
+}
+
+.dark-purple-button {
+  background-color: #46324D;
+  color: white;
+}
+
+.dark-purple-button:hover {
+  background-color: #35263a;
+}
+
 .pointer-finger:hover {
   cursor: pointer;
 }
@@ -45,7 +60,7 @@ body {
 }
 
 .footer-container {
-  background-color: #4b5c33;
+  background-color: #394D32;
   color: white;
 }
 
@@ -130,7 +145,7 @@ body {
 }
 
 .each-author {
-  min-width: 200px;
+  min-width: 175px;
 }
 
 .row-title {
@@ -139,10 +154,12 @@ body {
 
 .left-arrow {
   display: none;
+  color: #394C32;
 }
 
 .right-arrow {
   display: none;
+  color: #394C32;
 }
 
 .horizontal-media-scroller {
@@ -153,7 +170,7 @@ body {
   padding-block-end: 0.5rem;
   grid-auto-flow: column;
   grid-auto-columns: 150px;
-  gap: 0.5rem;
+  gap: 1rem;
   overflow-x: auto;
   scroll-snap-type: x proximity;
 }
@@ -205,7 +222,7 @@ figure > figcaption {
   background-size: cover;
   background-position: top;
   background-repeat: no-repeat;
-  background-color: rgb(188, 188, 178);
+  background-image: url('../public/images/neutral-green-background.png');
 }
 
 .trending-first-title {
@@ -227,14 +244,14 @@ figure > figcaption {
 }
 
 .trending-button {
-  background-color: rgb(97, 113, 67);
+  background-color: #394D32;
   color: white;
-    padding: 0.325rem .75rem;
-      border-radius: .1875rem;
+  padding: 0.325rem .75rem;
+  border-radius: .1875rem;
 }
 
 .trending-button:hover {
-  background-color: rgb(67, 93, 37);
+  background-color: #2d3c28;
 }
 
 .results-books {
@@ -387,7 +404,7 @@ a {
   position: absolute;
   width: 6px;
   height: 6px;
-  background: #fff;
+  background:#617143;
   border-radius: 50%;
   animation: lds-default 1.2s linear infinite;
 }

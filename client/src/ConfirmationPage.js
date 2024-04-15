@@ -12,9 +12,6 @@ export default function ConfirmationPage() {
   const { formData, checkoutState, estimatedMonth, estimatedDay } = location.state;
 
   const endingCardNumber = formData.cardNumber.slice(-4)
-  console.log(endingCardNumber)
-
-  console.log('form data confirmation', checkoutState)
 
   const bagMap = checkoutState.items.map((item, index) =>
     <div className={index === checkoutState.items.length - 1 ? 'd-flex pt-2' : 'd-flex py-2'} key={item.isbn}>

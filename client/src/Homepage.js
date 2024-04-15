@@ -1,3 +1,4 @@
+import HomepageCarousel from "./components/HomepageCarousel";
 import { useNavigate } from "react-router-dom"
 import { useRef } from "react";
 import { ourFavoriteBooks } from "./recommended-books/our-favorites-books"
@@ -18,11 +19,15 @@ export default function Homepage() {
 
   return (
     <>
-      <HomepageImage/>
-      <ViewByAuthor/>
-      <RecommendationModernClassics/>
-      <HomepageBanner/>
-      <RecommendationThisMonth/>
+    <HomepageCarousel/>
+
+    <div className="max">
+      {/* <HomepageImage /> */}
+      <ViewByAuthor />
+      <RecommendationModernClassics />
+      <HomepageBanner />
+      <RecommendationThisMonth />
+    </div>
       <Footer />
     </>
   )
@@ -57,7 +62,7 @@ function HomepageImage() {
 function ViewByAuthor() {
   return (
     <>
-    <div className="p-3">
+    <div className="p-2 pt-4">
       <div className="px-2">
         <h3>Shop by Top Authors</h3>
       </div>
@@ -98,8 +103,8 @@ function RecommendationModernClassics() {
         <h3>Modern Favorites</h3>
       </div>
       <div className="position-relative ">
-        <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
-        <FaArrowAltCircleRight className="right-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth,'next'); }}  />
+        <FaArrowAltCircleLeft className="left-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
+        <FaArrowAltCircleRight className="right-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth,'next'); }}  />
         <div className="horizontal-media-scroller mx-auto" ref={containerRef}>
           {mapModern}
         </div>
@@ -132,8 +137,8 @@ function RecommendationThisMonth() {
         <h3>Instant Classics</h3>
       </div>
       <div className="position-relative ">
-        <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
-        <FaArrowAltCircleRight className="right-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'next'); }} />
+        <FaArrowAltCircleLeft className="left-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
+        <FaArrowAltCircleRight className="right-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'next'); }} />
         <div className="horizontal-media-scroller mx-auto" ref={containerRef}>
           {mapModern}
         </div>
@@ -154,8 +159,8 @@ function HomepageBanner() {
     <div className="homepage-second-banner mt-4 mt-md-2 mx-auto">
       <div className="homepage-two-columns row ">
         <div className="col-md-5 trending-banner my-auto">
-          <h1 className="trending-first-title col-11 mx-auto">Trending Favorites of 2023</h1>
-          <h5 className="col-11 mx-auto">Discover the most popular books from this past year!</h5>
+          <h1 className="trending-first-title col-11 mx-auto text-white">Trending Favorites of 2024</h1>
+          <h5 className="col-11 mx-auto text-white">Discover the most popular books from this past year!</h5>
           <button className="trending-button" onClick={viewTrendingBooks}>Check them out!</button>
         </div>
         <div className="col-md-7 d-flex justify-content-center">
