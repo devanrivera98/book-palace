@@ -103,8 +103,8 @@ function RecommendationModernClassics() {
         <h3>Modern Favorites</h3>
       </div>
       <div className="position-relative ">
-        <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
-        <FaArrowAltCircleRight className="right-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth,'next'); }}  />
+        <FaArrowAltCircleLeft className="left-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
+        <FaArrowAltCircleRight className="right-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth,'next'); }}  />
         <div className="horizontal-media-scroller mx-auto" ref={containerRef}>
           {mapModern}
         </div>
@@ -137,8 +137,8 @@ function RecommendationThisMonth() {
         <h3>Instant Classics</h3>
       </div>
       <div className="position-relative ">
-        <FaArrowAltCircleLeft className="left-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
-        <FaArrowAltCircleRight className="right-arrow user-select-none" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'next'); }} />
+        <FaArrowAltCircleLeft className="left-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'prev'); }} />
+        <FaArrowAltCircleRight className="right-arrow user-select-none pointer-finger" onClick={() => { changeScrollPosition(containerRef, itemWidth, 'next'); }} />
         <div className="horizontal-media-scroller mx-auto" ref={containerRef}>
           {mapModern}
         </div>

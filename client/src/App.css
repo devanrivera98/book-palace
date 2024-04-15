@@ -154,10 +154,12 @@ body {
 
 .left-arrow {
   display: none;
+  color: #394C32;
 }
 
 .right-arrow {
   display: none;
+  color: #394C32;
 }
 
 .horizontal-media-scroller {
