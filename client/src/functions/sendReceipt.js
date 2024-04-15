@@ -23,8 +23,6 @@ export const sendEmail = async (email, orderDetails, formData) => {
 }
 
 const receiptBody = (orderDetails, formData) => {
-  console.log('here at body');
-  console.log(orderDetails.items);
   return `
     <div style="font-family: Arial, sans-serif; color: #333; display: flex; justify-content: center; align-items: center; margin: 0 auto;">
       <div style="text-align: center;">

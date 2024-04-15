@@ -16,7 +16,6 @@ export default function CheckoutCart() {
     getRequest();
   }, [])
 
-  console.log(cart)
 
   async function getRequest() {
     try {
