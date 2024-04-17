@@ -3,7 +3,7 @@ import { awardBooks } from "../recommended-books/national-award-books";
 import { ourFavoriteBooks } from "../recommended-books/our-favorites-books";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { GoDot } from "react-icons/go";
+import { GoDot, GoDotFill } from "react-icons/go";
 
 
 export default function HomepageCarousel() {
@@ -37,10 +37,24 @@ export default function HomepageCarousel() {
       <img src={carouselImages[carouselCount].desktopImage} onClick={() => viewBooks(carouselImages[carouselCount].navType, carouselImages[carouselCount].list)} />
     </picture>
     <div className="mx-auto">
-       <GoDot style={{fontSize: '35px', margin: '0 10px'}} />
-       <GoDot style={{ fontSize: '35px', margin: '0 10px' }} />
-       <GoDot style={{ fontSize: '35px', margin: '0 10px' }} />
+       <HomepageCarouselButton currentCount={carouselCount} value={0} onClick={() => setCarouselCount(0)}/>
+       <HomepageCarouselButton currentCount={carouselCount} value={1} onClick={() => setCarouselCount(1)} />
+       <HomepageCarouselButton currentCount={carouselCount} value={2} onClick={() => setCarouselCount(2)} />
     </div>
   </>
  )
+}
+
+
+function HomepageCarouselButton({currentCount, value, onClick}) {
+
+    return (
+      <>
+      {currentCount === value ?
+          <GoDotFill className="pointer-finger" style={{ fontSize: '35px', margin: '0 10px' }} onClick={onClick} />
+        :
+          <GoDot className="pointer-finger" style={{ fontSize: '35px', margin: '0 10px' }} onClick={onClick} />
+      }
+      </>
+    )
 }
