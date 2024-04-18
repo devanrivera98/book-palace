@@ -56,11 +56,11 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
       </div>
       {isActive === 1 ?
           <div className="py-3">
-            <div className="d-flex flex-wrap">
-              <div className="w-100 pb-3">
+            <div className="d-flex flex-wrap flex-sm-nowrap justify-content-between">
+              <div className="py-3 col-12 col-sm-6 pe-sm-1">
                 <input type='text' name="firstName" placeholder="First Name" className="w-100 py-2 rounded" required value={firstName} onChange={(e) => updatePaymentForm({firstName: e.target.value})}/>
               </div>
-              <div className="w-100 py-3">
+            <div className="py-3 ps-sm-1 col-12 col-sm-6">
                 <input placeholder="Last Name" className="w-100 py-2 rounded" required value={lastName} onChange={(e) => updatePaymentForm({lastName: e.target.value})} />
               </div>
             </div>
