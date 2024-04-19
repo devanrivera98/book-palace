@@ -69,14 +69,14 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
                 <input placeholder="Address" className="w-100 py-2 rounded" required value={address} onChange={(e) => updatePaymentForm({address: e.target.value})}/>
               </div>
             <div>
-              <div>
-                <div className="w-100 py-3">
+              <div className="d-flex flex-wrap flex-sm-nowrap">
+                <div className="col-12 col-sm-4 pe-sm-1 py-3">
                   <input placeholder="City" className="w-100 py-2 rounded" required value={city} onChange={(e) => updatePaymentForm({ city: e.target.value })} />
                 </div>
-                <div className="w-100 py-3">
+                <div className="col-12 col-sm-4 px-sm-1 py-3">
                   <input placeholder="State" className="w-100 py-2 rounded" required value={state} onChange={(e) => updatePaymentForm({ state: e.target.value })} />
                 </div>
-                <div className="w-100 py-3">
+                <div className="col-12 col-sm-4 py-3 ps-sm-1">
                   <input placeholder="Postal Code" className="w-100 py-2 rounded" required value={postalCode} onChange={(e) => updatePaymentForm({ postalCode: e.target.value })} />
                 </div>
               </div>
