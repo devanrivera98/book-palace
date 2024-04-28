@@ -63,7 +63,8 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
     <div>
       <div className="border d-flex flex-column my-4">
         <div className="payment-box-container d-flex flex-column align-items-center mx-auto">
-          <div className="w-100 py-3">
+          <div className="w-100 py-1">
+            <span>Card Number<span className="required-asterick">*</span></span>
             <input className="w-100 py-2" type="text" inputMode="numeric" maxLength={19} placeholder="Card Number" required  onChange={(e) => handleCreditCard(e.target.value)} value={cardNumber} onKeyDown={(e) => handleNumbericInputs(e)}
             onBlur={() => handleCardInputBlur(verifyPayment.checkValidCardNumber, setIsCardNumberGood)} onFocus={() => handleInputFocus(setIsCardNumberGood)}/>
              {isCardNumberGood ? <></>
@@ -71,14 +72,16 @@ export default function CheckoutPaymentInfo({onShow, isActive, updatePaymentForm
                  <span className="text-danger pt-1 d-flex">Enter a 16 digit card number</span>
             }
           </div>
-          <div className="w-100 py-3">
+          <div className="w-100 py-1">
+               <span>Expiration Date<span className="required-asterick">*</span></span>
                <input className="w-100 py-2" placeholder="MM/YY" maxLength={5} required onChange={(e) => updatePaymentForm({ expirationDate: e.target.value })} value={expirationDate} onBlur={() => handleCardInputBlur(verifyPayment.checkValidExpiryDate, setIsCardExpirationGood)} onFocus={() => handleInputFocus(setIsCardExpirationGood)} />
             {isCardExpirationGood ? <></>
             :
             <span className="text-danger pt-1 d-flex">Enter a valid expiration date: 01/25</span>
             }
           </div>
-          <div className="w-100 py-3">
+          <div className="w-100 py-1">
+               <span>CVV<span className="required-asterick">*</span></span>
                <input className="w-100 py-2" placeholder="CVV" maxLength={4} required onChange={(e) => updatePaymentForm({ cvv: e.target.value })} value={cvv} onBlur={() => handleCardInputBlur(verifyPayment.checkValidCvv, setIsCardCvvGood)} onFocus={() => handleInputFocus(setIsCardCvvGood)} />
                {isCardCvvGood ? <></>
                  :

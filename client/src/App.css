@@ -379,6 +379,10 @@ li {
   margin: auto;
 }
 
+.required-asterick {
+  color: red;
+}
+
 .payment-accordian-container {
   width: 95%;
   display: flex;
