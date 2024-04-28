@@ -48,7 +48,7 @@ export default function ViewWishlist() {
 
   return (
     <>
-    <div className="container my-4 wishlist content">
+    <div className="container my-4 content">
       <div className="row d-flex justify-content-center text-center">
        <h1>WISHLIST</h1>
       </div>

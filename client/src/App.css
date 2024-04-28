@@ -37,7 +37,6 @@ body {
 .max {
   max-width: 92.5%;
   margin: 0 auto;
-
 }
 
 .dark-purple-button {
@@ -292,10 +291,20 @@ li {
 
 .wishlist-image {
   cursor: pointer;
+  width: 150px;
+  height: 220px;
 }
 
 .wishlist {
   max-width: 1000px !important;
+}
+
+.wishlist-button {
+  padding: 0.6rem 0;
+}
+
+.wishlist-description {
+  width: 80%;
 }
 
 .hover-button {
@@ -368,6 +377,10 @@ li {
   display: flex;
   flex-direction: column;
   margin: auto;
+}
+
+.required-asterick {
+  color: red;
 }
 
 .payment-accordian-container {
@@ -583,6 +596,12 @@ a {
 .trending-banner {
   text-align: center;
   padding:2rem 0;
+}
+
+.wishlist-image {
+  cursor: pointer;
+  width: 150px;
+  height: 240px;
 }
 
 }

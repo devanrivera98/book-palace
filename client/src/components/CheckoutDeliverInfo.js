@@ -56,39 +56,47 @@ export default function CheckoutDeliverInfo({isActive, onShow, updatePaymentForm
       </div>
       {isActive === 1 ?
           <div className="py-3">
-            <div className="d-flex flex-wrap">
-              <div className="w-100 pb-3">
+            <div className="d-flex flex-wrap flex-sm-nowrap justify-content-between">
+              <div className="py-1 col-12 col-sm-6 pe-sm-1">
+                <span>First Name<span className="required-asterick">*</span></span>
                 <input type='text' name="firstName" placeholder="First Name" className="w-100 py-2 rounded" required value={firstName} onChange={(e) => updatePaymentForm({firstName: e.target.value})}/>
               </div>
-              <div className="w-100 py-3">
+            <div className="py-1 ps-sm-1 col-12 col-sm-6">
+              <span>Last Name<span className="required-asterick">*</span></span>
                 <input placeholder="Last Name" className="w-100 py-2 rounded" required value={lastName} onChange={(e) => updatePaymentForm({lastName: e.target.value})} />
               </div>
             </div>
             <div>
-              <div className="w-100 py-3">
+              <div className="w-100 py-1">
+              <span>Address<span className="required-asterick">*</span></span>
                 <input placeholder="Address" className="w-100 py-2 rounded" required value={address} onChange={(e) => updatePaymentForm({address: e.target.value})}/>
               </div>
             <div>
-              <div>
-                <div className="w-100 py-3">
+              <div className="d-flex flex-wrap flex-sm-nowrap">
+                <div className="col-12 col-sm-4 pe-sm-1 py-1">
+                  <span>City<span className="required-asterick">*</span></span>
                   <input placeholder="City" className="w-100 py-2 rounded" required value={city} onChange={(e) => updatePaymentForm({ city: e.target.value })} />
                 </div>
-                <div className="w-100 py-3">
+                <div className="col-12 col-sm-4 px-sm-1 py-1">
+                  <span>State<span className="required-asterick">*</span></span>
                   <input placeholder="State" className="w-100 py-2 rounded" required value={state} onChange={(e) => updatePaymentForm({ state: e.target.value })} />
                 </div>
-                <div className="w-100 py-3">
+                <div className="col-12 col-sm-4 py-1 ps-sm-1">
+                  <span>Postal Code<span className="required-asterick">*</span></span>
                   <input placeholder="Postal Code" className="w-100 py-2 rounded" required value={postalCode} onChange={(e) => updatePaymentForm({ postalCode: e.target.value })} />
                 </div>
               </div>
               <div>
-                <div className="w-100 py-3">
+                <div className="w-100 py-1">
+                  <span>Email Address<span className="required-asterick">*</span></span>
                   <input placeholder="Email" id="email" name="email" className="w-100 py-2 rounded" required value={email} onChange={(e) => handleEmailChange(e)} onBlur={(e) => handleEmailBlur(e.target.value)} />
                   {isEmailValid ? <></>
                   :
                   <span className="text-danger pt-1 d-flex">Enter a valid email: johndoe@yahoo.com</span>
                   }
                 </div>
-                <div className="w-100 pt-3">
+                <div className="w-100 pt-1">
+                  <span>Phone Number<span className="required-asterick">*</span></span>
                   <input placeholder="Phone Number" className="w-100 py-2 rounded" required value={phoneNumber} onChange={(e) => updatePaymentForm({ phoneNumber: e.target.value })} />
                 </div>
               </div>

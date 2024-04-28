@@ -75,7 +75,7 @@ export default function PaymentPage() {
 
   const updatePaymentInfo = () => {
     const checkValidCardNumber = cardNumber.replace(/\s/g, '').match(/^\d{16}$/);
-    const checkValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])\/?([0-9]{2})$/);
+    const checkValidExpiryDate = expirationDate.match(/^(0[1-9]|1[0-2])[\/-]?([0-9]{2})$/);
     const checkValidCvv = cvv.match(/^\d{3,4}$/);
 
     if (checkValidCardNumber && checkValidExpiryDate && checkValidCvv) {
