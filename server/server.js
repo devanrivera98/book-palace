@@ -208,5 +208,5 @@ app.use(errorMiddleware);
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
+  process.stdout.write(`\n\napp listening on port ${PORT}\n\n`);
 });
