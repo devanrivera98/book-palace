@@ -14,6 +14,7 @@ const db = new pg.Pool({
 });
 
 const app = express();
+app.use(express.json());
 
 const corsOptions = {
   origin: 'http://book-palace.s3-website-us-west-1.amazonaws.com',
