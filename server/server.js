@@ -23,6 +23,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+  res.status(200).send('OK');
+});
+
 app.get('/api/cart', async (req, res) => {
   try {
     const sql = `
