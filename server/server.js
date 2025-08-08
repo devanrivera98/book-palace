@@ -206,6 +206,8 @@ app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);
 
-app.listen(process.env.PORT, () => {
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
   process.stdout.write(`\n\napp listening on port ${process.env.PORT}\n\n`);
 });
