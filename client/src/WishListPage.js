@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Wishlist from "./WishList";
 import Footer from "./Footer";
+import { API_BASE_URL } from "./api-url";
 
 export default function ViewWishlist() {
   const [view, setView] = useState([]);
@@ -17,7 +18,7 @@ export default function ViewWishlist() {
 
   async function requestWishlist() {
     try {
-      const response = await fetch((`/api/wishlist`));
+      const response = await fetch((`${API_BASE_URL}/api/wishlist`));
       if (!response.ok) {
         setIsLoading(false)
         throw new Error(`Response error: ${response.status}`);

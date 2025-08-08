@@ -2,6 +2,7 @@ import { BsFillHeartFill } from 'react-icons/bs';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { API_BASE_URL } from './api-url';
 
 export default function  MoreInfoPage() {
 
@@ -24,7 +25,7 @@ function MoreInfo() {
     let jsonData;
     async function checkWishlist() {
       try {
-        const response = await fetch((`/api/wishlist`));
+        const response = await fetch((`${API_BASE_URL}/api/wishlist`));
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
@@ -49,7 +50,7 @@ function MoreInfo() {
 
     async function checkCartQuantity() {
       try {
-        const response = await fetch('/api/cart');
+        const response = await fetch(`${API_BASE_URL}/api/cart`);
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
@@ -127,7 +128,7 @@ function MoreInfo() {
 
   async function checkingCart() {
     try {
-      const response = await fetch(('/api/cart'))
+      const response = await fetch((`${API_BASE_URL}/api/cart`))
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`);
       }
@@ -152,12 +153,12 @@ function MoreInfo() {
       }
       if (booksinCart) {
         let increaseQuantity = Number(foundBook.quantity) + 1
-        const response = await fetch((`/api/cart/${foundBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({quantity: increaseQuantity}) })
+        const response = await fetch((`${API_BASE_URL}/api/cart/${foundBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({quantity: increaseQuantity}) })
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
       } else {
-        const response = await fetch((`/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) })
+        const response = await fetch((`${API_BASE_URL}/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) })
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
@@ -174,7 +175,7 @@ function MoreInfo() {
     let book = { title: 'Title Unknown', author: 'Author Unknown', isbn: 'Not Found', rating: 4, image: 'images/placeholder-cover.png', price: 19.99, description: 'There was no description found for this book.'};
     checkingConditions(book);
     try {
-      const response = await fetch((`/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) });
+      const response = await fetch((`${API_BASE_URL}/api/wishlist`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(book) });
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`);
       }
