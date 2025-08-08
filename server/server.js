@@ -4,6 +4,7 @@ import ClientError from './lib/client-error.js';
 import errorMiddleware from './lib/error-middleware.js';
 import pg from 'pg';
 import sgMail from '@sendgrid/mail';
+import cors from 'cors';
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -15,13 +16,19 @@ const db = new pg.Pool({
 const app = express();
 
 // Create paths for static directories
-const reactStaticDir = new URL('../client/build', import.meta.url).pathname;
-const uploadsStaticDir = new URL('public', import.meta.url).pathname;
+// const reactStaticDir = new URL('../client/build', import.meta.url).pathname;
+// const uploadsStaticDir = new URL('public', import.meta.url).pathname;
 
-app.use(express.static(reactStaticDir));
-// Static directory for file uploads server/public/
-app.use(express.static(uploadsStaticDir));
-app.use(express.json());
+// app.use(express.static(reactStaticDir));
+// app.use(express.static(uploadsStaticDir));
+// app.use(express.json());
+
+const corsOptions = {
+  origin: 'http://book-palace.s3-website-us-west-1.amazonaws.com',
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 
 app.get('/api/cart', async (req, res) => {
   try {
@@ -202,7 +209,7 @@ app.post('/send-email', async (req, res) => {
   }
 });
 
-app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
+// app.get('*', (req, res) => res.sendFile(`${reactStaticDir}/index.html`));
 
 app.use(errorMiddleware);
 
