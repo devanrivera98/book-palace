@@ -2,6 +2,7 @@ import { RxCross1 } from 'react-icons/rx';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import NavigateToBook from './NavigateToBook';
+import { API_BASE_URL } from './api-url';
 export default function CartList({books, deleteBook}) {
 
   return (
@@ -28,7 +29,7 @@ function EachBook({ book, deleteBook}) {
     const newQuantity = event.target.value;
     setSelectedQuantity(newQuantity)
     try {
-      const response = await fetch((`/api/cart/${cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: newQuantity }) })
+      const response = await fetch((`${API_BASE_URL}/api/cart/${cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: newQuantity }) })
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`);
       }

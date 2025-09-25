@@ -3,6 +3,7 @@ import {RiStarSFill} from 'react-icons/ri';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
+import { API_BASE_URL } from "./api-url";
 import NavigateToBook from "./NavigateToBook";
 
 export default function Wishlist({books}) {
@@ -29,7 +30,7 @@ useEffect(() => {
 
   async function checkMyCart() {
     try {
-      const response = await fetch('/api/cart');
+      const response = await fetch(`${API_BASE_URL}/api/cart`);
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`)
       }
@@ -83,19 +84,19 @@ useEffect(() => {
       const findBook = jsonData.find((item) => item.isbn === isbn)
       if (findBook) {
         let increaseQuantity = Number(findBook.quantity) + 1
-        const response = await fetch((`/api/cart/${findBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: increaseQuantity }) })
+        const response = await fetch((`${API_BASE_URL}/api/cart/${findBook.cartId}`), { method: 'PUT', headers: { "Content-Type": "application/json" }, body: JSON.stringify({ quantity: increaseQuantity }) })
 
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
       } else {
-        const response = await fetch((`/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(moveBook) });
+        const response = await fetch((`${API_BASE_URL}/api/cart`), { method: 'POST', headers: { "Content-Type": "application/json" }, body: JSON.stringify(moveBook) });
         if (!response.ok) {
           throw new Error(`Response error: ${response.status}`);
         }
       }
       navigate('/checkout');
-      const remove = await fetch((`/api/wishlist/${book.wishlistId}`), { method: 'DELETE' });
+      const remove = await fetch((`${API_BASE_URL}/api/wishlist/${book.wishlistId}`), { method: 'DELETE' });
       if (!remove.ok) {
         throw new Error(`Reponse error: ${remove.status}`)
       }
@@ -107,7 +108,7 @@ useEffect(() => {
 
   async function deleteItem(wishlistId) {
     try {
-      const response = await fetch((`/api/wishlist/${book.wishlistId}`), {method: 'DELETE'})
+      const response = await fetch((`${API_BASE_URL}/api/wishlist/${book.wishlistId}`), {method: 'DELETE'})
       if (!response.ok) {
         throw new Error(`Reponse error: ${response.status}`);
       }

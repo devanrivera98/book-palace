@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CartList from './CartList';
 import Footer from "./Footer";
+import { API_BASE_URL } from "./api-url";
 
 export default function CheckoutCart() {
   const [cart, setCart] = useState([]);
@@ -19,7 +20,7 @@ export default function CheckoutCart() {
 
   async function getRequest() {
     try {
-      const response = await fetch((`/api/cart`));
+      const response = await fetch((`${API_BASE_URL}/api/cart`));
       if (!response.ok) {
         setIsLoading(false);
         throw new Error(`Response error: ${response.status}`);
@@ -52,7 +53,7 @@ export default function CheckoutCart() {
 
   async function deleteBook(cartId) {
     try {
-      const response = await fetch((`/api/cart/${cartId}`), { method: 'DELETE' });
+      const response = await fetch((`${API_BASE_URL}/api/cart/${cartId}`), { method: 'DELETE' });
       if (!response.ok) {
         throw new Error(`Response error: ${response.status}`);
       }
