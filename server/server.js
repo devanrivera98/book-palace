@@ -18,7 +18,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: ['http://bookpalaceusa.s3-website-us-west-1.amazonaws.com', 'https://bookpalaceusa.com',
-    'https://www.bookpalaceusa.com'],
+    'https://www.bookpalaceusa.com', 'https://book-palace.onrender.com'],
   optionsSuccessStatus: 200,
 };
 
